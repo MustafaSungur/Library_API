@@ -1,0 +1,355 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\languagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\languagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\libapicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\libapicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\libapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:libapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\libapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:libapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\libapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:libapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 15,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PublishersController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\PublishersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PublishersController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\PublishersController.cs",
+              "RelativeToolTip": "Controllers\\PublishersController.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAGgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T06:45:38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthorsController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\AuthorsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthorsController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\AuthorsController.cs",
+              "RelativeToolTip": "Controllers\\AuthorsController.cs",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAAAGgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T06:44:52.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SubCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubCategoriesController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeToolTip": "Controllers\\SubCategoriesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:22:20.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LocationsController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LocationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LocationsController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LocationsController.cs",
+              "RelativeToolTip": "Controllers\\LocationsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:08:59.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "Controllers\\BooksController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGAAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:08:27.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAABwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:07:58.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LanguagesController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LanguagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LanguagesController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LanguagesController.cs",
+              "RelativeToolTip": "Controllers\\LanguagesController.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAHYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:07:24.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "libAPI.http",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.http",
+              "RelativeDocumentMoniker": "libAPI.http",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.http",
+              "RelativeToolTip": "libAPI.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-07-05T09:06:06.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAAwC0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:03:51.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "libAPIContext.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\libAPIContext.cs",
+              "RelativeDocumentMoniker": "Data\\libAPIContext.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\libAPIContext.cs",
+              "RelativeToolTip": "Data\\libAPIContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:03:02.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SubCategory.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\SubCategory.cs",
+              "RelativeDocumentMoniker": "Models\\SubCategory.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\SubCategory.cs",
+              "RelativeToolTip": "Models\\SubCategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:45.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Publisher.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Publisher.cs",
+              "RelativeDocumentMoniker": "Models\\Publisher.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Publisher.cs",
+              "RelativeToolTip": "Models\\Publisher.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:37.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Location.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Location.cs",
+              "RelativeDocumentMoniker": "Models\\Location.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Location.cs",
+              "RelativeToolTip": "Models\\Location.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:31.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Language.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Language.cs",
+              "RelativeDocumentMoniker": "Models\\Language.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Language.cs",
+              "RelativeToolTip": "Models\\Language.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:27.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:19.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "Models\\Category.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Category.cs",
+              "RelativeToolTip": "Models\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T09:00:16.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Models\\Book.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Book.cs",
+              "RelativeToolTip": "Models\\Book.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAIwCoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T08:59:45.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Author.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "Models\\Author.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Author.cs",
+              "RelativeToolTip": "Models\\Author.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T08:59:13.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "libAPI.csproj",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeDocumentMoniker": "libAPI.csproj",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeToolTip": "libAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-05T08:56:22.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "libAPI",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeDocumentMoniker": "libAPI.csproj",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeToolTip": "libAPI.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-05T08:55:08.516Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
