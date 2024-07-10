@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using libAPI.Data;
 
@@ -15,115 +16,89 @@ namespace libAPI.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            modelBuilder.Entity("AuthorBook", b =>
-                {
-                    b.Property<long>("AuthorsId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BooksId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AuthorsId", "BooksId");
-
-                    b.HasIndex("BooksId");
-
-                    b.ToTable("AuthorBook");
-                });
-
-            modelBuilder.Entity("BookLanguage", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("LanguagesCode")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("BooksId", "LanguagesCode");
-
-                    b.HasIndex("LanguagesCode");
-
-                    b.ToTable("BookLanguage");
-                });
-
-            modelBuilder.Entity("BookSubCategory", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<short>("SubCategoriesId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("BooksId", "SubCategoriesId");
-
-                    b.HasIndex("SubCategoriesId");
-
-                    b.ToTable("BookSubCategory");
-                });
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("libAPI.Models.Author", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Biography")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<short?>("DeadYear")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Fullname")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
                 });
 
+            modelBuilder.Entity("libAPI.Models.AuthorBook", b =>
+                {
+                    b.Property<long>("AuthorId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("AuthorBooks");
+                });
+
             modelBuilder.Entity("libAPI.Models.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Banned")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ISBM")
-                        .HasMaxLength(13)
-                        .HasColumnType("varchar(13)");
-
-                    b.Property<int?>("LocationId")
-                        .HasColumnType("INTEGER");
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<short>("PageCount")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
 
                     b.Property<int>("PrintCount")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
-                    b.Property<int?>("PublisherId")
-                        .HasColumnType("INTEGER");
+                    b.Property<int>("PublisherId")
+                        .HasColumnType("int");
 
                     b.Property<short>("PublishingYear")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
 
                     b.Property<float>("Rating")
-                        .HasColumnType("REAL");
+                        .HasColumnType("real");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(2000)
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(2000)");
 
                     b.HasKey("Id");
 
@@ -138,14 +113,13 @@ namespace libAPI.Migrations
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<short?>("SubCategoryId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -155,22 +129,39 @@ namespace libAPI.Migrations
             modelBuilder.Entity("libAPI.Models.Language", b =>
                 {
                     b.Property<string>("Code")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Code");
 
                     b.ToTable("Languages");
                 });
 
+            modelBuilder.Entity("libAPI.Models.LanguageBook", b =>
+                {
+                    b.Property<string>("LanguageId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LanguageId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("LanguageBooks");
+                });
+
             modelBuilder.Entity("libAPI.Models.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Shelf")
                         .IsRequired()
@@ -186,20 +177,22 @@ namespace libAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ContactPerson")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -210,14 +203,16 @@ namespace libAPI.Migrations
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<short>("CategoryId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -226,64 +221,76 @@ namespace libAPI.Migrations
                     b.ToTable("SubCategories");
                 });
 
-            modelBuilder.Entity("AuthorBook", b =>
+            modelBuilder.Entity("libAPI.Models.SubCategoryBook", b =>
                 {
-                    b.HasOne("libAPI.Models.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<short>("SubCategoryId")
+                        .HasColumnType("smallint");
 
-                    b.HasOne("libAPI.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubCategoryId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("SubCategoryBooks");
                 });
 
-            modelBuilder.Entity("BookLanguage", b =>
+            modelBuilder.Entity("libAPI.Models.AuthorBook", b =>
                 {
-                    b.HasOne("libAPI.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
+                    b.HasOne("libAPI.Models.Author", "Author")
+                        .WithMany("AuthorBooks")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.Language", null)
-                        .WithMany()
-                        .HasForeignKey("LanguagesCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BookSubCategory", b =>
-                {
-                    b.HasOne("libAPI.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
+                    b.HasOne("libAPI.Models.Book", "Book")
+                        .WithMany("AuthorBooks")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.SubCategory", null)
-                        .WithMany()
-                        .HasForeignKey("SubCategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Author");
+
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("libAPI.Models.Book", b =>
                 {
                     b.HasOne("libAPI.Models.Location", "Location")
                         .WithMany("Books")
-                        .HasForeignKey("LocationId");
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("libAPI.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherId");
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Location");
 
                     b.Navigation("Publisher");
+                });
+
+            modelBuilder.Entity("libAPI.Models.LanguageBook", b =>
+                {
+                    b.HasOne("libAPI.Models.Book", "Book")
+                        .WithMany("LanguageBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("libAPI.Models.Language", "Language")
+                        .WithMany("LanguageBooks")
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("libAPI.Models.SubCategory", b =>
@@ -297,9 +304,47 @@ namespace libAPI.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("libAPI.Models.SubCategoryBook", b =>
+                {
+                    b.HasOne("libAPI.Models.Book", "Book")
+                        .WithMany("SubCategoryBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("libAPI.Models.SubCategory", "SubCategory")
+                        .WithMany("SubCategoryBooks")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("libAPI.Models.Author", b =>
+                {
+                    b.Navigation("AuthorBooks");
+                });
+
+            modelBuilder.Entity("libAPI.Models.Book", b =>
+                {
+                    b.Navigation("AuthorBooks");
+
+                    b.Navigation("LanguageBooks");
+
+                    b.Navigation("SubCategoryBooks");
+                });
+
             modelBuilder.Entity("libAPI.Models.Category", b =>
                 {
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("libAPI.Models.Language", b =>
+                {
+                    b.Navigation("LanguageBooks");
                 });
 
             modelBuilder.Entity("libAPI.Models.Location", b =>
@@ -310,6 +355,11 @@ namespace libAPI.Migrations
             modelBuilder.Entity("libAPI.Models.Publisher", b =>
                 {
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("libAPI.Models.SubCategory", b =>
+                {
+                    b.Navigation("SubCategoryBooks");
                 });
 #pragma warning restore 612, 618
         }

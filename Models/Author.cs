@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace libAPI.Models
 {
 	public class Author
@@ -8,9 +10,7 @@ namespace libAPI.Models
 		public string? Biography { get; set; }
 		public DateTime BirthDate { get; set; }
 		public short? DeadYear { get; set; }
-		public List<Book>? Books { get; set; }
-
+		public List<AuthorBook>? AuthorBooks { get; set; }
 	}
 }
-
 

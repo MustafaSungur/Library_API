@@ -8,7 +8,7 @@ namespace libAPI.Models
 		[Key]
         public string Code { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-		public List<Book>? Books { get; set; }
+		public List<LanguageBook>? LanguageBooks { get; set; }
 	}
 } 
 

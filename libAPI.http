@@ -1,4 +1,4 @@
-@libAPI_HostAddress = http://localhost:5185
+@libAPI_HostAddress = http://localhost:3000
 
 GET {{libAPI_HostAddress}}/weatherforecast/
 Accept: application/json

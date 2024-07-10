@@ -12,7 +12,7 @@ namespace libAPI.Models
 		[JsonIgnore]
 		[ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
-        public List<Book>? Books { get; set; }
+        public List<SubCategoryBook>? SubCategoryBooks { get; set; }
 
     }
 }
