@@ -25,26 +25,26 @@ namespace libAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategory()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Category.ToListAsync();
         }
 
-		// GET: api/Categories/5
-		[HttpGet("{id}")]
-		public async Task<ActionResult<Category>> GetCategory(short id)
-		{
-			var category = await _context.Categories.FindAsync(id);
+        // GET: api/Categories/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Category>> GetCategory(short id)
+        {
+            var category = await _context.Category.FindAsync(id);
 
-			if (category == null)
-			{
-				return NotFound();
-			}
+            if (category == null)
+            {
+                return NotFound();
+            }
 
-			return category;
-		}
+            return category;
+        }
 
-		// PUT: api/Categories/5
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("{id}")]
+        // PUT: api/Categories/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(short id, Category category)
         {
             if (id != category.Id)
@@ -78,7 +78,7 @@ namespace libAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
-            _context.Categories.Add(category);
+            _context.Category.Add(category);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCategory", new { id = category.Id }, category);
@@ -88,13 +88,13 @@ namespace libAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(short id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _context.Category.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Category.Remove(category);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace libAPI.Controllers
 
         private bool CategoryExists(short id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Category.Any(e => e.Id == id);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace libAPI.Controllers
 
         // GET: api/Locations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location>>> GetLocation()
+        public async Task<ActionResult<IEnumerable<Location>>> GetLocations()
         {
             return await _context.Locations.ToListAsync();
         }

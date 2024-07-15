@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace libAPI.Models
 {
-	public class Author
-	{
-		public long Id { get; set; }
-		public string Fullname { get; set; } = string.Empty;
-		public string? Biography { get; set; }
-		public DateTime BirthDate { get; set; }
-		public short? DeadYear { get; set; }
-		public List<AuthorBook>? AuthorBooks { get; set; }
-	}
-}
+    public class Author
+    {
+        public long Id { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; } = string.Empty;
+
+        [StringLength(2000)]
+        public string? Biography { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; }
+
+        [Range(0, 9999)]
+        public short? DeadYear { get; set; }
+
+        public List<AuthorBook>? AuthorBooks { get; set; }
+    }
+}

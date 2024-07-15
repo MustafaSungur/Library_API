@@ -19,9 +19,9 @@ namespace libAPI.Models
         [StringLength(2000)]
         public string Title { get; set; } = string.Empty;
 
-        //[StringLength(13, MinimumLength = 10)]
-        //[Column(TypeName = "varchar(13)")]
-        //public string? ISBM { get; set; } = string.Empty;
+        [StringLength(13, MinimumLength = 10)]
+        [Column(TypeName = "varchar(13)")]
+        public string? ISBM { get; set; } = string.Empty;
 
         [Range(1, short.MaxValue)]
         public short PageCount { get; set; }
@@ -32,13 +32,8 @@ namespace libAPI.Models
 
         [Range(0, int.MaxValue)]
         public int PrintCount { get; set; }
-        public bool Banned { get; set; }
-
-        [Range(0, 5)]
-        public float Rating { get; set; }
 
         public int PublisherId { get; set; }
-        public int LocationId { get; set; }
 
 		[JsonIgnore]
         [ForeignKey(nameof(PublisherId))]
@@ -48,6 +43,7 @@ namespace libAPI.Models
 
 		public List<LanguageBook>? LanguageBooks { get; set; }
 
+		public int LocationId { get; set; }
 
 		[JsonIgnore]
 		[ForeignKey(nameof(LocationId))]
@@ -55,6 +51,13 @@ namespace libAPI.Models
 
 		public List<AuthorBook>? AuthorBooks { get; internal set; }
 
+        public bool Is { get; set; }
+
+        public string? PhotoUrl { get; set; }
+        
+        // Stock tablosunu oluşturmak icin gerekli
+        [NotMapped]
+        public short CopyCount { get; set; }
     }
 
 }

@@ -1,44 +1,59 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using libAPI.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace libAPI.Data
 {
     public class libAPIContext : DbContext
     {
-        public libAPIContext(DbContextOptions<libAPIContext> options)
+        public libAPIContext (DbContextOptions<libAPIContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Category> Categories { get; set; } = default!;
-        public DbSet<Book> Books { get; set; } = default!;
-        public DbSet<Language> Languages { get; set; } = default!;
-        public DbSet<Location> Locations { get; set; } = default!;
-        public DbSet<SubCategory> SubCategories { get; set; } = default!;
-        public DbSet<Author> Authors { get; set; } = default!;
-        public DbSet<Publisher> Publishers { get; set; } = default!;
-        public DbSet<AuthorBook> AuthorBooks { get; set; } = default!;
-        public DbSet<LanguageBook> LanguageBooks { get; set; } = default!;
-        public DbSet<SubCategoryBook> SubCategoryBooks { get; set; } = default!;
+        public DbSet<AddressCity> AddressCity { get; set; } = default!;
+        public DbSet<AddressCountry> AddressCountry { get; set; } = default!;
+        public DbSet<Address> Address { get; set; } = default!;
+        public DbSet<Genre> Genre { get; set; } = default!;
+        public DbSet<Department> Department { get; set; } = default!;
+        public DbSet<EducationalDegree> EducationalDegree { get; set; } = default!;
+        public DbSet<EmployeeTitle> EmployeeTitle { get; set; } = default!;
+        public DbSet<Shift> Shift { get; set; } = default!;
+		public DbSet<Author> Author { get; set; } = default!;
+		public DbSet<Category> Category { get; set; } = default!;
+		public DbSet<SubCategory> SubCategory { get; set; } = default!;
+		public DbSet<Book> Book { get; set; } = default!;
+		public DbSet<Language> Languages { get; set; } = default!;
+		public DbSet<Location> Locations { get; set; } = default!;
+		public DbSet<Stock> Stocks { get; set; } = default!;
+		public DbSet<Employee> Employees { get; set; } = default!;
+		public DbSet<ApplicationUser> Persons { get; set; } = default!;
+		public DbSet<BorrowBooks> BorrowBooks { get; set; } = default!;
+		public DbSet<Employee> Employee { get; set; } = default!;
+		public DbSet<Member> Member { get; set; } = default!;
+		public DbSet<Language> Language { get; set; } = default!;
+		public DbSet<Publisher> Publisher { get; set; } = default!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
 
-            // AUTHORBOOK
-            modelBuilder.Entity<AuthorBook>()
-                .HasKey(ab => new { ab.AuthorId, ab.BookId });
 
-            modelBuilder.Entity<AuthorBook>()
-                .HasOne(ab => ab.Author)
-                .WithMany(a => a.AuthorBooks)
-                .HasForeignKey(ab => ab.AuthorId);
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			// AUTHORBOOK
+			modelBuilder.Entity<AuthorBook>()
+				.HasKey(ab => new { ab.AuthorId, ab.BookId });
 
-            modelBuilder.Entity<AuthorBook>()
-                .HasOne(ab => ab.Book)
-                .WithMany(b => b.AuthorBooks)
-                .HasForeignKey(ab => ab.BookId);
+			modelBuilder.Entity<AuthorBook>()
+				.HasOne(ab => ab.Author)
+				.WithMany(a => a.AuthorBooks)
+				.HasForeignKey(ab => ab.AuthorId);
+
+			modelBuilder.Entity<AuthorBook>()
+				.HasOne(ab => ab.Book)
+				.WithMany(b => b.AuthorBooks)
+				.HasForeignKey(ab => ab.BookId);
 
 			// LANGUAGEBOOK
 			modelBuilder.Entity<LanguageBook>()
@@ -68,5 +83,7 @@ namespace libAPI.Data
 				.WithMany(b => b.SubCategoryBooks)
 				.HasForeignKey(ab => ab.BookId);
 		}
-    }
+        
+       
+	}
 }

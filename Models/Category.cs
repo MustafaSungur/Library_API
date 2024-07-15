@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using libAPI.Data;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.OpenApi;
@@ -8,7 +9,9 @@ namespace libAPI.Models
 	public class Category
 	{
 		public short Id { get; set; }
-		public string Name { get; set; } = string.Empty;
+
+		[StringLength(50)]
+		public required string Name { get; set; } 
 
 		public List<SubCategory>? SubCategories{ get; set; }
 	}

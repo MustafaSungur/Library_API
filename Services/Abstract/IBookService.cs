@@ -1,6 +1,9 @@
-﻿namespace libAPI.Services.Abstract
+﻿using libAPI.Data;
+using libAPI.Models;
+
+namespace libAPI.Services.Abstract
 {
-	public interface IBookService
+	public interface IBookService:IService<Book, libAPIContext>
 	{
 	}
 }

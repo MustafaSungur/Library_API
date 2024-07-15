@@ -1,6 +1,8 @@
-﻿namespace libAPI.Data.Repositories.Abstract
+﻿using libAPI.Models;
+
+namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IPublisherRepository
+	public interface IPublisherRepository:IRepository<Publisher, libAPIContext>
 	{
 	}
 }

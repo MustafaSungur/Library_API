@@ -25,14 +25,14 @@ namespace libAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthor()
         {
-            return await _context.Authors.ToListAsync();
+            return await _context.Author.ToListAsync();
         }
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(long id)
         {
-            var author = await _context.Authors.FindAsync(id);
+            var author = await _context.Author.FindAsync(id);
 
             if (author == null)
             {
@@ -78,7 +78,7 @@ namespace libAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
-            _context.Authors.Add(author);
+            _context.Author.Add(author);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAuthor", new { id = author.Id }, author);
@@ -88,13 +88,13 @@ namespace libAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(long id)
         {
-            var author = await _context.Authors.FindAsync(id);
+            var author = await _context.Author.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
             }
 
-            _context.Authors.Remove(author);
+            _context.Author.Remove(author);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace libAPI.Controllers
 
         private bool AuthorExists(long id)
         {
-            return _context.Authors.Any(e => e.Id == id);
+            return _context.Author.Any(e => e.Id == id);
         }
     }
 }

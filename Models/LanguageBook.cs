@@ -3,16 +3,15 @@ using System.Text.Json.Serialization;
 
 namespace libAPI.Models
 {
-	public class LanguageBook
-	{
-		public int BookId { get; set; }
+    public class LanguageBook
+    {
+        public int BookId { get; set; }
 
-		[JsonIgnore]
-		public Book Book { get; set; } = new();
+        [JsonIgnore]
+        public Book Book { get; set; } = new();
 
-		public required string LanguageId { get; set; }
+        public required string LanguageId { get; set; }
 
-		[JsonIgnore]
-		public Language Language { get; set; } = new();
-	}
+        public required Language Language { get; set; } = new();
+    }
 }

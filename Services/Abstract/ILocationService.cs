@@ -1,6 +1,9 @@
-﻿namespace libAPI.Services.Abstract
+﻿using libAPI.Data;
+using libAPI.Models;
+
+namespace libAPI.Services.Abstract
 {
-	public interface ILocationService
+	public interface ILocationService:IService<Location, libAPIContext>
 	{
 	}
 }

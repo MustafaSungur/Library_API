@@ -1,6 +1,10 @@
-﻿namespace libAPI.Services.Abstract
+﻿
+using libAPI.Data;
+using libAPI.Models;
+
+namespace libAPI.Services.Abstract
 {
-	public interface IPublisherService
+	public interface IPublisherService:IService<Publisher, libAPIContext>
 	{
 	}
 }

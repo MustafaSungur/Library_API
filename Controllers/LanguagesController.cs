@@ -25,14 +25,14 @@ namespace libAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Language>>> GetLanguage()
         {
-            return await _context.Languages.ToListAsync();
+            return await _context.Language.ToListAsync();
         }
 
         // GET: api/Languages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Language>> GetLanguage(string id)
         {
-            var language = await _context.Languages.FindAsync(id);
+            var language = await _context.Language.FindAsync(id);
 
             if (language == null)
             {
@@ -78,7 +78,7 @@ namespace libAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Language>> PostLanguage(Language language)
         {
-            _context.Languages.Add(language);
+            _context.Language.Add(language);
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,13 +102,13 @@ namespace libAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLanguage(string id)
         {
-            var language = await _context.Languages.FindAsync(id);
+            var language = await _context.Language.FindAsync(id);
             if (language == null)
             {
                 return NotFound();
             }
 
-            _context.Languages.Remove(language);
+            _context.Language.Remove(language);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace libAPI.Controllers
 
         private bool LanguageExists(string id)
         {
-            return _context.Languages.Any(e => e.Code == id);
+            return _context.Language.Any(e => e.Code == id);
         }
     }
 }

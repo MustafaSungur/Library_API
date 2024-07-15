@@ -25,14 +25,14 @@ namespace libAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubCategory()
         {
-            return await _context.SubCategories.ToListAsync();
+            return await _context.SubCategory.ToListAsync();
         }
 
         // GET: api/SubCategories/5
         [HttpGet("{id}")]
         public async Task<ActionResult<SubCategory>> GetSubCategory(short id)
         {
-            var subCategory = await _context.SubCategories.FindAsync(id);
+            var subCategory = await _context.SubCategory.FindAsync(id);
 
             if (subCategory == null)
             {
@@ -78,7 +78,7 @@ namespace libAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
         {
-            _context.SubCategories.Add(subCategory);
+            _context.SubCategory.Add(subCategory);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSubCategory", new { id = subCategory.Id }, subCategory);
@@ -88,13 +88,13 @@ namespace libAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSubCategory(short id)
         {
-            var subCategory = await _context.SubCategories.FindAsync(id);
+            var subCategory = await _context.SubCategory.FindAsync(id);
             if (subCategory == null)
             {
                 return NotFound();
             }
 
-            _context.SubCategories.Remove(subCategory);
+            _context.SubCategory.Remove(subCategory);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace libAPI.Controllers
 
         private bool SubCategoryExists(short id)
         {
-            return _context.SubCategories.Any(e => e.Id == id);
+            return _context.SubCategory.Any(e => e.Id == id);
         }
     }
 }

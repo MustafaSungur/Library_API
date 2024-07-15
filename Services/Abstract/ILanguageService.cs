@@ -1,6 +1,9 @@
-﻿namespace libAPI.Services.Abstract
+﻿using libAPI.Data;
+using libAPI.Models;
+
+namespace libAPI.Services.Abstract
 {
-	public interface ILanguageService
+	public interface ILanguageService:IService<Language, libAPIContext>
 	{
 	}
 }
