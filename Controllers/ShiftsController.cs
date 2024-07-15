@@ -1,108 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using libAPI.Models;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
-using libAPI.Models;
+
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ShiftsController : ControllerBase
-    {
-        private readonly libAPIContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ShiftsController : ControllerBase
+	{
+		private readonly IShiftService _service;
 
-        public ShiftsController(libAPIContext context)
-        {
-            _context = context;
-        }
+		public ShiftsController(IShiftService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Shifts
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Shift>>> GetShift()
-        {
-            return await _context.Shift.ToListAsync();
-        }
+		// GET: api/Shifts
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<Shift>>> GetShifts()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Shifts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Shift>> GetShift(short id)
-        {
-            var shift = await _context.Shift.FindAsync(id);
+		// GET: api/Shifts/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Shift>> GetShift(short id)
+		{
+			var shift = await _service.GetByIdAsync(id);
 
-            if (shift == null)
-            {
-                return NotFound();
-            }
+			if (shift == null)
+			{
+				return NotFound();
+			}
 
-            return shift;
-        }
+			return shift;
+		}
 
-        // PUT: api/Shifts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutShift(short id, Shift shift)
-        {
-            if (id != shift.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Shifts/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutShift(short id, Shift shift)
+		{
+			if (id != shift.Id)
+			{
+				return BadRequest();
+			}
 
-            _context.Entry(shift).State = EntityState.Modified;
+			try
+			{
+				await _service.UpdateAsync(shift);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await ShiftExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShiftExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/Shifts
+		[HttpPost]
+		public async Task<ActionResult<Shift>> PostShift(Shift shift)
+		{
+			var createdEntity = await _service.AddAsync(shift);
+			return CreatedAtAction("GetShift", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // POST: api/Shifts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Shift>> PostShift(Shift shift)
-        {
-            _context.Shift.Add(shift);
-            await _context.SaveChangesAsync();
+		// DELETE: api/Shifts/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteShift(short id)
+		{
+			var shift = await _service.GetByIdAsync(id);
+			if (shift == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetShift", new { id = shift.Id }, shift);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/Shifts/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteShift(short id)
-        {
-            var shift = await _context.Shift.FindAsync(id);
-            if (shift == null)
-            {
-                return NotFound();
-            }
-
-            _context.Shift.Remove(shift);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ShiftExists(short id)
-        {
-            return _context.Shift.Any(e => e.Id == id);
-        }
-    }
+		private async Task<bool> ShiftExists(short id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

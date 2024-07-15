@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
 using libAPI.Models;
+using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
@@ -14,25 +10,26 @@ namespace libAPI.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly libAPIContext _context;
+        private readonly IAuthorService _service;
 
-        public AuthorsController(libAPIContext context)
+        public AuthorsController(IAuthorService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Authors
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthor()
         {
-            return await _context.Author.ToListAsync();
+            var result = await _service.GetAllAsync();
+            return Ok(result);
         }
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(long id)
         {
-            var author = await _context.Author.FindAsync(id);
+            var author = await _service.GetByIdAsync((int)id);
 
             if (author == null)
             {
@@ -43,7 +40,6 @@ namespace libAPI.Controllers
         }
 
         // PUT: api/Authors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthor(long id, Author author)
         {
@@ -52,16 +48,15 @@ namespace libAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(author).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _service.UpdateAsync(author);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AuthorExists(id))
-                {
+				if (!(await AuthorExists(id)))
+				{
                     return NotFound();
                 }
                 else
@@ -74,35 +69,32 @@ namespace libAPI.Controllers
         }
 
         // POST: api/Authors
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
-            _context.Author.Add(author);
-            await _context.SaveChangesAsync();
+            var createdEntity = await _service.AddAsync(author);
 
-            return CreatedAtAction("GetAuthor", new { id = author.Id }, author);
+            return CreatedAtAction("GetAuthor", new { id = createdEntity.Id }, createdEntity);
         }
 
         // DELETE: api/Authors/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(long id)
         {
-            var author = await _context.Author.FindAsync(id);
+            var author = await _service.GetByIdAsync((int)id);
             if (author == null)
             {
                 return NotFound();
             }
 
-            _context.Author.Remove(author);
-            await _context.SaveChangesAsync();
+            await _service.DeleteAsync((int)id);
 
             return NoContent();
         }
 
-        private bool AuthorExists(long id)
+        private async Task<bool> AuthorExists(long id)
         {
-            return _context.Author.Any(e => e.Id == id);
+            return (await _service.GetByIdAsync((int)id))!=null;
         }
     }
 }

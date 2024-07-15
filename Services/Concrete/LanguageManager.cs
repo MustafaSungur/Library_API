@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class LanguageManager : GenericManager<Language, libAPIContext>, ILanguageService
+	public class LanguageManager : GenericManager<Language, libAPIContext,string>, ILanguageService
 	{
-		public LanguageManager(IRepository<Language, libAPIContext> repository) : base(repository)
+		public LanguageManager(IRepository<Language, libAPIContext,string> repository) : base(repository)
 		{
 		}
 	}

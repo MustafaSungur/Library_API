@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class MemberManager : GenericManager<Member, libAPIContext>, IMemberService
+	public class MemberManager : GenericManager<Member, libAPIContext,string>, IMemberService
 	{
-		public MemberManager(IRepository<Member, libAPIContext> repository) : base(repository)
+		public MemberManager(IRepository<Member, libAPIContext,string> repository) : base(repository)
 		{
 		}
 	}

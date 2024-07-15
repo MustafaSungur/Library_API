@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
 using libAPI.Models;
+using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
@@ -14,25 +10,26 @@ namespace libAPI.Controllers
     [ApiController]
     public class EmployeeTitlesController : ControllerBase
     {
-        private readonly libAPIContext _context;
+        private readonly IEmployeeTitleService _service;
 
-        public EmployeeTitlesController(libAPIContext context)
+        public EmployeeTitlesController(IEmployeeTitleService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/EmployeeTitles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmployeeTitle>>> GetEmployeeTitle()
         {
-            return await _context.EmployeeTitle.ToListAsync();
+            var result = await _service.GetAllAsync();
+            return Ok(result);  
         }
 
         // GET: api/EmployeeTitles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EmployeeTitle>> GetEmployeeTitle(short id)
         {
-            var employeeTitle = await _context.EmployeeTitle.FindAsync(id);
+            var employeeTitle = await _service.GetByIdAsync(id);
 
             if (employeeTitle == null)
             {
@@ -43,7 +40,6 @@ namespace libAPI.Controllers
         }
 
         // PUT: api/EmployeeTitles/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployeeTitle(short id, EmployeeTitle employeeTitle)
         {
@@ -52,15 +48,14 @@ namespace libAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(employeeTitle).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _service.GetByIdAsync(id);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeTitleExists(id))
+                if (! await EmployeeTitleExists(id))
                 {
                     return NotFound();
                 }
@@ -74,35 +69,36 @@ namespace libAPI.Controllers
         }
 
         // POST: api/EmployeeTitles
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<EmployeeTitle>> PostEmployeeTitle(EmployeeTitle employeeTitle)
         {
-            _context.EmployeeTitle.Add(employeeTitle);
-            await _context.SaveChangesAsync();
+            var createdEntity = await _service.AddAsync(employeeTitle);
 
-            return CreatedAtAction("GetEmployeeTitle", new { id = employeeTitle.Id }, employeeTitle);
+            return CreatedAtAction("GetEmployeeTitle", new { id = createdEntity.Id }, createdEntity);
         }
 
         // DELETE: api/EmployeeTitles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployeeTitle(short id)
         {
-            var employeeTitle = await _context.EmployeeTitle.FindAsync(id);
+            var employeeTitle = await _service.GetByIdAsync(id);
             if (employeeTitle == null)
             {
                 return NotFound();
             }
 
-            _context.EmployeeTitle.Remove(employeeTitle);
-            await _context.SaveChangesAsync();
+            
+            await _service.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool EmployeeTitleExists(short id)
-        {
-            return _context.EmployeeTitle.Any(e => e.Id == id);
-        }
-    }
+
+		private async Task<bool> EmployeeTitleExists(short id)
+		{
+            
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+
+	}
 }

@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IBookRepository:IRepository<Book, libAPIContext>
+	public interface IBookRepository:IRepository<Book, libAPIContext,int>
 	{
 	}
 }

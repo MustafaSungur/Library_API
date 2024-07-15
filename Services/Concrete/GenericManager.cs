@@ -1,26 +1,30 @@
-﻿using libAPI.Data.Repositories.Abstract;
+﻿using libAPI.Data;
+using libAPI.Data.Repositories.Abstract;
+using libAPI.Models;
 using libAPI.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 
 namespace libAPI.Services.Concrete
 {
-	public class GenericManager<TEntity, TContext> : IService<TEntity, TContext>
+	public class GenericManager<TEntity, TContext, TId> : IService<TEntity, TContext, TId>
 		where TEntity : class
 		where TContext : DbContext
 	{
-		private readonly IRepository<TEntity, TContext> _repository;
+		private readonly IRepository<TEntity, TContext, TId> _repository;
 
-		public GenericManager(IRepository<TEntity, TContext> repository)
+		public GenericManager(IRepository<TEntity, TContext, TId> repository)
 		{
 			_repository = repository;
 		}
+
+		public IRepository<EmployeeTitle, libAPIContext, int> Repository { get; }
 
 		public Task<TEntity> AddAsync(TEntity entity)
 		{
 			return _repository.AddAsync(entity);
 		}
 
-		public Task<bool> DeleteAsync(int id)
+		public Task<bool> DeleteAsync(TId id)
 		{
 			return _repository.DeleteAsync(id);
 		}
@@ -30,7 +34,7 @@ namespace libAPI.Services.Concrete
 			return _repository.GetAllAsync();
 		}
 
-		public Task<TEntity?> GetByIdAsync(int id)
+		public Task<TEntity?> GetByIdAsync(TId id)
 		{
 			return _repository.GetByIdAsync(id);
 		}

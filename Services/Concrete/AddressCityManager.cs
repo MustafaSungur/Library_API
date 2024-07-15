@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class AddressCityManager : GenericManager<AddressCity, libAPIContext>, IAddressCityService
+	public class AddressCityManager : GenericManager<AddressCity, libAPIContext,int>, IAddressCityService
 	{
-		public AddressCityManager(IRepository<AddressCity, libAPIContext> repository) : base(repository)
+		public AddressCityManager(IRepository<AddressCity, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

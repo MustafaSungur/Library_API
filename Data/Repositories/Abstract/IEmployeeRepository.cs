@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IEmployeeRepository:IRepository<Employee, libAPIContext>
+	public interface IEmployeeRepository:IRepository<Employee, libAPIContext,string>
 	{
 	}
 }

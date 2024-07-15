@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class DepartmentManager : GenericManager<Department, libAPIContext>, IDepartmentsService
+	public class DepartmentManager : GenericManager<Department, libAPIContext,int>, IDepartmentsService
 	{
-		public DepartmentManager(IRepository<Department, libAPIContext> repository) : base(repository)
+		public DepartmentManager(IRepository<Department, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

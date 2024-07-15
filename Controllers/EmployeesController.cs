@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
 using libAPI.Models;
+using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
@@ -14,25 +10,26 @@ namespace libAPI.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly libAPIContext _context;
+        private readonly IEmployeeService _servcice;
 
-        public EmployeesController(libAPIContext context)
+        public EmployeesController(IEmployeeService service)
         {
-            _context = context;
+            _servcice = service;
         }
 
         // GET: api/Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
         {
-            return await _context.Employee.ToListAsync();
+            var result = await _servcice.GetAllAsync();
+            return Ok(result);
         }
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await _servcice.GetByIdAsync(id);
 
             if (employee == null)
             {
@@ -43,7 +40,6 @@ namespace libAPI.Controllers
         }
 
         // PUT: api/Employees/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployee(string id, Employee employee)
         {
@@ -52,15 +48,14 @@ namespace libAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(employee).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _servcice.UpdateAsync(employee);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeExists(id))
+                if (!await EmployeeExists(id))
                 {
                     return NotFound();
                 }
@@ -74,49 +69,33 @@ namespace libAPI.Controllers
         }
 
         // POST: api/Employees
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
-            _context.Employee.Add(employee);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (EmployeeExists(employee.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			var createdEntity= await _servcice.AddAsync(employee);                 
 
-            return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+            return CreatedAtAction("GetEmployee", new { id = createdEntity.Id }, employee);
         }
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await _servcice.GetByIdAsync(id);
             if (employee == null)
             {
                 return NotFound();
             }
 
-            _context.Employee.Remove(employee);
-            await _context.SaveChangesAsync();
+           
+            await _servcice.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool EmployeeExists(string id)
+        private async Task<bool> EmployeeExists(string id)
         {
-            return _context.Employee.Any(e => e.Id == id);
+            return (await _servcice.GetByIdAsync(id)) != null;
         }
     }
 }

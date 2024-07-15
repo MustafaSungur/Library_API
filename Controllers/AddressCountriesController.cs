@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
 using libAPI.Models;
+using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
@@ -14,25 +9,26 @@ namespace libAPI.Controllers
     [ApiController]
     public class AddressCountriesController : ControllerBase
     {
-        private readonly libAPIContext _context;
+        private readonly IAddressCountryService _service;
 
-        public AddressCountriesController(libAPIContext context)
+        public AddressCountriesController(IAddressCountryService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/AddressCountries
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AddressCountry>>> GetAddressCountry()
         {
-            return await _context.AddressCountry.ToListAsync();
+            var results = await _service.GetAllAsync();
+            return Ok(results);
         }
 
         // GET: api/AddressCountries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AddressCountry>> GetAddressCountry(short id)
         {
-            var addressCountry = await _context.AddressCountry.FindAsync(id);
+            var addressCountry = await _service.GetByIdAsync(id);
 
             if (addressCountry == null)
             {
@@ -51,16 +47,14 @@ namespace libAPI.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(addressCountry).State = EntityState.Modified;
-
+            
             try
             {
-                await _context.SaveChangesAsync();
+                await _service.UpdateAsync(addressCountry);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressCountryExists(id))
+                if (!(await AddressCountryExists(id)))
                 {
                     return NotFound();
                 }
@@ -78,31 +72,29 @@ namespace libAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<AddressCountry>> PostAddressCountry(AddressCountry addressCountry)
         {
-            _context.AddressCountry.Add(addressCountry);
-            await _context.SaveChangesAsync();
+            var createdEntity = await _service.AddAsync(addressCountry);
 
-            return CreatedAtAction("GetAddressCountry", new { id = addressCountry.Id }, addressCountry);
+            return CreatedAtAction("GetAddressCountry", new { id = createdEntity.Id }, createdEntity);
         }
 
         // DELETE: api/AddressCountries/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAddressCountry(short id)
         {
-            var addressCountry = await _context.AddressCountry.FindAsync(id);
+            var addressCountry = await _service.GetByIdAsync(id);
             if (addressCountry == null)
             {
                 return NotFound();
             }
 
-            _context.AddressCountry.Remove(addressCountry);
-            await _context.SaveChangesAsync();
+            await _service.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool AddressCountryExists(short id)
+        private async Task<bool> AddressCountryExists(short id)
         {
-            return _context.AddressCountry.Any(e => e.Id == id);
+            return (await _service.GetByIdAsync(id))!= null;
         }
     }
 }

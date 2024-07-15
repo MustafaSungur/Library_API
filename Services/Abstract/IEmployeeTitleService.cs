@@ -3,7 +3,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IEmployeeTitleService:IService<EmployeeTitle, libAPIContext>
+	public interface IEmployeeTitleService:IService<EmployeeTitle, libAPIContext,int>
 	{
 	}
 }

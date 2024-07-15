@@ -3,7 +3,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IShiftService:IService<Shift, libAPIContext>
+	public interface IShiftService:IService<Shift, libAPIContext,int>
 	{
 	}
 }

@@ -4,7 +4,7 @@ using ShopApp.data.Concrete.EfCore;
 
 namespace libAPI.Data.Repositories.Concrete.EfCore
 {
-	public class EfCoreDepartmentRepository : EfCoreGenericRepository<Department, libAPIContext>,IDepartmentRepository
+	public class EfCoreDepartmentRepository : EfCoreGenericRepository<Department, libAPIContext,int>,IDepartmentRepository
 	{
 		public EfCoreDepartmentRepository(libAPIContext context) : base(context)
 		{

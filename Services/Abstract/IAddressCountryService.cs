@@ -3,7 +3,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IAddressCountryService:IService<AddressCountry, libAPIContext>
+	public interface IAddressCountryService:IService<AddressCountry, libAPIContext,int>
 	{
 	}
 }

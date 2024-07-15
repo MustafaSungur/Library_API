@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class LocationManager : GenericManager<Location, libAPIContext>, ILocationService
+	public class LocationManager : GenericManager<Location, libAPIContext,int>, ILocationService
 	{
-		public LocationManager(IRepository<Location, libAPIContext> repository) : base(repository)
+		public LocationManager(IRepository<Location, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

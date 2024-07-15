@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class ShiftManager : GenericManager<Shift, libAPIContext>, IShiftService
+	public class ShiftManager : GenericManager<Shift, libAPIContext,int>, IShiftService
 	{
-		public ShiftManager(IRepository<Shift, libAPIContext> repository) : base(repository)
+		public ShiftManager(IRepository<Shift, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class GenreManager : GenericManager<Genre, libAPIContext>, IGenreService
+	public class GenreManager : GenericManager<Genre, libAPIContext,int>, IGenreService
 	{
-		public GenreManager(IRepository<Genre, libAPIContext> repository) : base(repository)
+		public GenreManager(IRepository<Genre, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

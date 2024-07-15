@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface ILanguageRepository: IRepository<Language, libAPIContext>
+	public interface ILanguageRepository: IRepository<Language, libAPIContext,string>
 	{
 	}
 }

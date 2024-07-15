@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class EmployeeManager : GenericManager<Employee, libAPIContext>, IEmployeeService
+	public class EmployeeManager : GenericManager<Employee, libAPIContext,string>, IEmployeeService
 	{
-		public EmployeeManager(IRepository<Employee, libAPIContext> repository) : base(repository)
+		public EmployeeManager(IRepository<Employee, libAPIContext,string> repository) : base(repository)
 		{
 		}
 	}

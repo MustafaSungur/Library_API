@@ -1,122 +1,111 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using libAPI.Models;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
-using libAPI.Models;
+
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class LanguagesController : ControllerBase
-    {
-        private readonly libAPIContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class LanguagesController : ControllerBase
+	{
+		private readonly ILanguageService _service;
 
-        public LanguagesController(libAPIContext context)
-        {
-            _context = context;
-        }
+		public LanguagesController(ILanguageService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Languages
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Language>>> GetLanguage()
-        {
-            return await _context.Language.ToListAsync();
-        }
+		// GET: api/Languages
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<Language>>> GetLanguages()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Languages/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Language>> GetLanguage(string id)
-        {
-            var language = await _context.Language.FindAsync(id);
+		// GET: api/Languages/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Language>> GetLanguage(string id)
+		{
+			var language = await _service.GetByIdAsync(id);
 
-            if (language == null)
-            {
-                return NotFound();
-            }
+			if (language == null)
+			{
+				return NotFound();
+			}
 
-            return language;
-        }
+			return language;
+		}
 
-        // PUT: api/Languages/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutLanguage(string id, Language language)
-        {
-            if (id != language.Code)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Languages/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutLanguage(string id, Language language)
+		{
+			if (id != language.Code)
+			{
+				return BadRequest();
+			}
 
-            _context.Entry(language).State = EntityState.Modified;
+			try
+			{
+				await _service.UpdateAsync(language);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await LanguageExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LanguageExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/Languages
+		[HttpPost]
+		public async Task<ActionResult<Language>> PostLanguage(Language language)
+		{
+			try
+			{
+				var createdEntity = await _service.AddAsync(language);
+				return CreatedAtAction("GetLanguage", new { id = createdEntity.Code }, createdEntity);
+			}
+			catch (DbUpdateException)
+			{
+				if (await LanguageExists(language.Code))
+				{
+					return Conflict();
+				}
+				else
+				{
+					throw;
+				}
+			}
+		}
 
-        // POST: api/Languages
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Language>> PostLanguage(Language language)
-        {
-            _context.Language.Add(language);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (LanguageExists(language.Code))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+		// DELETE: api/Languages/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteLanguage(string id)
+		{
+			var language = await _service.GetByIdAsync(id);
+			if (language == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetLanguage", new { id = language.Code }, language);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/Languages/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLanguage(string id)
-        {
-            var language = await _context.Language.FindAsync(id);
-            if (language == null)
-            {
-                return NotFound();
-            }
-
-            _context.Language.Remove(language);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool LanguageExists(string id)
-        {
-            return _context.Language.Any(e => e.Code == id);
-        }
-    }
+		private async Task<bool> LanguageExists(string id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

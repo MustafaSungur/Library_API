@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
 using libAPI.Models;
+using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
@@ -14,25 +10,26 @@ namespace libAPI.Controllers
     [ApiController]
     public class AddressesController : ControllerBase
     {
-        private readonly libAPIContext _context;
+        private readonly IAddressService _service;
 
-        public AddressesController(libAPIContext context)
+        public AddressesController(IAddressService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Addresses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Address>>> GetAddress()
         {
-            return await _context.Address.ToListAsync();
+            var result = await _service.GetAllAsync();
+            return Ok(result);
         }
 
         // GET: api/Addresses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Address>> GetAddress(int id)
         {
-            var address = await _context.Address.FindAsync(id);
+            var address = await _service.GetByIdAsync(id);
 
             if (address == null)
             {
@@ -43,7 +40,6 @@ namespace libAPI.Controllers
         }
 
         // PUT: api/Addresses/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAddress(int id, Address address)
         {
@@ -52,16 +48,15 @@ namespace libAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(address).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _service.UpdateAsync(address);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AddressExists(id))
-                {
+                if (!(await AddressExists(id)))
+				{
                     return NotFound();
                 }
                 else
@@ -74,35 +69,32 @@ namespace libAPI.Controllers
         }
 
         // POST: api/Addresses
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Address>> PostAddress(Address address)
         {
-            _context.Address.Add(address);
-            await _context.SaveChangesAsync();
+            var createdEntity = await _service.AddAsync(address);
 
-            return CreatedAtAction("GetAddress", new { id = address.Id }, address);
+            return CreatedAtAction("GetAddress", new { id = createdEntity.Id }, createdEntity);
         }
 
         // DELETE: api/Addresses/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAddress(int id)
         {
-            var address = await _context.Address.FindAsync(id);
+            var address = await _service.GetByIdAsync(id);
             if (address == null)
             {
                 return NotFound();
             }
 
-            _context.Address.Remove(address);
-            await _context.SaveChangesAsync();
+            await _service.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool AddressExists(int id)
+        private async Task<bool> AddressExists(int id)
         {
-            return _context.Address.Any(e => e.Id == id);
+            return (await _service.GetByIdAsync(id)) != null;
         }
     }
 }

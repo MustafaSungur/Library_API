@@ -1,108 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using libAPI.Models;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
-using libAPI.Models;
+
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GenresController : ControllerBase
-    {
-        private readonly libAPIContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class GenresController : ControllerBase
+	{
+		private readonly IGenreService _service;
 
-        public GenresController(libAPIContext context)
-        {
-            _context = context;
-        }
+		public GenresController(IGenreService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Genres
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Genre>>> GetGenre()
-        {
-            return await _context.Genre.ToListAsync();
-        }
+		// GET: api/Genres
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Genres/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Genre>> GetGenre(short id)
-        {
-            var genre = await _context.Genre.FindAsync(id);
+		// GET: api/Genres/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Genre>> GetGenre(short id)
+		{
+			var genre = await _service.GetByIdAsync(id);
 
-            if (genre == null)
-            {
-                return NotFound();
-            }
+			if (genre == null)
+			{
+				return NotFound();
+			}
 
-            return genre;
-        }
+			return genre;
+		}
 
-        // PUT: api/Genres/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGenre(short id, Genre genre)
-        {
-            if (id != genre.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Genres/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutGenre(short id, Genre genre)
+		{
+			if (id != genre.Id)
+			{
+				return BadRequest();
+			}
 
-            _context.Entry(genre).State = EntityState.Modified;
+			try
+			{
+				await _service.UpdateAsync(genre);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await GenreExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GenreExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/Genres
+		[HttpPost]
+		public async Task<ActionResult<Genre>> PostGenre(Genre genre)
+		{
+			var createdEntity = await _service.AddAsync(genre);
+			return CreatedAtAction("GetGenre", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // POST: api/Genres
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Genre>> PostGenre(Genre genre)
-        {
-            _context.Genre.Add(genre);
-            await _context.SaveChangesAsync();
+		// DELETE: api/Genres/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteGenre(short id)
+		{
+			var genre = await _service.GetByIdAsync(id);
+			if (genre == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetGenre", new { id = genre.Id }, genre);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/Genres/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGenre(short id)
-        {
-            var genre = await _context.Genre.FindAsync(id);
-            if (genre == null)
-            {
-                return NotFound();
-            }
-
-            _context.Genre.Remove(genre);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool GenreExists(short id)
-        {
-            return _context.Genre.Any(e => e.Id == id);
-        }
-    }
+		private async Task<bool> GenreExists(short id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

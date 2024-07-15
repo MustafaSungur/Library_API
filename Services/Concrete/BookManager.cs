@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class BookManager : GenericManager<Book, libAPIContext>, IBookService
+	public class BookManager : GenericManager<Book, libAPIContext,int>, IBookService
 	{
-		public BookManager(IRepository<Book, libAPIContext> repository) : base(repository)
+		public BookManager(IRepository<Book, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

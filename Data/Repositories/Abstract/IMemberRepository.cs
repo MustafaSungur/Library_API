@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IMemberRepository:IRepository<Member, libAPIContext>
+	public interface IMemberRepository:IRepository<Member, libAPIContext,string>
 	{
 	}
 }

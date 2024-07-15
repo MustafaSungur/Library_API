@@ -1,108 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using libAPI.Models;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
-using libAPI.Models;
+
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class EducationalDegreesController : ControllerBase
-    {
-        private readonly libAPIContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class EducationalDegreesController : ControllerBase
+	{
+		private readonly IEducationalDegreeService _service;
 
-        public EducationalDegreesController(libAPIContext context)
-        {
-            _context = context;
-        }
+		public EducationalDegreesController(IEducationalDegreeService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/EducationalDegrees
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<EducationalDegree>>> GetEducationalDegree()
-        {
-            return await _context.EducationalDegree.ToListAsync();
-        }
+		// GET: api/EducationalDegrees
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<EducationalDegree>>> GetEducationalDegrees()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/EducationalDegrees/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EducationalDegree>> GetEducationalDegree(short id)
-        {
-            var educationalDegree = await _context.EducationalDegree.FindAsync(id);
+		// GET: api/EducationalDegrees/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<EducationalDegree>> GetEducationalDegree(short id)
+		{
+			var educationalDegree = await _service.GetByIdAsync(id);
 
-            if (educationalDegree == null)
-            {
-                return NotFound();
-            }
+			if (educationalDegree == null)
+			{
+				return NotFound();
+			}
 
-            return educationalDegree;
-        }
+			return educationalDegree;
+		}
 
-        // PUT: api/EducationalDegrees/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEducationalDegree(short id, EducationalDegree educationalDegree)
-        {
-            if (id != educationalDegree.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/EducationalDegrees/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutEducationalDegree(short id, EducationalDegree educationalDegree)
+		{
+			if (id != educationalDegree.Id)
+			{
+				return BadRequest();
+			}
 
-            _context.Entry(educationalDegree).State = EntityState.Modified;
+			try
+			{
+				await _service.UpdateAsync(educationalDegree);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await EducationalDegreeExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EducationalDegreeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/EducationalDegrees
+		[HttpPost]
+		public async Task<ActionResult<EducationalDegree>> PostEducationalDegree(EducationalDegree educationalDegree)
+		{
+			var createdEntity = await _service.AddAsync(educationalDegree);
+			return CreatedAtAction("GetEducationalDegree", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // POST: api/EducationalDegrees
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<EducationalDegree>> PostEducationalDegree(EducationalDegree educationalDegree)
-        {
-            _context.EducationalDegree.Add(educationalDegree);
-            await _context.SaveChangesAsync();
+		// DELETE: api/EducationalDegrees/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteEducationalDegree(short id)
+		{
+			var educationalDegree = await _service.GetByIdAsync(id);
+			if (educationalDegree == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetEducationalDegree", new { id = educationalDegree.Id }, educationalDegree);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/EducationalDegrees/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEducationalDegree(short id)
-        {
-            var educationalDegree = await _context.EducationalDegree.FindAsync(id);
-            if (educationalDegree == null)
-            {
-                return NotFound();
-            }
-
-            _context.EducationalDegree.Remove(educationalDegree);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool EducationalDegreeExists(short id)
-        {
-            return _context.EducationalDegree.Any(e => e.Id == id);
-        }
-    }
+		private async Task<bool> EducationalDegreeExists(short id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

@@ -3,7 +3,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface ISubCategoryService:IService<SubCategory, libAPIContext>
+	public interface ISubCategoryService:IService<SubCategory, libAPIContext,int>
 	{
 	}
 }

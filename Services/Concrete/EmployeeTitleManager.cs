@@ -5,10 +5,11 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class EmployeeTitleManager : GenericManager<EmployeeTitle, libAPIContext>, IEmployeeTitleService
+	public class EmployeeTitleManager : GenericManager<EmployeeTitle, libAPIContext,int>, IEmployeeTitleService
 	{
-		public EmployeeTitleManager(IRepository<EmployeeTitle, libAPIContext> repository) : base(repository)
+		public EmployeeTitleManager(IRepository<EmployeeTitle, libAPIContext, int> repository) : base(repository)
 		{
 		}
 	}
 }
+	

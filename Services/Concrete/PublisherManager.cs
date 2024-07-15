@@ -5,9 +5,9 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class PublisherManager : GenericManager<Publisher, libAPIContext>, IPublisherService
+	public class PublisherManager : GenericManager<Publisher, libAPIContext,int>, IPublisherService
 	{
-		public PublisherManager(IRepository<Publisher, libAPIContext> repository) : base(repository)
+		public PublisherManager(IRepository<Publisher, libAPIContext,int> repository) : base(repository)
 		{
 		}
 	}

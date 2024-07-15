@@ -1,108 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using libAPI.Models;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Data;
-using libAPI.Models;
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SubCategoriesController : ControllerBase
-    {
-        private readonly libAPIContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class SubCategoriesController : ControllerBase
+	{
+		private readonly ISubCategoryService _service;
 
-        public SubCategoriesController(libAPIContext context)
-        {
-            _context = context;
-        }
+		public SubCategoriesController(ISubCategoryService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/SubCategories
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubCategory()
-        {
-            return await _context.SubCategory.ToListAsync();
-        }
+		// GET: api/SubCategories
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubCategories()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/SubCategories/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<SubCategory>> GetSubCategory(short id)
-        {
-            var subCategory = await _context.SubCategory.FindAsync(id);
+		// GET: api/SubCategories/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<SubCategory>> GetSubCategory(short id)
+		{
+			var subCategory = await _service.GetByIdAsync(id);
 
-            if (subCategory == null)
-            {
-                return NotFound();
-            }
+			if (subCategory == null)
+			{
+				return NotFound();
+			}
 
-            return subCategory;
-        }
+			return subCategory;
+		}
 
-        // PUT: api/SubCategories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSubCategory(short id, SubCategory subCategory)
-        {
-            if (id != subCategory.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/SubCategories/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutSubCategory(short id, SubCategory subCategory)
+		{
+			if (id != subCategory.Id)
+			{
+				return BadRequest();
+			}
 
-            _context.Entry(subCategory).State = EntityState.Modified;
+			try
+			{
+				await _service.UpdateAsync(subCategory);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await SubCategoryExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubCategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/SubCategories
+		[HttpPost]
+		public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
+		{
+			var createdEntity = await _service.AddAsync(subCategory);
+			return CreatedAtAction("GetSubCategory", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // POST: api/SubCategories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
-        {
-            _context.SubCategory.Add(subCategory);
-            await _context.SaveChangesAsync();
+		// DELETE: api/SubCategories/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteSubCategory(short id)
+		{
+			var subCategory = await _service.GetByIdAsync(id);
+			if (subCategory == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetSubCategory", new { id = subCategory.Id }, subCategory);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/SubCategories/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSubCategory(short id)
-        {
-            var subCategory = await _context.SubCategory.FindAsync(id);
-            if (subCategory == null)
-            {
-                return NotFound();
-            }
-
-            _context.SubCategory.Remove(subCategory);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool SubCategoryExists(short id)
-        {
-            return _context.SubCategory.Any(e => e.Id == id);
-        }
-    }
+		private async Task<bool> SubCategoryExists(short id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

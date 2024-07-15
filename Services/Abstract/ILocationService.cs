@@ -3,7 +3,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface ILocationService:IService<Location, libAPIContext>
+	public interface ILocationService:IService<Location, libAPIContext,int>
 	{
 	}
 }

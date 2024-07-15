@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\libapicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\libapicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\repositories\\concrete\\efcore\\efcoreaddressrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\repositories\\concrete\\efcore\\efcoreaddressrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\repositories\\abstract\\iaddresscityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\repositories\\abstract\\iaddresscityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\abstract\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\abstract\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\membermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\membermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\repositories\\concrete\\efcore\\efcoregenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\repositories\\concrete\\efcore\\efcoregenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "libAPIContext.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\libAPIContext.cs",
-              "RelativeDocumentMoniker": "Data\\libAPIContext.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\libAPIContext.cs",
-              "RelativeToolTip": "Data\\libAPIContext.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABcAAAAoAAAA",
+              "Title": "EfCoreAddressRepository.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreAddressRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\Concrete\\EfCore\\EfCoreAddressRepository.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreAddressRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\Concrete\\EfCore\\EfCoreAddressRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T19:52:16.603Z",
+              "WhenOpened": "2024-07-15T11:27:29.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAddressCityRepository.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Abstract\\IAddressCityRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\Abstract\\IAddressCityRepository.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Abstract\\IAddressCityRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\Abstract\\IAddressCityRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:27:17.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:17:52.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IService.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IService.cs",
+              "RelativeDocumentMoniker": "Services\\Abstract\\IService.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IService.cs",
+              "RelativeToolTip": "Services\\Abstract\\IService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:17:17.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MemberManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\MemberManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\MemberManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\MemberManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\MemberManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:16:08.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EfCoreGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreGenericRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\Concrete\\EfCore\\EfCoreGenericRepository.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreGenericRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\Concrete\\EfCore\\EfCoreGenericRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:15:27.987Z",
               "EditorCaption": ""
             }
           ]
