@@ -1,11 +1,12 @@
 ﻿using libAPI.Data;
 using libAPI.Data.Repositories.Abstract;
+using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class StockManager : GenericManager<Stock, libAPIContext, int>, IStockService
+	public class StockManager : GenericManager<Stock,StockDTO, libAPIContext, int>, IStockService
 	{
 		public StockManager(IRepository<Stock, libAPIContext, int> repository) : base(repository)
 		{
@@ -21,5 +22,30 @@ namespace libAPI.Services.Concrete
 			}
 			return stock!;
 		}
+
+		protected override Stock MapToEntity(StockDTO dto)
+		{
+			return new Stock
+			{
+				Id = dto.Id,
+				BookId = dto.BookId,
+				Book = new Book { Id = dto.BookId }, 
+				TotalCopies = dto.TotalCopies,
+				AvailableCopies = dto.AvailableCopies
+			};
+		}
+
+
+		protected override StockDTO MapToDto(Stock entity)
+		{
+			return new StockDTO
+			{
+				Id = entity.Id,
+				BookId = entity.BookId,
+				TotalCopies = entity.TotalCopies,
+				AvailableCopies = entity.AvailableCopies
+			};
+		}
+
 	}
 }

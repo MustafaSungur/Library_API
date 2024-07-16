@@ -1,5 +1,6 @@
 ﻿using libAPI.Data;
 using libAPI.Data.Repositories.Abstract;
+using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
 {
-	public class BorrowBooksManager : GenericManager<BorrowBooks, libAPIContext, int>, IBorrowBooksService
+	public class BorrowBooksManager : GenericManager<BorrowBooks, BorrowBooksDTO, libAPIContext, int>, IBorrowBooksService
 	{
 		private readonly IMemberService _memberService;
 		private readonly IStockService _stockService;
@@ -29,9 +30,9 @@ namespace libAPI.Services.Concrete
 			_configuration = configuration;
 		}
 
-		public override async Task<BorrowBooks> AddAsync(BorrowBooks borrowBook)
+		public override async Task<BorrowBooksDTO> AddAsync(BorrowBooksDTO borrowBookDto)
 		{
-			var member = await _memberService.GetByIdAsync(borrowBook.MemberId);
+			var member = await _memberService.GetByIdAsync(borrowBookDto.MemberId);
 
 			if (member == null)
 			{
@@ -53,7 +54,7 @@ namespace libAPI.Services.Concrete
 				}
 			}
 
-			var stock = await _stockService.GetStockByBookIdAsync(borrowBook.BookId);
+			var stock = await _stockService.GetStockByBookIdAsync(borrowBookDto.BookId);
 			if (stock == null)
 			{
 				throw new Exception("Stock not found");
@@ -71,44 +72,42 @@ namespace libAPI.Services.Concrete
 				var borrowHistory = new BorrowHistory
 				{
 					MemberId = member.Id,
-					BookId = borrowBook.BookId,
+					BookId = borrowBookDto.BookId,
 					BorrowedDate = DateTime.Now,
 					IsReturned = false,
 					IsPenaltyApplied = false,
-					
-					
 				};
 
 				await _borrowHistoryService.AddAsync(borrowHistory);
 			}
 
-			return await base.AddAsync(borrowBook);
+			var borrowBook = MapToEntity(borrowBookDto);
+			await base.AddAsync(borrowBook);
+			return borrowBookDto;
 		}
 
 		public override async Task<bool> DeleteAsync(int id)
 		{
-			var borrowedBook = await GetByIdAsync(id);
+			var borrowedBookDto = await GetByIdAsync(id);
 
-			if (borrowedBook == null)
+			if (borrowedBookDto == null)
 			{
 				throw new Exception("Borrowed Book not found.");
 			}
 
-			var member = await _memberService.GetByIdAsync(borrowedBook.MemberId);
+			var member = await _memberService.GetByIdAsync(borrowedBookDto.MemberId);
 			if (member == null)
 			{
 				throw new Exception("Member not found.");
 			}
 
-			var borrowHistory = await _borrowHistoryService.GetByMemberAndBookAsync(member.Id, borrowedBook.BookId);
+			var borrowHistory = await _borrowHistoryService.GetByMemberAndBookAsync(member.Id, borrowedBookDto.BookId);
 			if (borrowHistory == null)
 			{
 				throw new Exception("Borrow history not found.");
 			}
 
-		
-
-			if (borrowedBook.Deadline < DateTime.Now)
+			if (borrowedBookDto.Deadline < DateTime.Now)
 			{
 				member.PenaltyPoint += 1;
 				borrowHistory.IsPenaltyApplied = true;
@@ -121,14 +120,13 @@ namespace libAPI.Services.Concrete
 				}
 
 				await _memberService.UpdateAsync(member);
-		
 			}
 
 			borrowHistory.ReturnedDate = DateTime.Now;
 			borrowHistory.IsReturned = true;
 			await _borrowHistoryService.UpdateAsync(borrowHistory);
 
-			var stock = await _stockService.GetStockByBookIdAsync(borrowedBook.BookId);
+			var stock = await _stockService.GetStockByBookIdAsync(borrowedBookDto.BookId);
 			if (stock != null)
 			{
 				stock.AvailableCopies += 1;
@@ -136,6 +134,32 @@ namespace libAPI.Services.Concrete
 			}
 
 			return await base.DeleteAsync(id);
+		}
+
+		protected override BorrowBooks MapToEntity(BorrowBooksDTO dto)
+		{
+			return new BorrowBooks
+			{
+				Id = dto.Id,
+				BookId = dto.BookId,
+				MemberId = dto.MemberId,
+				RentalDate = dto.RentalDate,
+				Deadline = dto.Deadline,
+				BooksId = dto.BooksId
+			};
+		}
+
+		protected override BorrowBooksDTO MapToDto(BorrowBooks entity)
+		{
+			return new BorrowBooksDTO
+			{
+				Id = entity.Id,
+				BookId = entity.BookId,
+				MemberId = entity.MemberId,
+				RentalDate = entity.RentalDate,
+				Deadline = entity.Deadline,
+				BooksId = entity.BooksId
+			};
 		}
 	}
 }

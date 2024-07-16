@@ -2,14 +2,15 @@
 
 namespace libAPI.Services.Abstract
 {
-	public interface IService<TEntity, TContext,TId>
-	   where TEntity : class
-	   where TContext : DbContext
+	public interface IService<TEntity, TDto, TContext, TId>
+		where TEntity : class
+		where TDto : class
+		where TContext : DbContext
 	{
-		Task<TEntity> AddAsync(TEntity entity);
+		Task<TDto> AddAsync(TDto dto);
 		Task<bool> DeleteAsync(TId id);
-		Task<IEnumerable<TEntity>> GetAllAsync();
-		Task<TEntity?> GetByIdAsync(TId id);
-		Task<TEntity> UpdateAsync(TEntity entity);
+		Task<IEnumerable<TDto>> GetAllAsync();
+		Task<TDto?> GetByIdAsync(TId id);
+		Task<TDto> UpdateAsync(TDto dto);
 	}
 }
