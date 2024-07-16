@@ -8,7 +8,7 @@ namespace ShopApp.data.Concrete.EfCore
 	   where TEntity : class
 	   where TContext : DbContext
 	{
-		private readonly TContext _context;
+		protected readonly TContext _context;
 		private readonly DbSet<TEntity> _dbSet;
 
 		public EfCoreGenericRepository(TContext context)
@@ -24,7 +24,7 @@ namespace ShopApp.data.Concrete.EfCore
 			return entity;
 		}
 
-		public async Task<bool> DeleteAsync(TId id)
+		public virtual async Task<bool> DeleteAsync(TId id)
 		{
 			var entity = await _dbSet.FindAsync(id);
 			if (entity == null)

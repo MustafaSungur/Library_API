@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Net;
+﻿
 using System.Text.Json.Serialization;
 
 namespace libAPI.Models
@@ -9,11 +8,11 @@ namespace libAPI.Models
 		public int BookId { get; set; }
 
 		[JsonIgnore]
-		public required Book Book { get; set; } 
+		public Book Book { get; set; } = new();
 
 		public short SubCategoryId { get; set; }
 
 		[JsonIgnore]
-		public required SubCategory SubCategory { get; set; }
+		public SubCategory SubCategory { get; set; } = new();
 	}
 }

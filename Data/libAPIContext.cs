@@ -36,6 +36,7 @@ namespace libAPI.Data
 		public DbSet<Member> Member { get; set; } = default!;
 		public DbSet<Language> Language { get; set; } = default!;
 		public DbSet<Publisher> Publisher { get; set; } = default!;
+		public DbSet<BorrowHistory> BorrowHistories { get; set; } = default!;
 
 
 
@@ -82,8 +83,10 @@ namespace libAPI.Data
 				.HasOne(ab => ab.Book)
 				.WithMany(b => b.SubCategoryBooks)
 				.HasForeignKey(ab => ab.BookId);
+
+			
 		}
-        
-       
+
+
 	}
 }

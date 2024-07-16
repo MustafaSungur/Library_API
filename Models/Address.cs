@@ -1,18 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace libAPI.Models
 {
-
 	public class Address
 	{
-        public int Id { get; set; }
+		public int Id { get; set; }
 
-        public required AddressCountry Country { get; set; }
+		[Required]
+		public short AddressCountryId { get; set; }
 
-		public required SubCategory City { get; set; }
+		[ForeignKey(nameof(AddressCountryId))]
+		public AddressCountry Country { get; set; } 
+
+		[Required]
+		public short AddressCityId { get; set; }
+
+		[ForeignKey(nameof(AddressCityId))]
+		public AddressCity City { get; set; }
 
 		[StringLength(250)]
-		public required string ClearAddress { get; set; }
-
+		[Required]
+		public string ClearAddress { get; set; } = string.Empty;
 	}
 }

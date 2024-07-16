@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using libAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace libAPI.Data.Repositories.Abstract
 {

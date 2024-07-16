@@ -12,8 +12,8 @@ using libAPI.Data;
 namespace libAPI.Migrations
 {
     [DbContext(typeof(libAPIContext))]
-    [Migration("20240714101247_new")]
-    partial class @new
+    [Migration("20240716184907_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,10 @@ namespace libAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("CityId")
+                    b.Property<short>("AddressCityId")
+                        .HasColumnType("smallint");
+
+                    b.Property<short>("AddressCountryId")
                         .HasColumnType("smallint");
 
                     b.Property<string>("ClearAddress")
@@ -41,14 +44,11 @@ namespace libAPI.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<short>("CountryId")
-                        .HasColumnType("smallint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("AddressCityId");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("AddressCountryId");
 
                     b.ToTable("Address");
                 });
@@ -335,9 +335,10 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("MemberId")
+                        .IsUnique();
 
-                    b.ToTable("BorrowHistory");
+                    b.ToTable("BorrowHistories");
                 });
 
             modelBuilder.Entity("libAPI.Models.Category", b =>
@@ -499,7 +500,7 @@ namespace libAPI.Migrations
                     b.Property<string>("Shelf")
                         .IsRequired()
                         .HasMaxLength(6)
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("nvarchar(6)");
 
                     b.HasKey("Id");
 
@@ -642,13 +643,13 @@ namespace libAPI.Migrations
                 {
                     b.HasOne("libAPI.Models.AddressCity", "City")
                         .WithMany()
-                        .HasForeignKey("CityId")
+                        .HasForeignKey("AddressCityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.AddressCountry", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId")
+                        .HasForeignKey("AddressCountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -746,8 +747,8 @@ namespace libAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.Member", "Member")
-                        .WithMany("BorrowingHistories")
-                        .HasForeignKey("MemberId")
+                        .WithOne("BorrowingHistory")
+                        .HasForeignKey("libAPI.Models.BorrowHistory", "MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -901,7 +902,7 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Member", b =>
                 {
-                    b.Navigation("BorrowingHistories");
+                    b.Navigation("BorrowingHistory");
                 });
 
             modelBuilder.Entity("libAPI.Models.Publisher", b =>

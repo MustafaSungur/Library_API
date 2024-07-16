@@ -11,14 +11,14 @@ namespace libAPI.Models
 		[ForeignKey(nameof(Id))]
 		public ApplicationUser? ApplicationUser { get; set; }
 
-		public required EducationalDegree EducationalDegree { get; set; }
+		public EducationalDegree EducationalDegree { get; set; } = new();
 
 		public short PenaltyPoint { get; set; } = 0;
 
 		public bool IsBanned { get; set; } = false;
 
         public DateTime? EndBannedDate { get; set; }
-        
-		public List<BorrowHistory>? BorrowingHistories { get; set; }
+
+		public BorrowHistory? BorrowingHistory { get; set; } 
 	}
 }

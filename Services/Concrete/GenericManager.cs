@@ -10,7 +10,7 @@ namespace libAPI.Services.Concrete
 		where TEntity : class
 		where TContext : DbContext
 	{
-		private readonly IRepository<TEntity, TContext, TId> _repository;
+		protected readonly IRepository<TEntity, TContext, TId> _repository;
 
 		public GenericManager(IRepository<TEntity, TContext, TId> repository)
 		{
@@ -19,16 +19,16 @@ namespace libAPI.Services.Concrete
 
 		public IRepository<EmployeeTitle, libAPIContext, int> Repository { get; }
 
-		public Task<TEntity> AddAsync(TEntity entity)
+		public virtual Task<TEntity> AddAsync(TEntity entity)
 		{
 			return _repository.AddAsync(entity);
 		}
 
-		public Task<bool> DeleteAsync(TId id)
+		public virtual Task<bool> DeleteAsync(TId id)
 		{
 			return _repository.DeleteAsync(id);
 		}
-
+			
 		public Task<IEnumerable<TEntity>> GetAllAsync()
 		{
 			return _repository.GetAllAsync();

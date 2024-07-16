@@ -7,7 +7,7 @@ namespace libAPI.Models
 	{
 		public int Id { get; set; }
 
-		public required string MemberId { get; set; } 
+		public required string MemberId { get; set; }
 
 		[ForeignKey(nameof(MemberId))]
 		public Member? Member { get; set; }
@@ -17,15 +17,15 @@ namespace libAPI.Models
 		[ForeignKey(nameof(BookId))]
 		public Book? Book { get; set; }
 
-		public required  DateTime BorrowedDate { get; set; }
+		public required DateTime BorrowedDate { get; set; }
 
 		public DateTime? ReturnedDate { get; set; }
 
 		public required bool IsReturned { get; set; }
 
-		public required bool IsPenaltyApplied { get; set; } 
+		public required bool IsPenaltyApplied { get; set; }
 
-		
+
 
 	}
 }

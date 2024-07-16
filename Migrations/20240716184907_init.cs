@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace libAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -136,7 +136,7 @@ namespace libAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Shelf = table.Column<string>(type: "varchar(6)", maxLength: 6, nullable: false)
+                    Shelf = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,22 +178,22 @@ namespace libAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CountryId = table.Column<short>(type: "smallint", nullable: false),
-                    CityId = table.Column<short>(type: "smallint", nullable: false),
+                    AddressCountryId = table.Column<short>(type: "smallint", nullable: false),
+                    AddressCityId = table.Column<short>(type: "smallint", nullable: false),
                     ClearAddress = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Address_AddressCity_CityId",
-                        column: x => x.CityId,
+                        name: "FK_Address_AddressCity_AddressCityId",
+                        column: x => x.AddressCityId,
                         principalTable: "AddressCity",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Address_AddressCountry_CountryId",
-                        column: x => x.CountryId,
+                        name: "FK_Address_AddressCountry_AddressCountryId",
+                        column: x => x.AddressCountryId,
                         principalTable: "AddressCountry",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -492,7 +492,7 @@ namespace libAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BorrowHistory",
+                name: "BorrowHistories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -506,15 +506,15 @@ namespace libAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BorrowHistory", x => x.Id);
+                    table.PrimaryKey("PK_BorrowHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BorrowHistory_Book_BookId",
+                        name: "FK_BorrowHistories_Book_BookId",
                         column: x => x.BookId,
                         principalTable: "Book",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BorrowHistory_Member_MemberId",
+                        name: "FK_BorrowHistories_Member_MemberId",
                         column: x => x.MemberId,
                         principalTable: "Member",
                         principalColumn: "Id",
@@ -522,14 +522,14 @@ namespace libAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_CityId",
+                name: "IX_Address_AddressCityId",
                 table: "Address",
-                column: "CityId");
+                column: "AddressCityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_CountryId",
+                name: "IX_Address_AddressCountryId",
                 table: "Address",
-                column: "CountryId");
+                column: "AddressCountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuthorBook_BookId",
@@ -562,14 +562,15 @@ namespace libAPI.Migrations
                 column: "MemberId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BorrowHistory_BookId",
-                table: "BorrowHistory",
+                name: "IX_BorrowHistories_BookId",
+                table: "BorrowHistories",
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BorrowHistory_MemberId",
-                table: "BorrowHistory",
-                column: "MemberId");
+                name: "IX_BorrowHistories_MemberId",
+                table: "BorrowHistories",
+                column: "MemberId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employee_DepartmentId",
@@ -632,7 +633,7 @@ namespace libAPI.Migrations
                 name: "BorrowBooks");
 
             migrationBuilder.DropTable(
-                name: "BorrowHistory");
+                name: "BorrowHistories");
 
             migrationBuilder.DropTable(
                 name: "LanguageBook");

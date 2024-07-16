@@ -30,7 +30,10 @@ namespace libAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("CityId")
+                    b.Property<short>("AddressCityId")
+                        .HasColumnType("smallint");
+
+                    b.Property<short>("AddressCountryId")
                         .HasColumnType("smallint");
 
                     b.Property<string>("ClearAddress")
@@ -38,16 +41,13 @@ namespace libAPI.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<short>("CountryId")
-                        .HasColumnType("smallint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("AddressCityId");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("AddressCountryId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.AddressCity", b =>
@@ -65,7 +65,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AddressCity");
+                    b.ToTable("AddressCity", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.AddressCountry", b =>
@@ -83,7 +83,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AddressCountry");
+                    b.ToTable("AddressCountry", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.ApplicationUser", b =>
@@ -170,7 +170,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Persons", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Author", b =>
@@ -198,7 +198,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Author", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.AuthorBook", b =>
@@ -213,7 +213,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("AuthorBook");
+                    b.ToTable("AuthorBook", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Book", b =>
@@ -263,7 +263,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Book");
+                    b.ToTable("Book", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.BorrowBooks", b =>
@@ -298,7 +298,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("BorrowBooks");
+                    b.ToTable("BorrowBooks", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.BorrowHistory", b =>
@@ -332,9 +332,10 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("MemberId")
+                        .IsUnique();
 
-                    b.ToTable("BorrowHistory");
+                    b.ToTable("BorrowHistories", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Category", b =>
@@ -352,7 +353,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Department", b =>
@@ -370,7 +371,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department");
+                    b.ToTable("Department", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.EducationalDegree", b =>
@@ -388,7 +389,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EducationalDegree");
+                    b.ToTable("EducationalDegree", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Employee", b =>
@@ -416,7 +417,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("TitleId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.EmployeeTitle", b =>
@@ -434,7 +435,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EmployeeTitle");
+                    b.ToTable("EmployeeTitle", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Genre", b =>
@@ -452,7 +453,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genre", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Language", b =>
@@ -467,7 +468,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Code");
 
-                    b.ToTable("Language");
+                    b.ToTable("Language", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.LanguageBook", b =>
@@ -482,7 +483,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("LanguageBook");
+                    b.ToTable("LanguageBook", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Location", b =>
@@ -496,11 +497,11 @@ namespace libAPI.Migrations
                     b.Property<string>("Shelf")
                         .IsRequired()
                         .HasMaxLength(6)
-                        .HasColumnType("varchar(6)");
+                        .HasColumnType("nvarchar(6)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Locations", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Member", b =>
@@ -524,7 +525,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("EducationalDegreeId");
 
-                    b.ToTable("Member");
+                    b.ToTable("Member", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Publisher", b =>
@@ -552,7 +553,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("Publisher", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Shift", b =>
@@ -570,7 +571,7 @@ namespace libAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Shift");
+                    b.ToTable("Shift", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Stock", b =>
@@ -594,7 +595,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Stocks");
+                    b.ToTable("Stocks", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.SubCategory", b =>
@@ -617,7 +618,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategory");
+                    b.ToTable("SubCategory", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.SubCategoryBook", b =>
@@ -632,20 +633,20 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("SubCategoryBook");
+                    b.ToTable("SubCategoryBook", (string)null);
                 });
 
             modelBuilder.Entity("libAPI.Models.Address", b =>
                 {
                     b.HasOne("libAPI.Models.AddressCity", "City")
                         .WithMany()
-                        .HasForeignKey("CityId")
+                        .HasForeignKey("AddressCityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.AddressCountry", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId")
+                        .HasForeignKey("AddressCountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -743,8 +744,8 @@ namespace libAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.Member", "Member")
-                        .WithMany("BorrowingHistories")
-                        .HasForeignKey("MemberId")
+                        .WithOne("BorrowingHistory")
+                        .HasForeignKey("libAPI.Models.BorrowHistory", "MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -898,7 +899,7 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Member", b =>
                 {
-                    b.Navigation("BorrowingHistories");
+                    b.Navigation("BorrowingHistory");
                 });
 
             modelBuilder.Entity("libAPI.Models.Publisher", b =>

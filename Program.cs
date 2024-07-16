@@ -36,6 +36,11 @@ namespace libAPI
 			builder.Services.AddScoped<IPublisherRepository, EfCorePublisherRepository>();
 			builder.Services.AddScoped<IShiftRepository, EfCoreShiftRepository>();
 			builder.Services.AddScoped<ISubCategoryRepository, EfCoreSubCategoryRepository>();
+			builder.Services.AddScoped<IAuthorRepository, EfCoreAuthorRepository>();
+			builder.Services.AddScoped<IStockRepository, EfCoreStockRepository>();
+			builder.Services.AddScoped<IBorrowBooksRepository, EfCoreBorrowBooksRepository>();
+			builder.Services.AddScoped<IBorrowHistoryRepository, EfCoreBorrowHistoryRepository>();
+			builder.Services.AddScoped<IEducationalDegreeRepository, EfCoreEducationalDegreeRepository>();
 
 			// Services
 			builder.Services.AddScoped<IAddressService, AddressManager>();
@@ -45,6 +50,7 @@ namespace libAPI
 			builder.Services.AddScoped<IEmployeeTitleService, EmployeeTitleManager>();
 			builder.Services.AddScoped<IDepartmentsService, DepartmentManager>();
 			builder.Services.AddScoped<IGenreService, GenreManager>();
+			builder.Services.AddScoped<IEducationalDegreeService, EducationalDegreeManager>();
 			builder.Services.AddScoped<ILocationService, LocationManager>();
 			builder.Services.AddScoped<IBookService, BookManager>();
 			builder.Services.AddScoped<ILanguageService, LanguageManager>();
@@ -54,6 +60,9 @@ namespace libAPI
 			builder.Services.AddScoped<ISubCategoryService, SubCategoryManager>();
 			builder.Services.AddScoped<IShiftService, ShiftManager>();
 			builder.Services.AddScoped<IAuthorService, AuthorManager>();
+			builder.Services.AddScoped<IStockService, StockManager>();
+			builder.Services.AddScoped<IBorrowBooksService, BorrowBooksManager>();
+			builder.Services.AddScoped<IBarrowHistoryService, BorrowHistoryManager>();
 
 			// Register generic repository and service
 			builder.Services.AddScoped(typeof(IRepository<,,>), typeof(EfCoreGenericRepository<,,>));

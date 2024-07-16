@@ -13,7 +13,9 @@ namespace libAPI.Models
 
 		public required EmployeeTitle Title { get; set; }
 
-	
+		public required short DepartmentId { get; set; }
+
+		[ForeignKey(nameof(DepartmentId))]
 		public required Department Department { get; set; }
 
 		[Range(0, double.MaxValue)]
