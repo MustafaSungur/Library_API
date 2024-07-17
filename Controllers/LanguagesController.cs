@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Language>>> GetLanguages()
+		public async Task<ActionResult<IEnumerable<LanguageDTO>>> GetLanguages()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Language>> GetLanguage(string id)
+		public async Task<ActionResult<LanguageDTO>> GetLanguage(string id)
 		{
 			var language = await _service.GetByIdAsync(id);
 
@@ -36,12 +36,12 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return language;
+			return Ok(language);
 		}
 
 		// PUT: api/Languages/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutLanguage(string id, Language language)
+		public async Task<IActionResult> PutLanguage(string id, LanguageDTO language)
 		{
 			if (id != language.Code)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Languages
 		[HttpPost]
-		public async Task<ActionResult<Language>> PostLanguage(Language language)
+		public async Task<ActionResult<LanguageDTO>> PostLanguage(LanguageDTO language)
 		{
 			try
 			{

@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override SubCategory MapToEntity(SubCategoryDTO dto)
+		public override SubCategory MapToEntity(SubCategoryDTO dto)
 		{
 			return new SubCategory
 			{
@@ -27,7 +27,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override SubCategoryDTO MapToDto(SubCategory entity)
+		public override SubCategoryDTO MapToDto(SubCategory entity)
 		{
 			return new SubCategoryDTO
 			{

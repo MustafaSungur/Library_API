@@ -13,7 +13,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Author MapToEntity(AuthorDTO dto)
+		public override Author MapToEntity(AuthorDTO dto)
 		{
 			return new Author
 			{
@@ -25,7 +25,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override AuthorDTO MapToDto(Author entity)
+		public override AuthorDTO MapToDto(Author entity)
 		{
 			return new AuthorDTO
 			{

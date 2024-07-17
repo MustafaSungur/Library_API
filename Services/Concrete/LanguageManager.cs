@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Language MapToEntity(LanguageDTO dto)
+		public override Language MapToEntity(LanguageDTO dto)
 		{
 			return new Language
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override LanguageDTO MapToDto(Language entity)
+		public override LanguageDTO MapToDto(Language entity)
 		{
 			return new LanguageDTO
 			{

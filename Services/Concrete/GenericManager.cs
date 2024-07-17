@@ -48,13 +48,13 @@ namespace libAPI.Services.Concrete
 			return MapToDto(entity);
 		}
 
-		// MapToEntity ve MapToDto metodlarını override ederek her serviste özelleştirin
-		protected virtual TEntity MapToEntity(TDto dto)
+		// MapToEntity ve MapToDto metodları override edilecek
+		public virtual TEntity MapToEntity(TDto dto)
 		{
 			throw new NotImplementedException();
 		}
 
-		protected virtual TDto MapToDto(TEntity entity)
+		public virtual TDto MapToDto(TEntity entity)
 		{
 			throw new NotImplementedException();
 		}

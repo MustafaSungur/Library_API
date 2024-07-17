@@ -6,7 +6,7 @@ namespace libAPI.DTOs
 	{
 		public string Id { get; set; } = string.Empty;
 
-		public int ApplicationUserId { get; set; } // Assuming ApplicationUser has an Id property
+		public int ApplicationUserId { get; set; } 
 
 		public EmployeeTitleDTO Title { get; set; }
 

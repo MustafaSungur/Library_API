@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
+		public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Department>> GetDepartment(short id)
+		public async Task<ActionResult<DepartmentDTO>> GetDepartment(short id)
 		{
 			var department = await _service.GetByIdAsync(id);
 
@@ -36,21 +36,21 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return department;
+			return Ok(department);
 		}
 
 		// PUT: api/Departments/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutDepartment(short id, Department department)
+		public async Task<IActionResult> PutDepartment(short id, DepartmentDTO departmentDto)
 		{
-			if (id != department.Id)
+			if (id != departmentDto.Id)
 			{
 				return BadRequest();
 			}
 
 			try
 			{
-				await _service.UpdateAsync(department);
+				await _service.UpdateAsync(departmentDto);
 			}
 			catch (DbUpdateConcurrencyException)
 			{
@@ -69,9 +69,9 @@ namespace libAPI.Controllers
 
 		// POST: api/Departments
 		[HttpPost]
-		public async Task<ActionResult<Department>> PostDepartment(Department department)
+		public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO departmentDto)
 		{
-			var createdEntity = await _service.AddAsync(department);
+			var createdEntity = await _service.AddAsync(departmentDto);
 			return CreatedAtAction("GetDepartment", new { id = createdEntity.Id }, createdEntity);
 		}
 

@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Members
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Member>>> GetMembers()
+		public async Task<ActionResult<IEnumerable<MemberDTO>>> GetMembers()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Members/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Member>> GetMember(string id)
+		public async Task<ActionResult<MemberDTO>> GetMember(string id)
 		{
 			var member = await _service.GetByIdAsync(id);
 
@@ -36,12 +36,12 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return member;
+			return Ok(member);
 		}
 
 		// PUT: api/Members/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutMember(string id, Member member)
+		public async Task<IActionResult> PutMember(string id, MemberDTO member)
 		{
 			if (id != member.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Members
 		[HttpPost]
-		public async Task<ActionResult<Member>> PostMember(Member member)
+		public async Task<ActionResult<MemberDTO>> PostMember(MemberDTO member)
 		{
 			try
 			{

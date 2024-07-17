@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Genre MapToEntity(GenreDTO dto)
+		public override Genre MapToEntity(GenreDTO dto)
 		{
 			return new Genre
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override GenreDTO MapToDto(Genre entity)
+		public override GenreDTO MapToDto(Genre entity)
 		{
 			return new GenreDTO
 			{

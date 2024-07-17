@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
+		public async Task<ActionResult<IEnumerable<GenreDTO>>> GetGenres()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,21 +27,21 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Genre>> GetGenre(short id)
+		public async Task<ActionResult<GenreDTO>> GetGenre(short id)
 		{
-			var genre = await _service.GetByIdAsync(id);
+			var genreDto = await _service.GetByIdAsync(id);
 
-			if (genre == null)
+			if (genreDto == null)
 			{
 				return NotFound();
 			}
 
-			return genre;
+			return Ok(genreDto);
 		}
 
 		// PUT: api/Genres/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutGenre(short id, Genre genre)
+		public async Task<IActionResult> PutGenre(short id, GenreDTO genre)
 		{
 			if (id != genre.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Genres
 		[HttpPost]
-		public async Task<ActionResult<Genre>> PostGenre(Genre genre)
+		public async Task<ActionResult<GenreDTO>> PostGenre(GenreDTO genre)
 		{
 			var createdEntity = await _service.AddAsync(genre);
 			return CreatedAtAction("GetGenre", new { id = createdEntity.Id }, createdEntity);

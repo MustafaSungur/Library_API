@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IAddressCityService:IService<AddressCity, AddressCityDTO, libAPIContext,int>
+	public interface IAddressCityService:IService<Models.AddressCity, DTOs.AddressCityDTO, libAPIContext,int>
 	{
 	}
 }

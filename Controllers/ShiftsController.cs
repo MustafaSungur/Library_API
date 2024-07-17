@@ -1,4 +1,5 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
+using libAPI.Models;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Shift>>> GetShifts()
+		public async Task<ActionResult<IEnumerable<ShiftDTO>>> GetShifts()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +28,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Shift>> GetShift(short id)
+		public async Task<ActionResult<ShiftDTO>> GetShift(short id)
 		{
 			var shift = await _service.GetByIdAsync(id);
 
@@ -36,12 +37,12 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return shift;
+			return Ok(shift);
 		}
 
 		// PUT: api/Shifts/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutShift(short id, Shift shift)
+		public async Task<IActionResult> PutShift(short id, ShiftDTO shift)
 		{
 			if (id != shift.Id)
 			{
@@ -69,7 +70,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Shifts
 		[HttpPost]
-		public async Task<ActionResult<Shift>> PostShift(Shift shift)
+		public async Task<ActionResult<ShiftDTO>> PostShift(ShiftDTO shift)
 		{
 			var createdEntity = await _service.AddAsync(shift);
 			return CreatedAtAction("GetShift", new { id = createdEntity.Id }, createdEntity);

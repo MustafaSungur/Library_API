@@ -6,24 +6,24 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class AddressCityManager : GenericManager<AddressCity, AddressCityDTO, libAPIContext,int>, IAddressCityService
+	public class AddressCityManager : GenericManager<Models.AddressCity, DTOs.AddressCityDTO, libAPIContext,int>, IAddressCityService
 	{
-		public AddressCityManager(IRepository<AddressCity, libAPIContext,int> repository) : base(repository)
+		public AddressCityManager(IRepository<Models.AddressCity, libAPIContext,int> repository) : base(repository)
 		{
 		}
 
-		protected override AddressCity MapToEntity(AddressCityDTO dto)
+		public override Models.AddressCity MapToEntity(DTOs.AddressCityDTO dto)
 		{
-			return new AddressCity
+			return new Models.AddressCity
 			{
 				Id = dto.Id,
 				Name = dto.Name
 			};
 		}
 
-		protected override AddressCityDTO MapToDto(AddressCity entity)
+		public override DTOs.AddressCityDTO MapToDto(Models.AddressCity entity)
 		{
-			return new AddressCityDTO
+			return new DTOs.AddressCityDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name

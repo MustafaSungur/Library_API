@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Shift MapToEntity(ShiftDTO dto)
+		public override Shift MapToEntity(ShiftDTO dto)
 		{
 			return new Shift
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override ShiftDTO MapToDto(Shift entity)
+		public override ShiftDTO MapToDto(Shift entity)
 		{
 			return new ShiftDTO
 			{

@@ -1,4 +1,5 @@
-﻿using libAPI.Data;
+﻿using System.Linq;
+using libAPI.Data;
 using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
@@ -6,13 +7,13 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class CategoryManager : GenericManager<Category, CategoryDTO, libAPIContext,int>, ICategoryService
+	public class CategoryManager : GenericManager<Category, CategoryDTO, libAPIContext, int>, ICategoryService
 	{
-		public CategoryManager(IRepository<Category, libAPIContext,int> repository) : base(repository)
+		public CategoryManager(IRepository<Category, libAPIContext, int> repository) : base(repository)
 		{
 		}
 
-		protected override Category MapToEntity(CategoryDTO dto)
+		public override Category MapToEntity(CategoryDTO dto)
 		{
 			return new Category
 			{
@@ -27,7 +28,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override CategoryDTO MapToDto(Category entity)
+		public override CategoryDTO MapToDto(Category entity)
 		{
 			return new CategoryDTO
 			{
@@ -39,6 +40,7 @@ namespace libAPI.Services.Concrete
 					Name = sc.Name,
 					CategoryId = sc.CategoryId
 				}).ToList()
-
-			}
+			};
 		}
+	}
+}

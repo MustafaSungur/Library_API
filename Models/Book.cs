@@ -38,6 +38,9 @@ namespace libAPI.Models
 
 		public List<LanguageBook>? LanguageBooks { get; set; }
 
+        [NotMapped]
+        public List<string>? LanguageIds { get; set; }
+
 		public int LocationId { get; set; }
 
 		[JsonIgnore]

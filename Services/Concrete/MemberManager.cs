@@ -11,7 +11,7 @@ namespace libAPI.Services.Concrete
 		public MemberManager(IRepository<Member, libAPIContext,string> repository) : base(repository)
 		{
 		}
-		protected override Member MapToEntity(MemberDTO dto)
+		public override Member MapToEntity(MemberDTO dto)
 		{
 			return new Member
 			{
@@ -29,7 +29,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override MemberDTO MapToDto(Member entity)
+		public override MemberDTO MapToDto(Member entity)
 		{
 			return new MemberDTO
 			{

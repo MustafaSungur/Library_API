@@ -67,7 +67,8 @@ namespace libAPI.Services.Concrete
 			else
 			{
 				stock.AvailableCopies -= 1;
-				await _stockService.UpdateAsync(stock);
+				var stockDto = _stockService.MapToDto(stock);
+				await _stockService.UpdateAsync(stockDto);
 
 				var borrowHistory = new BorrowHistory
 				{
@@ -80,10 +81,8 @@ namespace libAPI.Services.Concrete
 
 				await _borrowHistoryService.AddAsync(borrowHistory);
 			}
-
-			var borrowBook = MapToEntity(borrowBookDto);
-			await base.AddAsync(borrowBook);
-			return borrowBookDto;
+				
+			return await base.AddAsync(borrowBookDto);
 		}
 
 		public override async Task<bool> DeleteAsync(int id)
@@ -130,26 +129,29 @@ namespace libAPI.Services.Concrete
 			if (stock != null)
 			{
 				stock.AvailableCopies += 1;
-				await _stockService.UpdateAsync(stock);
+				var stockDto =_stockService.MapToDto(stock);
+				await _stockService.UpdateAsync(stockDto);
 			}
 
 			return await base.DeleteAsync(id);
 		}
 
-		protected override BorrowBooks MapToEntity(BorrowBooksDTO dto)
+		public override BorrowBooks MapToEntity(BorrowBooksDTO dto)
 		{
 			return new BorrowBooks
 			{
 				Id = dto.Id,
 				BookId = dto.BookId,
+				Book = new Book { Id = dto.BookId }, 
 				MemberId = dto.MemberId,
+				Member = new Member { Id = dto.MemberId }, 
 				RentalDate = dto.RentalDate,
 				Deadline = dto.Deadline,
 				BooksId = dto.BooksId
 			};
 		}
 
-		protected override BorrowBooksDTO MapToDto(BorrowBooks entity)
+		public override BorrowBooksDTO MapToDto(BorrowBooks entity)
 		{
 			return new BorrowBooksDTO
 			{

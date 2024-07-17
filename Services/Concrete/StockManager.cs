@@ -23,7 +23,7 @@ namespace libAPI.Services.Concrete
 			return stock!;
 		}
 
-		protected override Stock MapToEntity(StockDTO dto)
+		public override Stock MapToEntity(StockDTO dto)
 		{
 			return new Stock
 			{
@@ -35,8 +35,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-
-		protected override StockDTO MapToDto(Stock entity)
+		public override StockDTO MapToDto(Stock entity)
 		{
 			return new StockDTO
 			{
@@ -46,6 +45,8 @@ namespace libAPI.Services.Concrete
 				AvailableCopies = entity.AvailableCopies
 			};
 		}
+
+
 
 	}
 }

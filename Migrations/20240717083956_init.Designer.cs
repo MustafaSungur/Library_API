@@ -12,7 +12,7 @@ using libAPI.Data;
 namespace libAPI.Migrations
 {
     [DbContext(typeof(libAPIContext))]
-    [Migration("20240716184907_init")]
+    [Migration("20240717083956_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -53,7 +53,7 @@ namespace libAPI.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("libAPI.Models.AddressCity", b =>
+            modelBuilder.Entity("libAPI.Models.AddressCityDTO", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
@@ -283,9 +283,6 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LibrarianId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("MemberId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -296,8 +293,6 @@ namespace libAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
-
-                    b.HasIndex("LibrarianId");
 
                     b.HasIndex("MemberId");
 
@@ -641,7 +636,7 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Address", b =>
                 {
-                    b.HasOne("libAPI.Models.AddressCity", "City")
+                    b.HasOne("libAPI.Models.AddressCityDTO", "City")
                         .WithMany()
                         .HasForeignKey("AddressCityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -721,10 +716,6 @@ namespace libAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.Employee", "Librarian")
-                        .WithMany()
-                        .HasForeignKey("LibrarianId");
-
                     b.HasOne("libAPI.Models.Member", "Member")
                         .WithMany()
                         .HasForeignKey("MemberId")
@@ -732,8 +723,6 @@ namespace libAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
-
-                    b.Navigation("Librarian");
 
                     b.Navigation("Member");
                 });

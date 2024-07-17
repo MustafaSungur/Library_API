@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 
 		}
 
-		protected override BorrowHistory MapToEntity(BorrowHistoryDTO dto)
+		public override BorrowHistory MapToEntity(BorrowHistoryDTO dto)
 		{
 			return new BorrowHistory
 			{
@@ -35,7 +35,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override BorrowHistoryDTO MapToDto(BorrowHistory entity)
+		public override BorrowHistoryDTO MapToDto(BorrowHistory entity)
 		{
 			return new BorrowHistoryDTO
 			{

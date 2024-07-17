@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override AddressCountry MapToEntity(AddressCountryDTO dto)
+		public override AddressCountry MapToEntity(AddressCountryDTO dto)
 		{
 			return new AddressCountry
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override AddressCountryDTO MapToDto(AddressCountry entity)
+		public override AddressCountryDTO MapToDto(AddressCountry entity)
 		{
 			return new AddressCountryDTO
 			{

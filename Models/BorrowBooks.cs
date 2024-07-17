@@ -6,7 +6,6 @@ namespace libAPI.Models
 	{
 		public int Id { get; set; }
 
-		public required Employee Librarian { get; set; }
 
 		public int BookId { get; set; }
 

@@ -463,7 +463,6 @@ namespace libAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LibrarianId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     BookId = table.Column<int>(type: "int", nullable: false),
                     MemberId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RentalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -478,11 +477,6 @@ namespace libAPI.Migrations
                         principalTable: "Book",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BorrowBooks_Employee_LibrarianId",
-                        column: x => x.LibrarianId,
-                        principalTable: "Employee",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_BorrowBooks_Member_MemberId",
                         column: x => x.MemberId,
@@ -550,11 +544,6 @@ namespace libAPI.Migrations
                 name: "IX_BorrowBooks_BookId",
                 table: "BorrowBooks",
                 column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BorrowBooks_LibrarianId",
-                table: "BorrowBooks",
-                column: "LibrarianId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BorrowBooks_MemberId",
@@ -636,6 +625,9 @@ namespace libAPI.Migrations
                 name: "BorrowHistories");
 
             migrationBuilder.DropTable(
+                name: "Employee");
+
+            migrationBuilder.DropTable(
                 name: "LanguageBook");
 
             migrationBuilder.DropTable(
@@ -648,19 +640,7 @@ namespace libAPI.Migrations
                 name: "Author");
 
             migrationBuilder.DropTable(
-                name: "Employee");
-
-            migrationBuilder.DropTable(
                 name: "Member");
-
-            migrationBuilder.DropTable(
-                name: "Language");
-
-            migrationBuilder.DropTable(
-                name: "Book");
-
-            migrationBuilder.DropTable(
-                name: "SubCategory");
 
             migrationBuilder.DropTable(
                 name: "Department");
@@ -670,6 +650,15 @@ namespace libAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shift");
+
+            migrationBuilder.DropTable(
+                name: "Language");
+
+            migrationBuilder.DropTable(
+                name: "Book");
+
+            migrationBuilder.DropTable(
+                name: "SubCategory");
 
             migrationBuilder.DropTable(
                 name: "EducationalDegree");

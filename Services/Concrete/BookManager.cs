@@ -3,6 +3,7 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
@@ -16,24 +17,25 @@ namespace libAPI.Services.Concrete
 			_stockService = stockService;
 		}
 
-		public override async Task<Book> AddAsync(Book book)
+		public override async Task<BookDTO> AddAsync(BookDTO bookDto)
 		{
+			var book = MapToEntity(bookDto);
 			var createdBook = await _repository.AddAsync(book);
 
 			Stock stock = new Stock
 			{
 				BookId = createdBook.Id,
-				Book = createdBook,
-				TotalCopies = book.CopyCount,
-				AvailableCopies = book.CopyCount,
+				TotalCopies = bookDto.CopyCount,
+				AvailableCopies = bookDto.CopyCount,
 			};
 
-			await _stockService.AddAsync(stock);
-			return createdBook;
+			var stockDto = _stockService.MapToDto(stock);
+			await _stockService.AddAsync(stockDto);
+
+			return MapToDto(createdBook);
 		}
 
-
-		protected override Book MapToEntity(BookDTO dto)
+		public override Book MapToEntity(BookDTO dto)
 		{
 			return new Book
 			{
@@ -69,8 +71,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-
-		protected override BookDTO MapToDto(Book entity)
+		public override BookDTO MapToDto(Book entity)
 		{
 			return new BookDTO
 			{

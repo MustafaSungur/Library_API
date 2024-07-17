@@ -50,7 +50,7 @@ namespace libAPI.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("libAPI.Models.AddressCity", b =>
+            modelBuilder.Entity("libAPI.Models.AddressCityDTO", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
@@ -280,10 +280,6 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("MemberId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -294,8 +290,6 @@ namespace libAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("MemberId");
 
@@ -316,10 +310,6 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("BorrowedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("IsPenaltyApplied")
                         .HasColumnType("bit");
 
@@ -330,9 +320,6 @@ namespace libAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MemberId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime?>("ReturnedDate")
                         .HasColumnType("datetime2");
 
@@ -340,13 +327,8 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("MemberId");
-
-                    b.HasIndex("MemberId1")
-                        .IsUnique()
-                        .HasFilter("[MemberId1] IS NOT NULL");
+                    b.HasIndex("MemberId")
+                        .IsUnique();
 
                     b.ToTable("BorrowHistories");
                 });
@@ -651,7 +633,7 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Address", b =>
                 {
-                    b.HasOne("libAPI.Models.AddressCity", "City")
+                    b.HasOne("libAPI.Models.AddressCityDTO", "City")
                         .WithMany()
                         .HasForeignKey("AddressCityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -731,12 +713,6 @@ namespace libAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("libAPI.Models.Member", "Member")
                         .WithMany()
                         .HasForeignKey("MemberId")
@@ -744,8 +720,6 @@ namespace libAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Book");
-
-                    b.Navigation("Employee");
 
                     b.Navigation("Member");
                 });
@@ -755,28 +729,16 @@ namespace libAPI.Migrations
                     b.HasOne("libAPI.Models.Book", "Book")
                         .WithMany()
                         .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("libAPI.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.Member", "Member")
-                        .WithMany()
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithOne("BorrowingHistory")
+                        .HasForeignKey("libAPI.Models.BorrowHistory", "MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.Member", null)
-                        .WithOne("BorrowingHistory")
-                        .HasForeignKey("libAPI.Models.BorrowHistory", "MemberId1");
-
                     b.Navigation("Book");
-
-                    b.Navigation("Employee");
 
                     b.Navigation("Member");
                 });

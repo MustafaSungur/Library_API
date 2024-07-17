@@ -66,7 +66,7 @@ namespace libAPI
 
 			// Register generic repository and service
 			builder.Services.AddScoped(typeof(IRepository<,,>), typeof(EfCoreGenericRepository<,,>));
-			builder.Services.AddScoped(typeof(IService<,,>), typeof(GenericManager<,,>));
+			builder.Services.AddScoped(typeof(IService<,,,>), typeof(GenericManager<,,,>));
 
 			builder.Services.AddControllers();
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

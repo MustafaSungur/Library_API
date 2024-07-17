@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.AddressCity, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCityDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,14 +28,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "addressCity",
-        "Type": "libAPI.Models.AddressCity",
+        "Name": "addressCityDto",
+        "Type": "libAPI.DTOs.AddressCityDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.AddressCity",
+        "Type": "libAPI.DTOs.AddressCityDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.AddressCity",
+        "Type": "libAPI.DTOs.AddressCityDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -85,8 +85,8 @@
         "IsRequired": true
       },
       {
-        "Name": "addressCity",
-        "Type": "libAPI.Models.AddressCity",
+        "Name": "addressCityDto",
+        "Type": "libAPI.DTOs.AddressCityDTO",
         "IsRequired": true
       }
     ],
@@ -118,7 +118,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.AddressCountry, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCountryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -137,14 +137,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "addressCountry",
-        "Type": "libAPI.Models.AddressCountry",
+        "Name": "addressCountryDto",
+        "Type": "libAPI.DTOs.AddressCountryDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.AddressCountry",
+        "Type": "libAPI.DTOs.AddressCountryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -170,7 +170,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.AddressCountry",
+        "Type": "libAPI.DTOs.AddressCountryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -194,8 +194,8 @@
         "IsRequired": true
       },
       {
-        "Name": "addressCountry",
-        "Type": "libAPI.Models.AddressCountry",
+        "Name": "addressCountryDto",
+        "Type": "libAPI.DTOs.AddressCountryDTO",
         "IsRequired": true
       }
     ],
@@ -227,7 +227,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Address, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -246,14 +246,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "address",
-        "Type": "libAPI.Models.Address",
+        "Name": "addressDto",
+        "Type": "libAPI.DTOs.AddressDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Address",
+        "Type": "libAPI.DTOs.AddressDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -279,7 +279,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Address",
+        "Type": "libAPI.DTOs.AddressDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -303,8 +303,8 @@
         "IsRequired": true
       },
       {
-        "Name": "address",
-        "Type": "libAPI.Models.Address",
+        "Name": "addressDto",
+        "Type": "libAPI.DTOs.AddressDTO",
         "IsRequired": true
       }
     ],
@@ -336,7 +336,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Author, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AuthorDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -355,14 +355,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "author",
-        "Type": "libAPI.Models.Author",
+        "Name": "authorDto",
+        "Type": "libAPI.DTOs.AuthorDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Author",
+        "Type": "libAPI.DTOs.AuthorDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -388,7 +388,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Author",
+        "Type": "libAPI.DTOs.AuthorDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -412,8 +412,8 @@
         "IsRequired": true
       },
       {
-        "Name": "author",
-        "Type": "libAPI.Models.Author",
+        "Name": "authorDto",
+        "Type": "libAPI.DTOs.AuthorDTO",
         "IsRequired": true
       }
     ],
@@ -445,7 +445,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Book, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BookDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -464,14 +464,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "book",
-        "Type": "libAPI.Models.Book",
+        "Name": "bookDto",
+        "Type": "libAPI.DTOs.BookDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Book",
+        "Type": "libAPI.DTOs.BookDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -497,7 +497,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Book",
+        "Type": "libAPI.DTOs.BookDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -521,8 +521,8 @@
         "IsRequired": true
       },
       {
-        "Name": "book",
-        "Type": "libAPI.Models.Book",
+        "Name": "bookDto",
+        "Type": "libAPI.DTOs.BookDTO",
         "IsRequired": true
       }
     ],
@@ -554,7 +554,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.BorrowBooks, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BorrowBooksDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -573,14 +573,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "borrowBooks",
-        "Type": "libAPI.Models.BorrowBooks",
+        "Name": "borrowBooksDto",
+        "Type": "libAPI.DTOs.BorrowBooksDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.BorrowBooks",
+        "Type": "libAPI.DTOs.BorrowBooksDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -606,7 +606,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.BorrowBooks",
+        "Type": "libAPI.DTOs.BorrowBooksDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -630,8 +630,8 @@
         "IsRequired": true
       },
       {
-        "Name": "borrowBooks",
-        "Type": "libAPI.Models.BorrowBooks",
+        "Name": "borrowBooksDto",
+        "Type": "libAPI.DTOs.BorrowBooksDTO",
         "IsRequired": true
       }
     ],
@@ -663,7 +663,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Category, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.CategoryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -682,14 +682,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "libAPI.Models.Category",
+        "Name": "categoryDto",
+        "Type": "libAPI.DTOs.CategoryDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Category",
+        "Type": "libAPI.DTOs.CategoryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -715,7 +715,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Category",
+        "Type": "libAPI.DTOs.CategoryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -739,8 +739,8 @@
         "IsRequired": true
       },
       {
-        "Name": "category",
-        "Type": "libAPI.Models.Category",
+        "Name": "categoryDto",
+        "Type": "libAPI.DTOs.CategoryDTO",
         "IsRequired": true
       }
     ],
@@ -772,7 +772,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Department, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.DepartmentDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -791,14 +791,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "department",
-        "Type": "libAPI.Models.Department",
+        "Name": "departmentDto",
+        "Type": "libAPI.DTOs.DepartmentDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Department",
+        "Type": "libAPI.DTOs.DepartmentDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -824,7 +824,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Department",
+        "Type": "libAPI.DTOs.DepartmentDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -848,8 +848,8 @@
         "IsRequired": true
       },
       {
-        "Name": "department",
-        "Type": "libAPI.Models.Department",
+        "Name": "departmentDto",
+        "Type": "libAPI.DTOs.DepartmentDTO",
         "IsRequired": true
       }
     ],
@@ -881,7 +881,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.EducationalDegree, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EducationalDegreeDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -900,14 +900,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "educationalDegree",
-        "Type": "libAPI.Models.EducationalDegree",
+        "Name": "educationalDegreeDto",
+        "Type": "libAPI.DTOs.EducationalDegreeDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.EducationalDegree",
+        "Type": "libAPI.DTOs.EducationalDegreeDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -933,7 +933,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.EducationalDegree",
+        "Type": "libAPI.DTOs.EducationalDegreeDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -957,8 +957,8 @@
         "IsRequired": true
       },
       {
-        "Name": "educationalDegree",
-        "Type": "libAPI.Models.EducationalDegree",
+        "Name": "educationalDegreeDto",
+        "Type": "libAPI.DTOs.EducationalDegreeDTO",
         "IsRequired": true
       }
     ],
@@ -990,7 +990,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Employee, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1009,14 +1009,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "employee",
-        "Type": "libAPI.Models.Employee",
+        "Name": "employeeDto",
+        "Type": "libAPI.DTOs.EmployeeDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Employee",
+        "Type": "libAPI.DTOs.EmployeeDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1042,7 +1042,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Employee",
+        "Type": "libAPI.DTOs.EmployeeDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1066,8 +1066,8 @@
         "IsRequired": true
       },
       {
-        "Name": "employee",
-        "Type": "libAPI.Models.Employee",
+        "Name": "employeeDto",
+        "Type": "libAPI.DTOs.EmployeeDTO",
         "IsRequired": true
       }
     ],
@@ -1099,7 +1099,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.EmployeeTitle, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeTitleDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1118,14 +1118,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "employeeTitle",
-        "Type": "libAPI.Models.EmployeeTitle",
+        "Name": "employeeTitleDto",
+        "Type": "libAPI.DTOs.EmployeeTitleDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.EmployeeTitle",
+        "Type": "libAPI.DTOs.EmployeeTitleDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1151,7 +1151,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.EmployeeTitle",
+        "Type": "libAPI.DTOs.EmployeeTitleDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1175,8 +1175,8 @@
         "IsRequired": true
       },
       {
-        "Name": "employeeTitle",
-        "Type": "libAPI.Models.EmployeeTitle",
+        "Name": "employeeTitleDto",
+        "Type": "libAPI.DTOs.EmployeeTitleDTO",
         "IsRequired": true
       }
     ],
@@ -1208,7 +1208,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Genre, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.GenreDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1228,13 +1228,13 @@
     "Parameters": [
       {
         "Name": "genre",
-        "Type": "libAPI.Models.Genre",
+        "Type": "libAPI.DTOs.GenreDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Genre",
+        "Type": "libAPI.DTOs.GenreDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1260,7 +1260,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Genre",
+        "Type": "libAPI.DTOs.GenreDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1285,7 +1285,7 @@
       },
       {
         "Name": "genre",
-        "Type": "libAPI.Models.Genre",
+        "Type": "libAPI.DTOs.GenreDTO",
         "IsRequired": true
       }
     ],
@@ -1317,7 +1317,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Language, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LanguageDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1337,13 +1337,13 @@
     "Parameters": [
       {
         "Name": "language",
-        "Type": "libAPI.Models.Language",
+        "Type": "libAPI.DTOs.LanguageDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Language",
+        "Type": "libAPI.DTOs.LanguageDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1369,7 +1369,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Language",
+        "Type": "libAPI.DTOs.LanguageDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1394,7 +1394,7 @@
       },
       {
         "Name": "language",
-        "Type": "libAPI.Models.Language",
+        "Type": "libAPI.DTOs.LanguageDTO",
         "IsRequired": true
       }
     ],
@@ -1426,7 +1426,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Location, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LocationDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1446,13 +1446,13 @@
     "Parameters": [
       {
         "Name": "location",
-        "Type": "libAPI.Models.Location",
+        "Type": "libAPI.DTOs.LocationDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Location",
+        "Type": "libAPI.DTOs.LocationDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1478,7 +1478,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Location",
+        "Type": "libAPI.DTOs.LocationDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1503,7 +1503,7 @@
       },
       {
         "Name": "location",
-        "Type": "libAPI.Models.Location",
+        "Type": "libAPI.DTOs.LocationDTO",
         "IsRequired": true
       }
     ],
@@ -1535,7 +1535,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Member, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.MemberDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1555,13 +1555,13 @@
     "Parameters": [
       {
         "Name": "member",
-        "Type": "libAPI.Models.Member",
+        "Type": "libAPI.DTOs.MemberDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Member",
+        "Type": "libAPI.DTOs.MemberDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1587,7 +1587,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Member",
+        "Type": "libAPI.DTOs.MemberDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1612,7 +1612,7 @@
       },
       {
         "Name": "member",
-        "Type": "libAPI.Models.Member",
+        "Type": "libAPI.DTOs.MemberDTO",
         "IsRequired": true
       }
     ],
@@ -1644,7 +1644,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Publisher, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.PublisherDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1664,13 +1664,13 @@
     "Parameters": [
       {
         "Name": "publisher",
-        "Type": "libAPI.Models.Publisher",
+        "Type": "libAPI.DTOs.PublisherDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Publisher",
+        "Type": "libAPI.DTOs.PublisherDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1696,7 +1696,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Publisher",
+        "Type": "libAPI.DTOs.PublisherDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1721,7 +1721,7 @@
       },
       {
         "Name": "publisher",
-        "Type": "libAPI.Models.Publisher",
+        "Type": "libAPI.DTOs.PublisherDTO",
         "IsRequired": true
       }
     ],
@@ -1753,7 +1753,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.Shift, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.ShiftDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1773,13 +1773,13 @@
     "Parameters": [
       {
         "Name": "shift",
-        "Type": "libAPI.Models.Shift",
+        "Type": "libAPI.DTOs.ShiftDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Shift",
+        "Type": "libAPI.DTOs.ShiftDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1805,7 +1805,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.Shift",
+        "Type": "libAPI.DTOs.ShiftDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1830,7 +1830,7 @@
       },
       {
         "Name": "shift",
-        "Type": "libAPI.Models.Shift",
+        "Type": "libAPI.DTOs.ShiftDTO",
         "IsRequired": true
       }
     ],
@@ -1862,7 +1862,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.Models.SubCategory, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.SubCategoryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1882,13 +1882,13 @@
     "Parameters": [
       {
         "Name": "subCategory",
-        "Type": "libAPI.Models.SubCategory",
+        "Type": "libAPI.DTOs.SubCategoryDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.SubCategory",
+        "Type": "libAPI.DTOs.SubCategoryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1914,7 +1914,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.Models.SubCategory",
+        "Type": "libAPI.DTOs.SubCategoryDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1939,7 +1939,7 @@
       },
       {
         "Name": "subCategory",
-        "Type": "libAPI.Models.SubCategory",
+        "Type": "libAPI.DTOs.SubCategoryDTO",
         "IsRequired": true
       }
     ],

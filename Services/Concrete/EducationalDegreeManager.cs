@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override EducationalDegree MapToEntity(EducationalDegreeDTO dto)
+		public override EducationalDegree MapToEntity(EducationalDegreeDTO dto)
 		{
 			return new EducationalDegree
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override EducationalDegreeDTO MapToDto(EducationalDegree entity)
+		public override EducationalDegreeDTO MapToDto(EducationalDegree entity)
 		{
 			return new EducationalDegreeDTO
 			{

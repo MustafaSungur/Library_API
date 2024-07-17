@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Location>>> GetLocations()
+		public async Task<ActionResult<IEnumerable<LocationDTO>>> GetLocations()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Location>> GetLocation(int id)
+		public async Task<ActionResult<LocationDTO>> GetLocation(int id)
 		{
 			var location = await _service.GetByIdAsync(id);
 
@@ -36,12 +36,12 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return location;
+			return Ok(location);
 		}
 
 		// PUT: api/Locations/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutLocation(int id, Location location)
+		public async Task<IActionResult> PutLocation(int id, LocationDTO location)
 		{
 			if (id != location.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Locations
 		[HttpPost]
-		public async Task<ActionResult<Location>> PostLocation(Location location)
+		public async Task<ActionResult<LocationDTO>> PostLocation(LocationDTO location)
 		{
 			var createdEntity = await _service.AddAsync(location);
 			return CreatedAtAction("GetLocation", new { id = createdEntity.Id }, createdEntity);

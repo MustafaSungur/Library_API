@@ -1,100 +1,98 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Models;
+using libAPI.DTOs;
 using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AddressesController : ControllerBase
-    {
-        private readonly IAddressService _service;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AddressesController : ControllerBase
+	{
+		private readonly IAddressService _service;
 
-        public AddressesController(IAddressService service)
-        {
-            _service = service;
-        }
+		public AddressesController(IAddressService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Addresses
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Address>>> GetAddress()
-        {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
-        }
+		// GET: api/Addresses
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<AddressDTO>>> GetAddress()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Addresses/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Address>> GetAddress(int id)
-        {
-            var address = await _service.GetByIdAsync(id);
+		// GET: api/Addresses/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<AddressDTO>> GetAddress(int id)
+		{
+			var address = await _service.GetByIdAsync(id);
 
-            if (address == null)
-            {
-                return NotFound();
-            }
+			if (address == null)
+			{
+				return NotFound();
+			}
 
-            return address;
-        }
+			return Ok(address);
+		}
 
-        // PUT: api/Addresses/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAddress(int id, Address address)
-        {
-            if (id != address.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Addresses/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutAddress(int id, AddressDTO addressDto)
+		{
+			if (id != addressDto.Id)
+			{
+				return BadRequest();
+			}
 
-
-            try
-            {
-                await _service.UpdateAsync(address);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!(await AddressExists(id)))
+			try
+			{
+				await _service.UpdateAsync(addressDto);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!(await AddressExists(id)))
 				{
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            return NoContent();
-        }
+			return NoContent();
+		}
 
-        // POST: api/Addresses
-        [HttpPost]
-        public async Task<ActionResult<Address>> PostAddress(Address address)
-        {
-            var createdEntity = await _service.AddAsync(address);
+		// POST: api/Addresses
+		[HttpPost]
+		public async Task<ActionResult<AddressDTO>> PostAddress(AddressDTO addressDto)
+		{
+			var createdEntity = await _service.AddAsync(addressDto);
 
-            return CreatedAtAction("GetAddress", new { id = createdEntity.Id }, createdEntity);
-        }
+			return CreatedAtAction("GetAddress", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // DELETE: api/Addresses/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAddress(int id)
-        {
-            var address = await _service.GetByIdAsync(id);
-            if (address == null)
-            {
-                return NotFound();
-            }
+		// DELETE: api/Addresses/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteAddress(int id)
+		{
+			var address = await _service.GetByIdAsync(id);
+			if (address == null)
+			{
+				return NotFound();
+			}
 
-            await _service.DeleteAsync(id);
+			await _service.DeleteAsync(id);
 
-            return NoContent();
-        }
+			return NoContent();
+		}
 
-        private async Task<bool> AddressExists(int id)
-        {
-            return (await _service.GetByIdAsync(id)) != null;
-        }
-    }
+		private async Task<bool> AddressExists(int id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCities
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<AddressCity>>> GetAddressCity()
+		public async Task<ActionResult<IEnumerable<AddressCityDTO>>> GetAddressCity()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCities/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AddressCity>> GetAddressCity(int id)
+		public async Task<ActionResult<AddressCityDTO>> GetAddressCity(int id)
 		{
 			var addressCity = await _service.GetByIdAsync(id);
 
@@ -36,21 +36,21 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return addressCity;
+			return Ok(addressCity);
 		}
 
 		// PUT: api/AddressCities/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutAddressCity(int id, AddressCity addressCity)
+		public async Task<IActionResult> PutAddressCity(int id, AddressCityDTO addressCityDto)
 		{
-			if (id != addressCity.Id)
+			if (id != addressCityDto.Id)
 			{
 				return BadRequest();
 			}
 
 			try
 			{
-				await _service.UpdateAsync(addressCity);
+				await _service.UpdateAsync(addressCityDto);
 			}
 			catch (DbUpdateConcurrencyException)
 			{
@@ -69,9 +69,9 @@ namespace libAPI.Controllers
 
 		// POST: api/AddressCities
 		[HttpPost]
-		public async Task<ActionResult<AddressCity>> PostAddressCity(AddressCity addressCity)
+		public async Task<ActionResult<AddressCityDTO>> PostAddressCity(AddressCityDTO addressCityDto)
 		{
-			var createdEntity = await _service.AddAsync(addressCity);
+			var createdEntity = await _service.AddAsync(addressCityDto);
 			return CreatedAtAction("GetAddressCity", new { id = createdEntity.Id }, createdEntity);
 		}
 

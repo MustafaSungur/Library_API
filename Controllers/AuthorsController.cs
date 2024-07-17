@@ -1,100 +1,98 @@
-﻿
+﻿using libAPI.DTOs;
+using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Models;
-using libAPI.Services.Abstract;
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsController : ControllerBase
-    {
-        private readonly IAuthorService _service;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AuthorsController : ControllerBase
+	{
+		private readonly IAuthorService _service;
 
-        public AuthorsController(IAuthorService service)
-        {
-            _service = service;
-        }
+		public AuthorsController(IAuthorService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Authors
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Author>>> GetAuthor()
-        {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
-        }
+		// GET: api/Authors
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<AuthorDTO>>> GetAuthor()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Authors/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Author>> GetAuthor(long id)
-        {
-            var author = await _service.GetByIdAsync((int)id);
+		// GET: api/Authors/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<AuthorDTO>> GetAuthor(long id)
+		{
+			var author = await _service.GetByIdAsync((int)id);
 
-            if (author == null)
-            {
-                return NotFound();
-            }
+			if (author == null)
+			{
+				return NotFound();
+			}
 
-            return author;
-        }
+			return Ok(author);
+		}
 
-        // PUT: api/Authors/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAuthor(long id, Author author)
-        {
-            if (id != author.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Authors/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutAuthor(long id, AuthorDTO authorDto)
+		{
+			if (id != authorDto.Id)
+			{
+				return BadRequest();
+			}
 
-
-            try
-            {
-                await _service.UpdateAsync(author);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
+			try
+			{
+				await _service.UpdateAsync(authorDto);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
 				if (!(await AuthorExists(id)))
 				{
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            return NoContent();
-        }
+			return NoContent();
+		}
 
-        // POST: api/Authors
-        [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(Author author)
-        {
-            var createdEntity = await _service.AddAsync(author);
+		// POST: api/Authors
+		[HttpPost]
+		public async Task<ActionResult<AuthorDTO>> PostAuthor(AuthorDTO authorDto)
+		{
+			var createdEntity = await _service.AddAsync(authorDto);
 
-            return CreatedAtAction("GetAuthor", new { id = createdEntity.Id }, createdEntity);
-        }
+			return CreatedAtAction("GetAuthor", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // DELETE: api/Authors/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAuthor(long id)
-        {
-            var author = await _service.GetByIdAsync((int)id);
-            if (author == null)
-            {
-                return NotFound();
-            }
+		// DELETE: api/Authors/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteAuthor(long id)
+		{
+			var author = await _service.GetByIdAsync((int)id);
+			if (author == null)
+			{
+				return NotFound();
+			}
 
-            await _service.DeleteAsync((int)id);
+			await _service.DeleteAsync((int)id);
 
-            return NoContent();
-        }
+			return NoContent();
+		}
 
-        private async Task<bool> AuthorExists(long id)
-        {
-            return (await _service.GetByIdAsync((int)id))!=null;
-        }
-    }
+		private async Task<bool> AuthorExists(long id)
+		{
+			return (await _service.GetByIdAsync((int)id)) != null;
+		}
+	}
 }

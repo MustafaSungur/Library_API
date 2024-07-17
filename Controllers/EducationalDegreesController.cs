@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<EducationalDegree>>> GetEducationalDegrees()
+		public async Task<ActionResult<IEnumerable<EducationalDegreeDTO>>> GetEducationalDegrees()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<EducationalDegree>> GetEducationalDegree(short id)
+		public async Task<ActionResult<EducationalDegreeDTO>> GetEducationalDegree(short id)
 		{
 			var educationalDegree = await _service.GetByIdAsync(id);
 
@@ -36,21 +36,21 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return educationalDegree;
+			return Ok(educationalDegree);
 		}
 
 		// PUT: api/EducationalDegrees/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEducationalDegree(short id, EducationalDegree educationalDegree)
+		public async Task<IActionResult> PutEducationalDegree(short id, EducationalDegreeDTO educationalDegreeDto)
 		{
-			if (id != educationalDegree.Id)
+			if (id != educationalDegreeDto.Id)
 			{
 				return BadRequest();
 			}
 
 			try
 			{
-				await _service.UpdateAsync(educationalDegree);
+				await _service.UpdateAsync(educationalDegreeDto);
 			}
 			catch (DbUpdateConcurrencyException)
 			{
@@ -69,9 +69,9 @@ namespace libAPI.Controllers
 
 		// POST: api/EducationalDegrees
 		[HttpPost]
-		public async Task<ActionResult<EducationalDegree>> PostEducationalDegree(EducationalDegree educationalDegree)
+		public async Task<ActionResult<EducationalDegreeDTO>> PostEducationalDegree(EducationalDegreeDTO educationalDegreeDto)
 		{
-			var createdEntity = await _service.AddAsync(educationalDegree);
+			var createdEntity = await _service.AddAsync(educationalDegreeDto);
 			return CreatedAtAction("GetEducationalDegree", new { id = createdEntity.Id }, createdEntity);
 		}
 

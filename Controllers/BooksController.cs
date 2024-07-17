@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Books
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
+		public async Task<ActionResult<IEnumerable<BookDTO>>> GetBooks()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Books/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Book>> GetBook(int id)
+		public async Task<ActionResult<BookDTO>> GetBook(int id)
 		{
 			var book = await _service.GetByIdAsync(id);
 
@@ -36,21 +36,21 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return book;
+			return Ok(book);
 		}
 
 		// PUT: api/Books/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutBook(int id, Book book)
+		public async Task<IActionResult> PutBook(int id, BookDTO bookDto)
 		{
-			if (id != book.Id)
+			if (id != bookDto.Id)
 			{
 				return BadRequest();
 			}
 
 			try
 			{
-				await _service.UpdateAsync(book);
+				await _service.UpdateAsync(bookDto);
 			}
 			catch (DbUpdateConcurrencyException)
 			{
@@ -69,9 +69,9 @@ namespace libAPI.Controllers
 
 		// POST: api/Books
 		[HttpPost]
-		public async Task<ActionResult<Book>> PostBook(Book book)
+		public async Task<ActionResult<BookDTO>> PostBook(BookDTO bookDto)
 		{
-			var createdEntity = await _service.AddAsync(book);
+			var createdEntity = await _service.AddAsync(bookDto);
 			return CreatedAtAction("GetBook", new { id = createdEntity.Id }, createdEntity);
 		}
 

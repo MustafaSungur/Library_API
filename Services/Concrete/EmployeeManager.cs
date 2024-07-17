@@ -13,7 +13,7 @@ namespace libAPI.Services.Concrete
 		}
 
 
-		protected override EmployeeDTO MapToDto(Employee entity)
+		public override EmployeeDTO MapToDto(Employee entity)
 		{
 			return new EmployeeDTO
 			{
@@ -28,7 +28,7 @@ namespace libAPI.Services.Concrete
 		}
 
 
-		protected override Employee MapToEntity(EmployeeDTO dto)
+		public override Employee MapToEntity(EmployeeDTO dto)
 		{
 			return new Employee
 			{

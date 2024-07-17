@@ -1,101 +1,97 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using libAPI.Models;
+using libAPI.DTOs;
 using libAPI.Services.Abstract;
+
 
 namespace libAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class EmployeesController : ControllerBase
-    {
-        private readonly IEmployeeService _servcice;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class EmployeesController : ControllerBase
+	{
+		private readonly IEmployeeService _service;
 
-        public EmployeesController(IEmployeeService service)
-        {
-            _servcice = service;
-        }
+		public EmployeesController(IEmployeeService service)
+		{
+			_service = service;
+		}
 
-        // GET: api/Employees
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
-        {
-            var result = await _servcice.GetAllAsync();
-            return Ok(result);
-        }
+		// GET: api/Employees
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetEmployee()
+		{
+			var result = await _service.GetAllAsync();
+			return Ok(result);
+		}
 
-        // GET: api/Employees/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(string id)
-        {
-            var employee = await _servcice.GetByIdAsync(id);
+		// GET: api/Employees/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<EmployeeDTO>> GetEmployee(string id)
+		{
+			var employee = await _service.GetByIdAsync(id);
 
-            if (employee == null)
-            {
-                return NotFound();
-            }
+			if (employee == null)
+			{
+				return NotFound();
+			}
 
-            return employee;
-        }
+			return Ok(employee);
+		}
 
-        // PUT: api/Employees/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(string id, Employee employee)
-        {
-            if (id != employee.Id)
-            {
-                return BadRequest();
-            }
+		// PUT: api/Employees/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutEmployee(string id, EmployeeDTO employeeDto)
+		{
+			if (id != employeeDto.Id)
+			{
+				return BadRequest();
+			}
 
+			try
+			{
+				await _service.UpdateAsync(employeeDto);
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!await EmployeeExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-            try
-            {
-                await _servcice.UpdateAsync(employee);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await EmployeeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			return NoContent();
+		}
 
-            return NoContent();
-        }
+		// POST: api/Employees
+		[HttpPost]
+		public async Task<ActionResult<EmployeeDTO>> PostEmployee(EmployeeDTO employeeDto)
+		{
+			var createdEntity = await _service.AddAsync(employeeDto);
+			return CreatedAtAction("GetEmployee", new { id = createdEntity.Id }, createdEntity);
+		}
 
-        // POST: api/Employees
-        [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
-        {
-			var createdEntity= await _servcice.AddAsync(employee);                 
+		// DELETE: api/Employees/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteEmployee(string id)
+		{
+			var employee = await _service.GetByIdAsync(id);
+			if (employee == null)
+			{
+				return NotFound();
+			}
 
-            return CreatedAtAction("GetEmployee", new { id = createdEntity.Id }, employee);
-        }
+			await _service.DeleteAsync(id);
+			return NoContent();
+		}
 
-        // DELETE: api/Employees/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployee(string id)
-        {
-            var employee = await _servcice.GetByIdAsync(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-           
-            await _servcice.DeleteAsync(id);
-
-            return NoContent();
-        }
-
-        private async Task<bool> EmployeeExists(string id)
-        {
-            return (await _servcice.GetByIdAsync(id)) != null;
-        }
-    }
+		private async Task<bool> EmployeeExists(string id)
+		{
+			return (await _service.GetByIdAsync(id)) != null;
+		}
+	}
 }

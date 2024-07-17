@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Categories
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+		public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Categories/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Category>> GetCategory(short id)
+		public async Task<ActionResult<CategoryDTO>> GetCategory(short id)
 		{
 			var category = await _service.GetByIdAsync(id);
 
@@ -36,21 +36,21 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return category;
+			return Ok(category);
 		}
 
 		// PUT: api/Categories/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutCategory(short id, Category category)
+		public async Task<IActionResult> PutCategory(short id, CategoryDTO categoryDto)
 		{
-			if (id != category.Id)
+			if (id != categoryDto.Id)
 			{
 				return BadRequest();
 			}
 
 			try
 			{
-				await _service.UpdateAsync(category);
+				await _service.UpdateAsync(categoryDto);
 			}
 			catch (DbUpdateConcurrencyException)
 			{
@@ -69,9 +69,9 @@ namespace libAPI.Controllers
 
 		// POST: api/Categories
 		[HttpPost]
-		public async Task<ActionResult<Category>> PostCategory(Category category)
+		public async Task<ActionResult<CategoryDTO>> PostCategory(CategoryDTO categoryDto)
 		{
-			var createdEntity = await _service.AddAsync(category);
+			var createdEntity = await _service.AddAsync(categoryDto);
 			return CreatedAtAction("GetCategory", new { id = createdEntity.Id }, createdEntity);
 		}
 

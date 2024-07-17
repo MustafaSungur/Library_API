@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Address MapToEntity(AddressDTO dto)
+		public override Address MapToEntity(AddressDTO dto)
 		{
 			return new Address
 			{
@@ -23,7 +23,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override AddressDTO MapToDto(Address entity)
+		public override AddressDTO MapToDto(Address entity)
 		{
 			return new AddressDTO
 			{

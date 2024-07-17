@@ -11,7 +11,7 @@ namespace libAPI.Models
 		public int BookId { get; set; }
 
 		[ForeignKey(nameof(BookId))]
-		public required Book Book { get; set; }
+		public  Book Book { get; set; }
 
 		[Range(0, int.MaxValue)]
 		public int TotalCopies { get; set; }

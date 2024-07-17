@@ -8,11 +8,11 @@ namespace libAPI.Services.Concrete
 {
 	public class PublisherManager : GenericManager<Publisher, PublisherDTO, libAPIContext,int>, IPublisherService
 	{
-		public PublisherManager(IRepository<Publisher, libAPIContext,int> repository) : base(repository)
+		public PublisherManager(IRepository<Publisher, libAPIContext, int> repository) : base(repository)
 		{
+		}
 
-
-			protected override Publisher MapToEntity(PublisherDTO dto)
+		public override Publisher MapToEntity(PublisherDTO dto)
 		{
 			return new Publisher
 			{
@@ -24,7 +24,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override PublisherDTO MapToDto(Publisher entity)
+		public override PublisherDTO MapToDto(Publisher entity)
 		{
 			return new PublisherDTO
 			{

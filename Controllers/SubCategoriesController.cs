@@ -1,4 +1,4 @@
-﻿using libAPI.Models;
+﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +18,7 @@ namespace libAPI.Controllers
 
 		// GET: api/SubCategories
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubCategories()
+		public async Task<ActionResult<IEnumerable<SubCategoryDTO>>> GetSubCategories()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -26,7 +26,7 @@ namespace libAPI.Controllers
 
 		// GET: api/SubCategories/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<SubCategory>> GetSubCategory(short id)
+		public async Task<ActionResult<SubCategoryDTO>> GetSubCategory(short id)
 		{
 			var subCategory = await _service.GetByIdAsync(id);
 
@@ -35,12 +35,12 @@ namespace libAPI.Controllers
 				return NotFound();
 			}
 
-			return subCategory;
+			return Ok(subCategory);
 		}
 
 		// PUT: api/SubCategories/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutSubCategory(short id, SubCategory subCategory)
+		public async Task<IActionResult> PutSubCategory(short id, SubCategoryDTO subCategory)
 		{
 			if (id != subCategory.Id)
 			{
@@ -68,7 +68,7 @@ namespace libAPI.Controllers
 
 		// POST: api/SubCategories
 		[HttpPost]
-		public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
+		public async Task<ActionResult<SubCategoryDTO>> PostSubCategory(SubCategoryDTO subCategory)
 		{
 			var createdEntity = await _service.AddAsync(subCategory);
 			return CreatedAtAction("GetSubCategory", new { id = createdEntity.Id }, createdEntity);

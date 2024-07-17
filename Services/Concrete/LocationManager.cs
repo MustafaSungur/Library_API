@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Location MapToEntity(LocationDTO dto)
+		public override Location MapToEntity(LocationDTO dto)
 		{
 			return new Location
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override LocationDTO MapToDto(Location entity)
+		public override LocationDTO MapToDto(Location entity)
 		{
 			return new LocationDTO
 			{

@@ -12,7 +12,7 @@ namespace libAPI.Services.Concrete
 		{
 		}
 
-		protected override Department MapToEntity(DepartmentDTO dto)
+		public override Department MapToEntity(DepartmentDTO dto)
 		{
 			return new Department
 			{
@@ -21,7 +21,7 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		protected override DepartmentDTO MapToDto(Department entity)
+		public override DepartmentDTO MapToDto(Department entity)
 		{
 			return new DepartmentDTO
 			{
