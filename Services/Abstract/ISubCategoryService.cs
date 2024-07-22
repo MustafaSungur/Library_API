@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface ISubCategoryService:IService<SubCategory, SubCategoryDTO, libAPIContext,int>
+	public interface ISubCategoryService:IService<SubCategory, SubCategoryCreateDTO, SubCategoryReadDTO, libAPIContext,short>
 	{
 	}
 }

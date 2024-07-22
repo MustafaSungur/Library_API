@@ -11,16 +11,22 @@ namespace libAPI.Models
 		[ForeignKey(nameof(Id))]
 		public ApplicationUser? ApplicationUser { get; set; }
 
-		public required EmployeeTitle Title { get; set; }
+		public short TitleId { get; set; } 
+
+		[ForeignKey(nameof(TitleId))]
+		public  EmployeeTitle Title { get; set; }
 
 		public required short DepartmentId { get; set; }
 
 		[ForeignKey(nameof(DepartmentId))]
-		public required Department Department { get; set; }
+		public  Department Department { get; set; }
 
 		[Range(0, double.MaxValue)]
 		public decimal Salary { get; set; }
 
-		public required Shift Shift { get; set; }
+        public short ShiftId { get; set; }
+
+        [ForeignKey(nameof(ShiftId))]
+		public  Shift Shift { get; set; }
 	}
 }

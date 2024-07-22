@@ -6,8 +6,8 @@ namespace libAPI.Models
 	{
 		public int Id { get; set; }
 
-		[StringLength(6,MinimumLength =1)]
-		public required string Shelf { get; set; } 
+		[StringLength(6, MinimumLength = 1)]
+		public string Shelf { get; set; } = "";
         
 		public List<Book>? Books { get; set; }
 

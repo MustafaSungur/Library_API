@@ -6,13 +6,8 @@ namespace libAPI.Models
 	public class Stock
 	{
 		[Key]
-		public int Id { get; set; }
-
-		public int BookId { get; set; }
-
-		[ForeignKey(nameof(BookId))]
-		public  Book Book { get; set; }
-
+		public required string ISBM { get; set; }
+	
 		[Range(0, int.MaxValue)]
 		public int TotalCopies { get; set; }
 

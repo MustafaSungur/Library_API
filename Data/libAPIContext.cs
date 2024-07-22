@@ -30,9 +30,8 @@ namespace libAPI.Data
 		public DbSet<Location> Locations { get; set; } = default!;
 		public DbSet<Stock> Stocks { get; set; } = default!;
 		public DbSet<Employee> Employees { get; set; } = default!;
-		public DbSet<ApplicationUser> Persons { get; set; } = default!;
+		public DbSet<ApplicationUser> ApplicationUser { get; set; } = default!;
 		public DbSet<BorrowBooks> BorrowBooks { get; set; } = default!;
-		public DbSet<Employee> Employee { get; set; } = default!;
 		public DbSet<Member> Member { get; set; } = default!;
 		public DbSet<Language> Language { get; set; } = default!;
 		public DbSet<Publisher> Publisher { get; set; } = default!;

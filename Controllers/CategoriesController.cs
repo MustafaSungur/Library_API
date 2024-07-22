@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Categories
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
+		public async Task<ActionResult<IEnumerable<CategoryReadDTO>>> GetCategories()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Categories/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<CategoryDTO>> GetCategory(short id)
+		public async Task<ActionResult<CategoryReadDTO>> GetCategory(short id)
 		{
 			var category = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Categories/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutCategory(short id, CategoryDTO categoryDto)
+		public async Task<IActionResult> PutCategory(short id, CategoryCreateDTO categoryDto)
 		{
 			if (id != categoryDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Categories
 		[HttpPost]
-		public async Task<ActionResult<CategoryDTO>> PostCategory(CategoryDTO categoryDto)
+		public async Task<ActionResult<CategoryReadDTO>> PostCategory(CategoryCreateDTO categoryDto)
 		{
 			var createdEntity = await _service.AddAsync(categoryDto);
 			return CreatedAtAction("GetCategory", new { id = createdEntity.Id }, createdEntity);

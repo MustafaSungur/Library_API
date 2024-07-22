@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IGenreService:IService<Genre, GenreDTO, libAPIContext,int>
+	public interface IGenreService:IService<Genre, GenreCreateDTO, GenreReadDTO, libAPIContext, short>
 	{
 	}
 }

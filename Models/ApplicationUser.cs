@@ -14,9 +14,15 @@ namespace libAPI.Models
 		[StringLength(50)]
 		public string LastName { get; set; } = "";
 		
+		public short GenderId { get; set; }
+
+		[ForeignKey(nameof(GenderId))]
 		public Genre? Gender { get; set; }
 
-		public required Address Address { get; set; }
+		public int AddressId { get; set; }
+
+		[ForeignKey(nameof(AddressId))]
+		public  Address Address { get; set; }
 
 		public DateTime BirthDate { get; set; }
 		

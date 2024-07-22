@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Publishers
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<PublisherDTO>>> GetPublishers()
+		public async Task<ActionResult<IEnumerable<PublisherReadDTO>>> GetPublishers()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Publishers/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<PublisherDTO>> GetPublisher(int id)
+		public async Task<ActionResult<PublisherReadDTO>> GetPublisher(int id)
 		{
 			var publisher = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Publishers/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutPublisher(int id, PublisherDTO publisher)
+		public async Task<IActionResult> PutPublisher(int id, PublisherCreateDTO publisher)
 		{
 			if (id != publisher.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Publishers
 		[HttpPost]
-		public async Task<ActionResult<PublisherDTO>> PostPublisher(PublisherDTO publisher)
+		public async Task<ActionResult<PublisherReadDTO>> PostPublisher(PublisherCreateDTO publisher)
 		{
 			var createdEntity = await _service.AddAsync(publisher);
 			return CreatedAtAction("GetPublisher", new { id = createdEntity.Id }, createdEntity);

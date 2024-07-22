@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/BorrowBooks
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<BorrowBooksDTO>>> GetBorrowBooks()
+		public async Task<ActionResult<IEnumerable<BorrowBooksReadDTO>>> GetBorrowBooks()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/BorrowBooks/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<BorrowBooksDTO>> GetBorrowBooks(int id)
+		public async Task<ActionResult<BorrowBooksReadDTO>> GetBorrowBooks(int id)
 		{
 			var borrowBooks = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/BorrowBooks/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutBorrowBooks(int id, BorrowBooksDTO borrowBooksDto)
+		public async Task<IActionResult> PutBorrowBooks(int id, BorrowBooksCreateDTO borrowBooksDto)
 		{
 			if (id != borrowBooksDto.Id)
 			{
@@ -69,10 +69,13 @@ namespace libAPI.Controllers
 
 		// POST: api/BorrowBooks
 		[HttpPost]
-		public async Task<ActionResult<BorrowBooksDTO>> PostBorrowBooks(BorrowBooksDTO borrowBooksDto)
+		public async Task<ActionResult<IEnumerable<BorrowBooksReadDTO>>> PostBorrowBooks(BorrowBooksCreateDTO borrowBooksDto)
 		{
-			var createdEntity = await _service.AddAsync(borrowBooksDto);
-			return CreatedAtAction("GetBorrowBooks", new { id = createdEntity.Id }, createdEntity);
+				
+			var createdEntities = await _service.AddListAsync(borrowBooksDto);
+			return CreatedAtAction(nameof(GetBorrowBooks), new {createdEntities}, createdEntities);
+				
+				
 		}
 
 		// DELETE: api/BorrowBooks/5

@@ -41,6 +41,9 @@ namespace libAPI
 			builder.Services.AddScoped<IBorrowBooksRepository, EfCoreBorrowBooksRepository>();
 			builder.Services.AddScoped<IBorrowHistoryRepository, EfCoreBorrowHistoryRepository>();
 			builder.Services.AddScoped<IEducationalDegreeRepository, EfCoreEducationalDegreeRepository>();
+			builder.Services.AddScoped<IAuthorBookRepository, EfCoreAuthorBookRepository>();
+			builder.Services.AddScoped<ILanguageBookRepository, EfCoreLanguageBookRepository>();
+			builder.Services.AddScoped<ISubCategoryBookRepository, EfCoreSubCategoryBookRepository>();
 
 			// Services
 			builder.Services.AddScoped<IAddressService, AddressManager>();
@@ -62,14 +65,17 @@ namespace libAPI
 			builder.Services.AddScoped<IAuthorService, AuthorManager>();
 			builder.Services.AddScoped<IStockService, StockManager>();
 			builder.Services.AddScoped<IBorrowBooksService, BorrowBooksManager>();
-			builder.Services.AddScoped<IBarrowHistoryService, BorrowHistoryManager>();
+			builder.Services.AddScoped<IBorrowHistoryService, BorrowHistoryManager>();
+			builder.Services.AddScoped<IAuthorBookService, AuthorBookManager>();
+			builder.Services.AddScoped<ILanguageBookService, LanguageBookManager>();
+			builder.Services.AddScoped<ISubcategoryBookService, SubcategoryBookManager>();
 
 			// Register generic repository and service
 			builder.Services.AddScoped(typeof(IRepository<,,>), typeof(EfCoreGenericRepository<,,>));
-			builder.Services.AddScoped(typeof(IService<,,,>), typeof(GenericManager<,,,>));
+			builder.Services.AddScoped(typeof(IService<,,,,>), typeof(GenericManager<,,,,>));
 
 			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+			
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
@@ -88,6 +94,7 @@ namespace libAPI
 					app.UseSwaggerUI();
 			    };
 
+			app.UseCors("AllowAll");
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();

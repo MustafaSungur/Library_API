@@ -3,50 +3,45 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
+using System;
+using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
 {
-	public class StockManager : GenericManager<Stock,StockDTO, libAPIContext, int>, IStockService
+	public class StockManager : GenericManager<Stock, StockCreateDTO, StockReadDTO, libAPIContext, string>, IStockService
 	{
-		public StockManager(IRepository<Stock, libAPIContext, int> repository) : base(repository)
+
+		public StockManager(IRepository<Stock,libAPIContext,string> repository) : base(repository)
 		{
 		}
 
-		public async Task<Stock> GetStockByBookIdAsync(int id)
-		{
-			var stock = await ((IStockRepository)_repository).GetStockByBookIdAsync(id);
-
-			if(stock != null)
-			{
-				throw new Exception("Stock not found");
-			}
-			return stock!;
-		}
-
-		public override Stock MapToEntity(StockDTO dto)
+		
+		public override Stock MapToEntity(StockCreateDTO dto)
 		{
 			return new Stock
 			{
-				Id = dto.Id,
-				BookId = dto.BookId,
-				Book = new Book { Id = dto.BookId }, 
+				ISBM = dto.ISBM,
 				TotalCopies = dto.TotalCopies,
 				AvailableCopies = dto.AvailableCopies
 			};
 		}
 
-		public override StockDTO MapToDto(Stock entity)
+		public override StockReadDTO MapToDto(Stock entity)
 		{
-			return new StockDTO
+			var dto = new StockReadDTO
 			{
-				Id = entity.Id,
-				BookId = entity.BookId,
+				ISBM = entity.ISBM,
 				TotalCopies = entity.TotalCopies,
-				AvailableCopies = entity.AvailableCopies
+				AvailableCopies = entity.AvailableCopies,
+				
+				
 			};
+
+			return dto;
 		}
 
-
-
 	}
+
+
+
 }

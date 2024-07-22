@@ -6,13 +6,14 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class EmployeeTitleManager : GenericManager<EmployeeTitle, EmployeeTitleDTO, libAPIContext,int>, IEmployeeTitleService
+	public class EmployeeTitleManager : GenericManager<EmployeeTitle, EmployeeTitleCreateDTO, EmployeeTitleReadDTO, libAPIContext, short>, IEmployeeTitleService
 	{
-		public EmployeeTitleManager(IRepository<EmployeeTitle, libAPIContext, int> repository) : base(repository)
+
+		public EmployeeTitleManager(IRepository<EmployeeTitle, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override EmployeeTitle MapToEntity(EmployeeTitleDTO dto)
+		public override EmployeeTitle MapToEntity(EmployeeTitleCreateDTO dto)
 		{
 			return new EmployeeTitle
 			{
@@ -21,15 +22,22 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		public override EmployeeTitleDTO MapToDto(EmployeeTitle entity)
+		public override EmployeeTitleReadDTO MapToDto(EmployeeTitle entity)
 		{
-			return new EmployeeTitleDTO
+			return new EmployeeTitleReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name
 			};
 		}
 
+		public override EmployeeTitleCreateDTO MapToCreateDto(EmployeeTitleReadDTO entity)
+		{
+			return new EmployeeTitleCreateDTO
+			{
+				Id = entity.Id,
+				Name = entity.Name
+			};
+		}
 	}
 }
-	

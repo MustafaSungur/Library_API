@@ -1,16 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IService<TEntity, TDto, TContext, TId>
+	public interface IService<TEntity, TDtoCreate, TDtoRead, TContext, TId>
 		where TEntity : class
-		where TDto : class
+		where TDtoCreate : class
+		where TDtoRead : class
 		where TContext : DbContext
 	{
-		Task<TDto> AddAsync(TDto dto);
+		Task<TDtoRead> AddAsync(TDtoCreate dto);
 		Task<bool> DeleteAsync(TId id);
-		Task<IEnumerable<TDto>> GetAllAsync();
-		Task<TDto?> GetByIdAsync(TId id);
-		Task<TDto> UpdateAsync(TDto dto);
+		Task<IEnumerable<TDtoRead>> GetAllAsync();
+		Task<TDtoRead?> GetByIdAsync(TId id);
+		Task<TDtoRead> UpdateAsync(TDtoCreate dto);
+
+		TEntity MapToEntity(TDtoCreate dto);
+		TDtoRead MapToDto(TEntity entity);
+		TDtoCreate MapToCreateDto(TDtoRead entity);
 	}
 }

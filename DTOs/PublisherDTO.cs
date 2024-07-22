@@ -1,24 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace libAPI.DTOs
+﻿namespace libAPI.DTOs
 {
-	public class PublisherDTO
+	public class PublisherCreateDTO
 	{
 		public int Id { get; set; }
 
-		[Required]
-		[StringLength(100)]
 		public string Name { get; set; } = string.Empty;
 
-		[Phone]
 		public string? Phone { get; set; }
 
-		[EmailAddress]
 		public string? Email { get; set; }
 
-		[StringLength(100)]
 		public string? ContactPerson { get; set; }
-
 	}
 
+	public class PublisherReadDTO
+	{
+		public int Id { get; set; }
+
+		public string Name { get; set; } = string.Empty;
+
+		public string? Phone { get; set; }
+
+		public string? Email { get; set; }
+
+		public string? ContactPerson { get; set; }
+	}
 }

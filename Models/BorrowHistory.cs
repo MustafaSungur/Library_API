@@ -17,6 +17,11 @@ namespace libAPI.Models
 		[ForeignKey(nameof(BookId))]
 		public Book? Book { get; set; }
 
+		//public required int EmployeeId { get; set; }
+
+		//[ForeignKey(nameof(EmployeeId))]
+		//public Employee? Employee { get; set; }
+
 		public required DateTime BorrowedDate { get; set; }
 
 		public DateTime? ReturnedDate { get; set; }
@@ -25,7 +30,8 @@ namespace libAPI.Models
 
 		public required bool IsPenaltyApplied { get; set; }
 
+        public DateTime RegisterDate { get; set; }
 
 
-	}
+    }
 }

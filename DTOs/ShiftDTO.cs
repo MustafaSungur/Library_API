@@ -1,13 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace libAPI.DTOs
-{
-	public class ShiftDTO
+﻿
+	namespace libAPI.DTOs
 	{
+		public class ShiftCreateDTO
+		{
 		public short Id { get; set; }
 
-		[StringLength(50)]
 		public string Name { get; set; } = string.Empty;
+		}
+
+		public class ShiftReadDTO
+		{
+			public short Id { get; set; }
+			public string Name { get; set; } = string.Empty;
+		}
 	}
 
-}
+

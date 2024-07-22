@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface ILanguageService:IService<Language, LanguageDTO ,libAPIContext,string>
+	public interface ILanguageService:IService<Language, LanguageCreateDTO, LanguageReadDTO ,libAPIContext,string>
 	{
 	}
 }

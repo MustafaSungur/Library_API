@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCities
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<AddressCityDTO>>> GetAddressCity()
+		public async Task<ActionResult<IEnumerable<AddressCityReadDTO>>> GetAddressCity()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCities/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AddressCityDTO>> GetAddressCity(int id)
+		public async Task<ActionResult<AddressCityReadDTO>> GetAddressCity(short id)
 		{
 			var addressCity = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/AddressCities/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutAddressCity(int id, AddressCityDTO addressCityDto)
+		public async Task<IActionResult> PutAddressCity(short id, AddressCityCreateDTO addressCityDto)
 		{
 			if (id != addressCityDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/AddressCities
 		[HttpPost]
-		public async Task<ActionResult<AddressCityDTO>> PostAddressCity(AddressCityDTO addressCityDto)
+		public async Task<ActionResult<AddressCityReadDTO>> PostAddressCity(AddressCityCreateDTO addressCityDto)
 		{
 			var createdEntity = await _service.AddAsync(addressCityDto);
 			return CreatedAtAction("GetAddressCity", new { id = createdEntity.Id }, createdEntity);
@@ -77,7 +77,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/AddressCities/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteAddressCity(int id)
+		public async Task<IActionResult> DeleteAddressCity(short id)
 		{
 			var addressCity = await _service.GetByIdAsync(id);
 			if (addressCity == null)
@@ -89,7 +89,7 @@ namespace libAPI.Controllers
 			return NoContent();
 		}
 
-		private async Task<bool> AddressCityExists(int id)
+		private async Task<bool> AddressCityExists(short id)
 		{
 			return (await _service.GetByIdAsync(id)) != null;
 		}

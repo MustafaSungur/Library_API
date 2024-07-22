@@ -3,40 +3,49 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
+using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
 {
-	public class SubCategoryManager : GenericManager<SubCategory, SubCategoryDTO, libAPIContext,int>, ISubCategoryService
+	public class SubCategoryManager : GenericManager<SubCategory, SubCategoryCreateDTO, SubCategoryReadDTO, libAPIContext, short>, ISubCategoryService
 	{
-		public SubCategoryManager(IRepository<SubCategory, libAPIContext,int> repository) : base(repository)
+
+		public SubCategoryManager(ISubCategoryRepository repository) : base(repository)
 		{
 		}
 
-		public override SubCategory MapToEntity(SubCategoryDTO dto)
+		
+
+		public override SubCategory MapToEntity(SubCategoryCreateDTO dto)
 		{
 			return new SubCategory
 			{
-				Id = dto.Id,
 				Name = dto.Name,
-				CategoryId = dto.CategoryId,
-				Category = new Category
-				{
-					Id = dto.CategoryId,
-					Name = dto.Name 
-				}
+				CategoryId = dto.CategoryId
 			};
 		}
 
-		public override SubCategoryDTO MapToDto(SubCategory entity)
+		public override SubCategoryReadDTO MapToDto(SubCategory entity)
 		{
-			return new SubCategoryDTO
+			return new SubCategoryReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name,
-				CategoryId = entity.CategoryId
-				
+				Category = entity.Category != null ? new CategoryReadDTO
+				{
+					Id = entity.Category.Id,
+					Name = entity.Category.Name
+				} : null
 			};
 		}
 
+		public override SubCategoryCreateDTO MapToCreateDto(SubCategoryReadDTO dto)
+		{
+			return new SubCategoryCreateDTO
+			{
+				Name = dto.Name,
+				CategoryId = dto.Category.Id
+			};
+		}
 	}
 }

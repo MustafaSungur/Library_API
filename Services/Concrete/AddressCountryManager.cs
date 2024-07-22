@@ -6,30 +6,27 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class AddressCountryManager : GenericManager<AddressCountry, AddressCountryDTO, libAPIContext,int>, IAddressCountryService
+	public class AddressCountryManager : GenericManager<AddressCountry, AddressCountryCreateDTO, AddressCountryReadDTO, libAPIContext, short>, IAddressCountryService
 	{
-		public AddressCountryManager(IRepository<AddressCountry, libAPIContext,int> repository) : base(repository)
+		public AddressCountryManager(IRepository<AddressCountry, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override AddressCountry MapToEntity(AddressCountryDTO dto)
+		public override AddressCountry MapToEntity(AddressCountryCreateDTO dto)
 		{
 			return new AddressCountry
 			{
-				Id = dto.Id,
 				Name = dto.Name
 			};
 		}
 
-		public override AddressCountryDTO MapToDto(AddressCountry entity)
+		public override AddressCountryReadDTO MapToDto(AddressCountry entity)
 		{
-			return new AddressCountryDTO
+			return new AddressCountryReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name
 			};
 		}
-
-
 	}
 }

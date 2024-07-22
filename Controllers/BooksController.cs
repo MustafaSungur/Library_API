@@ -11,15 +11,16 @@ namespace libAPI.Controllers
 	public class BooksController : ControllerBase
 	{
 		private readonly IBookService _service;
-
-		public BooksController(IBookService service)
+		private readonly IStockService _stockService;
+		public BooksController(IBookService service, IStockService stockService)
 		{
+			_stockService = stockService;
 			_service = service;
 		}
 
 		// GET: api/Books
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<BookDTO>>> GetBooks()
+		public async Task<ActionResult<IEnumerable<BookReadDTO>>> GetBooks()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +28,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Books/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<BookDTO>> GetBook(int id)
+		public async Task<ActionResult<BookReadDTO>> GetBook(int id)
 		{
 			var book = await _service.GetByIdAsync(id);
 
@@ -41,7 +42,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Books/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutBook(int id, BookDTO bookDto)
+		public async Task<IActionResult> PutBook(int id, BookCreateDTO bookDto)
 		{
 			if (id != bookDto.Id)
 			{
@@ -69,7 +70,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Books
 		[HttpPost]
-		public async Task<ActionResult<BookDTO>> PostBook(BookDTO bookDto)
+		public async Task<ActionResult<BookReadDTO>> PostBook(BookCreateDTO bookDto)
 		{
 			var createdEntity = await _service.AddAsync(bookDto);
 			return CreatedAtAction("GetBook", new { id = createdEntity.Id }, createdEntity);

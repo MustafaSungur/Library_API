@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface ILocationService:IService<Location, LocationDTO, libAPIContext,int>
+	public interface ILocationService:IService<Location, LocationCreateDTO, LocationReadDTO, libAPIContext,int>
 	{
 	}
 }

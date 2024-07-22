@@ -1,23 +1,33 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace libAPI.DTOs
 {
-	public class EmployeeDTO
+	public class EmployeeCreateDTO
 	{
 		public string Id { get; set; } = string.Empty;
 
-		public int ApplicationUserId { get; set; } 
+		public ApplicationUserCreateDTO ApplicationUserCreateDTO { get; set; }
 
-		public EmployeeTitleDTO Title { get; set; }
+		public short TitleId { get; set; } = new();
 
 		public short DepartmentId { get; set; }
 
-		public DepartmentDTO Department { get; set; }
-
-		[Range(0, double.MaxValue)]
 		public decimal Salary { get; set; }
 
-		public ShiftDTO Shift { get; set; }
+		public short ShiftId { get; set; }
 	}
 
+	public class EmployeeReadDTO
+	{
+		public string Id { get; set; } = string.Empty;
+
+		public ApplicationUserReadDTO ApplicationUserReadDTO { get; set; }
+
+		public EmployeeTitleReadDTO Title { get; set; } = new();
+
+		public DepartmentReadDTO Department { get; set; } = new();
+
+		public decimal Salary { get; set; }
+
+		public ShiftReadDTO Shift { get; set; } = new();
+	}
 }

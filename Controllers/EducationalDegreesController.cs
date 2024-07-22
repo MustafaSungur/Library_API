@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<EducationalDegreeDTO>>> GetEducationalDegrees()
+		public async Task<ActionResult<IEnumerable<EducationalReadDTO>>> GetEducationalDegrees()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<EducationalDegreeDTO>> GetEducationalDegree(short id)
+		public async Task<ActionResult<EducationalReadDTO>> GetEducationalDegree(short id)
 		{
 			var educationalDegree = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/EducationalDegrees/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEducationalDegree(short id, EducationalDegreeDTO educationalDegreeDto)
+		public async Task<IActionResult> PutEducationalDegree(short id, EducationalCreateDTO educationalDegreeDto)
 		{
 			if (id != educationalDegreeDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/EducationalDegrees
 		[HttpPost]
-		public async Task<ActionResult<EducationalDegreeDTO>> PostEducationalDegree(EducationalDegreeDTO educationalDegreeDto)
+		public async Task<ActionResult<EducationalReadDTO>> PostEducationalDegree(EducationalCreateDTO educationalDegreeDto)
 		{
 			var createdEntity = await _service.AddAsync(educationalDegreeDto);
 			return CreatedAtAction("GetEducationalDegree", new { id = createdEntity.Id }, createdEntity);

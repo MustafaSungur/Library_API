@@ -8,39 +8,69 @@ using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
 {
-	public class BookManager : GenericManager<Book, BookDTO, libAPIContext, int>, IBookService
+	public class BookManager : GenericManager<Book, BookCreateDTO, BookReadDTO, libAPIContext, int>, IBookService
 	{
-		private readonly IStockService _stockService;
+		private readonly IStockRepository _stockRepository;
+		private readonly IAuthorBookService _authorBookService;
+		private readonly ILanguageBookService _languageService;
+		private readonly ISubcategoryBookService _subCategoryBookService;
 
-		public BookManager(IRepository<Book, libAPIContext, int> repository, IStockService stockService) : base(repository)
+		public BookManager(IBookRepository repository, IStockRepository stockRepository, IAuthorBookService authorBookService, ILanguageBookService languageService, ISubcategoryBookService subCategoryBookService) : base(repository)
 		{
-			_stockService = stockService;
+			_stockRepository = stockRepository;
+			_authorBookService = authorBookService;
+			_languageService = languageService;
+			_subCategoryBookService = subCategoryBookService;
 		}
 
-		public override async Task<BookDTO> AddAsync(BookDTO bookDto)
+		public override async Task<BookReadDTO> AddAsync(BookCreateDTO bookDto)
 		{
-			var book = MapToEntity(bookDto);
-			var createdBook = await _repository.AddAsync(book);
 
 			Stock stock = new Stock
 			{
-				BookId = createdBook.Id,
+				ISBM = bookDto.ISBM,
 				TotalCopies = bookDto.CopyCount,
 				AvailableCopies = bookDto.CopyCount,
 			};
 
-			var stockDto = _stockService.MapToDto(stock);
-			await _stockService.AddAsync(stockDto);
 
-			return MapToDto(createdBook);
+			var createdStock = await _stockRepository.AddAsync(stock);
+
+			int tempBookId =new();
+
+			for (var copy = 0; copy < bookDto.CopyCount; copy++)
+			{
+				var book = MapToEntity(bookDto); 
+				book.RegisterDate = DateTime.Now;
+				book.StockId = createdStock.ISBM;
+
+				var createdBook = await _repository.AddAsync(book);
+				tempBookId = createdBook.Id;
+
+				foreach (var authorId in bookDto.AuthorsIds)
+				{
+					await _authorBookService.AddAsync(new AuthorBookCreateDTO { AuthorId = authorId, BookId = createdBook.Id });
+				}
+				foreach (var languageId in bookDto.LanguageIds)
+				{
+					await _languageService.AddAsync(new LanguageBookCreateDTO { LanguageId = languageId, BookId = createdBook.Id });
+				}
+				foreach (var subCategoryId in bookDto.SubCategoryIds)
+				{
+					await _subCategoryBookService.AddAsync(new SubCategoryBookCreateDTO { SubCategoryId = subCategoryId, BookId = createdBook.Id });
+				}
+			}
+
+
+
+			var getNewBook = await _repository.GetByIdAsync(tempBookId); 
+			return MapToDto(getNewBook);
 		}
 
-		public override Book MapToEntity(BookDTO dto)
+		public override Book MapToEntity(BookCreateDTO dto)
 		{
-			return new Book
+			var book = new Book
 			{
-				Id = dto.Id,
-				AuthorsIds = dto.AuthorsIds,
 				Title = dto.Title,
 				ISBM = dto.ISBM,
 				PageCount = dto.PageCount,
@@ -48,35 +78,19 @@ namespace libAPI.Services.Concrete
 				Description = dto.Description,
 				PrintCount = dto.PrintCount,
 				PublisherId = dto.PublisherId,
-				SubCategoryBooks = dto.SubCategoryBooks?.Select(scb => new SubCategoryBook
-				{
-					BookId = scb.BookId,
-					SubCategoryId = scb.SubCategoryId
-				}).ToList(),
-				LanguageBooks = dto.LanguageBooks?.Select(lb => new LanguageBook
-				{
-					BookId = lb.BookId,
-					LanguageId = lb.LanguageId,
-					Language = new Language { Code = lb.LanguageId } // Language özelliğini başlatma
-				}).ToList(),
 				LocationId = dto.LocationId,
-				AuthorBooks = dto.AuthorBooks?.Select(ab => new AuthorBook
-				{
-					AuthorId = ab.AuthorId,
-					BookId = ab.BookId
-				}).ToList(),
-				Is = dto.Is,
 				PhotoUrl = dto.PhotoUrl,
-				CopyCount = dto.CopyCount
+				CopyCount = dto.CopyCount,
 			};
+
+			return book;
 		}
 
-		public override BookDTO MapToDto(Book entity)
+		public override BookReadDTO MapToDto(Book entity)
 		{
-			return new BookDTO
+			var dto = new BookReadDTO
 			{
 				Id = entity.Id,
-				AuthorsIds = entity.AuthorsIds,
 				Title = entity.Title,
 				ISBM = entity.ISBM,
 				PageCount = entity.PageCount,
@@ -84,15 +98,18 @@ namespace libAPI.Services.Concrete
 				Description = entity.Description,
 				PrintCount = entity.PrintCount,
 				PublisherId = entity.PublisherId,
-				SubCategoryBooks = entity.SubCategoryBooks?.Select(scb => new SubCategoryBookDTO { BookId = scb.BookId, SubCategoryId = scb.SubCategoryId }).ToList(),
-				LanguageBooks = entity.LanguageBooks?.Select(lb => new LanguageBookDTO { BookId = lb.BookId, LanguageId = lb.LanguageId }).ToList(),
 				LocationId = entity.LocationId,
-				AuthorBooks = entity.AuthorBooks?.Select(ab => new AuthorBookDTO { AuthorId = ab.AuthorId, BookId = ab.BookId }).ToList(),
-				Is = entity.Is,
 				PhotoUrl = entity.PhotoUrl,
-				CopyCount = entity.CopyCount
+				Stock = entity.Stock,
+				Authors = entity.AuthorBooks.Select(ab => new AuthorReadDTO { Id = ab.AuthorId, FullName = ab.Author.FullName }).ToList(),
+				Languages = entity.LanguageBooks.Select(lb => new LanguageReadDTO { Code = lb.LanguageId, Name = lb.Language.Name }).ToList(),
+				SubCategories = entity.SubCategoryBooks.Select(scb => new SubCategoryReadDTO { Id = scb.SubCategoryId, Name = scb.SubCategory.Name, Category = new CategoryReadDTO {Id=scb.SubCategory.Category.Id, Name = scb.SubCategory.Category.Name } }).ToList()
+				
 			};
+
+			return dto;
 		}
 
+		}
 	}
-}
+

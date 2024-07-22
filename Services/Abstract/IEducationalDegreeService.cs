@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IEducationalDegreeService:IService<EducationalDegree, EducationalDegreeDTO, libAPIContext,int>
+	public interface IEducationalDegreeService : IService<EducationalDegree, EducationalCreateDTO, EducationalReadDTO, libAPIContext, short>
 	{
 	}
 }

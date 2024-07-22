@@ -6,17 +6,16 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class PublisherManager : GenericManager<Publisher, PublisherDTO, libAPIContext,int>, IPublisherService
+	public class PublisherManager : GenericManager<Publisher, PublisherCreateDTO, PublisherReadDTO, libAPIContext, int>, IPublisherService
 	{
 		public PublisherManager(IRepository<Publisher, libAPIContext, int> repository) : base(repository)
 		{
 		}
 
-		public override Publisher MapToEntity(PublisherDTO dto)
+		public override Publisher MapToEntity(PublisherCreateDTO dto)
 		{
 			return new Publisher
 			{
-				Id = dto.Id,
 				Name = dto.Name,
 				Phone = dto.Phone,
 				Email = dto.Email,
@@ -24,9 +23,9 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		public override PublisherDTO MapToDto(Publisher entity)
+		public override PublisherReadDTO MapToDto(Publisher entity)
 		{
-			return new PublisherDTO
+			return new PublisherReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name,
@@ -35,6 +34,5 @@ namespace libAPI.Services.Concrete
 				ContactPerson = entity.ContactPerson
 			};
 		}
-
 	}
 }

@@ -6,32 +6,40 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class AddressManager : GenericManager<Address, AddressDTO, libAPIContext,int>, IAddressService
+	public class AddressManager : GenericManager<Address, AddressCreateDTO, AddressReadDTO, libAPIContext, int>, IAddressService
 	{
-		public AddressManager(IRepository<Address, libAPIContext,int> repository) : base(repository)
+
+		public AddressManager(IAddressRepository repository) : base(repository)
 		{
+ 
 		}
 
-		public override Address MapToEntity(AddressDTO dto)
+
+
+		public override Address MapToEntity(AddressCreateDTO dto)
 		{
 			return new Address
 			{
-				Id = dto.Id,
 				AddressCountryId = dto.AddressCountryId,
 				AddressCityId = dto.AddressCityId,
 				ClearAddress = dto.ClearAddress
 			};
 		}
 
-		public override AddressDTO MapToDto(Address entity)
+		public override AddressReadDTO MapToDto(Address entity)
 		{
-			return new AddressDTO
+			return new AddressReadDTO
 			{
 				Id = entity.Id,
-				AddressCountryId = entity.AddressCountryId,
-				AddressCityId = entity.AddressCityId,
+				City = new AddressCityReadDTO { Id=entity.AddressCityId,Name=entity.City.Name},
+				Country = new AddressCountryReadDTO { Id=entity.AddressCountryId, Name = entity.Country.Name}, 
 				ClearAddress = entity.ClearAddress
 			};
+		}
+
+		public void DetachEntity(Address address)
+		{
+			_repository.DetachEntity(address);
 		}
 	}
 }

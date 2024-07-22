@@ -7,39 +7,40 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class CategoryManager : GenericManager<Category, CategoryDTO, libAPIContext, int>, ICategoryService
+	public class CategoryManager : GenericManager<Category, CategoryCreateDTO, CategoryReadDTO, libAPIContext, short>, ICategoryService
 	{
-		public CategoryManager(IRepository<Category, libAPIContext, int> repository) : base(repository)
+		public CategoryManager(IRepository<Category, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override Category MapToEntity(CategoryDTO dto)
+		public override Category MapToEntity(CategoryCreateDTO dto)
 		{
 			return new Category
 			{
-				Id = dto.Id,
 				Name = dto.Name,
-				SubCategories = dto.SubCategories?.Select(sc => new SubCategory
-				{
-					Id = sc.Id,
-					Name = sc.Name,
-					CategoryId = sc.CategoryId
-				}).ToList()
 			};
 		}
 
-		public override CategoryDTO MapToDto(Category entity)
+		public override CategoryReadDTO MapToDto(Category entity)
 		{
-			return new CategoryDTO
+			return new CategoryReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name,
-				SubCategories = entity.SubCategories?.Select(sc => new SubCategoryDTO
+				SubCategories = entity.SubCategories?.Select(sc => new SubCategoryReadDTO
 				{
 					Id = sc.Id,
 					Name = sc.Name,
-					CategoryId = sc.CategoryId
+					
 				}).ToList()
+			};
+		}
+		public override CategoryCreateDTO MapToCreateDto(CategoryReadDTO dto)
+		{
+			return new CategoryCreateDTO
+			{
+				Name = dto.Name,
+				
 			};
 		}
 	}

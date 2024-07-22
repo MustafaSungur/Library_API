@@ -4,7 +4,8 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IAddressService:IService<Address, AddressDTO, libAPIContext,int>
+	public interface IAddressService:IService<Address, AddressCreateDTO, AddressReadDTO, libAPIContext,int>
 	{
+		void DetachEntity(Address address);
 	}
 }

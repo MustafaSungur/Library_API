@@ -2,14 +2,17 @@
 
 namespace libAPI.DTOs
 {
-	public class LanguageDTO
+	public class LanguageCreateDTO
 	{
-		[StringLength(5, MinimumLength = 2)]
 		public string Code { get; set; } = string.Empty;
 
 		public string Name { get; set; } = string.Empty;
-
-		
 	}
 
+	public class LanguageReadDTO
+	{
+		public string Code { get; set; } = string.Empty;
+
+		public string Name { get; set; } = string.Empty;
+	}
 }

@@ -12,5 +12,6 @@ namespace libAPI.Data.Repositories.Abstract
 		Task<IEnumerable<TEntity>> GetAllAsync();
 		Task<TEntity?> GetByIdAsync(TId id);
 		Task<TEntity> UpdateAsync(TEntity entity);
+		void DetachEntity(TEntity entity);
 	}
 }

@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments()
+		public async Task<ActionResult<IEnumerable<DepartmentReadDTO>>> GetDepartments()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<DepartmentDTO>> GetDepartment(short id)
+		public async Task<ActionResult<DepartmentReadDTO>> GetDepartment(short id)
 		{
 			var department = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Departments/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutDepartment(short id, DepartmentDTO departmentDto)
+		public async Task<IActionResult> PutDepartment(short id, DepartmentCreateDTO departmentDto)
 		{
 			if (id != departmentDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Departments
 		[HttpPost]
-		public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO departmentDto)
+		public async Task<ActionResult<DepartmentReadDTO>> PostDepartment(DepartmentCreateDTO departmentDto)
 		{
 			var createdEntity = await _service.AddAsync(departmentDto);
 			return CreatedAtAction("GetDepartment", new { id = createdEntity.Id }, createdEntity);

@@ -6,29 +6,37 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class ShiftManager : GenericManager<Shift, ShiftDTO, libAPIContext,int>, IShiftService
+	public class ShiftManager : GenericManager<Shift, ShiftCreateDTO, ShiftReadDTO, libAPIContext, short>, IShiftService
 	{
-		public ShiftManager(IRepository<Shift, libAPIContext,int> repository) : base(repository)
+		public ShiftManager(IRepository<Shift, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override Shift MapToEntity(ShiftDTO dto)
+		public override Shift MapToEntity(ShiftCreateDTO dto)
 		{
 			return new Shift
 			{
-				Id = dto.Id,
 				Name = dto.Name
 			};
 		}
 
-		public override ShiftDTO MapToDto(Shift entity)
+		public override ShiftReadDTO MapToDto(Shift entity)
 		{
-			return new ShiftDTO
+			return new ShiftReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name
 			};
 		}
 
+
+		public override ShiftCreateDTO MapToCreateDto(ShiftReadDTO entity)
+		{
+			return new ShiftCreateDTO
+			{
+				Id = entity.Id,
+				Name = entity.Name
+			};
+		}
 	}
 }

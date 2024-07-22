@@ -6,29 +6,27 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class LocationManager : GenericManager<Location, LocationDTO, libAPIContext,int>, ILocationService
+	public class LocationManager : GenericManager<Location, LocationCreateDTO, LocationReadDTO, libAPIContext, int>, ILocationService
 	{
-		public LocationManager(IRepository<Location, libAPIContext,int> repository) : base(repository)
+		public LocationManager(IRepository<Location, libAPIContext, int> repository) : base(repository)
 		{
 		}
 
-		public override Location MapToEntity(LocationDTO dto)
+		public override Location MapToEntity(LocationCreateDTO dto)
 		{
 			return new Location
 			{
-				Id = dto.Id,
 				Shelf = dto.Shelf
 			};
 		}
 
-		public override LocationDTO MapToDto(Location entity)
+		public override LocationReadDTO MapToDto(Location entity)
 		{
-			return new LocationDTO
+			return new LocationReadDTO
 			{
 				Id = entity.Id,
 				Shelf = entity.Shelf
 			};
 		}
-
 	}
 }

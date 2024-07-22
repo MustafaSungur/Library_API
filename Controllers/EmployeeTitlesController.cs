@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EmployeeTitles
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<EmployeeTitleDTO>>> GetEmployeeTitle()
+		public async Task<ActionResult<IEnumerable<EmployeeTitleReadDTO>>> GetEmployeeTitle()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EmployeeTitles/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<EmployeeTitleDTO>> GetEmployeeTitle(short id)
+		public async Task<ActionResult<EmployeeTitleReadDTO>> GetEmployeeTitle(short id)
 		{
 			var employeeTitle = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/EmployeeTitles/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEmployeeTitle(short id, EmployeeTitleDTO employeeTitleDto)
+		public async Task<IActionResult> PutEmployeeTitle(short id, EmployeeTitleCreateDTO employeeTitleDto)
 		{
 			if (id != employeeTitleDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/EmployeeTitles
 		[HttpPost]
-		public async Task<ActionResult<EmployeeTitleDTO>> PostEmployeeTitle(EmployeeTitleDTO employeeTitleDto)
+		public async Task<ActionResult<EmployeeTitleReadDTO>> PostEmployeeTitle(EmployeeTitleCreateDTO employeeTitleDto)
 		{
 			var createdEntity = await _service.AddAsync(employeeTitleDto);
 			return CreatedAtAction("GetEmployeeTitle", new { id = createdEntity.Id }, createdEntity);

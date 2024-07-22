@@ -2,12 +2,17 @@
 
 namespace libAPI.DTOs
 {
-	public class AddressCityDTO
+	public class AddressCityCreateDTO
 	{
 		public short Id { get; set; }
 
-		[StringLength(50)]
 		public string Name { get; set; } = string.Empty;
 	}
 
+	public class AddressCityReadDTO
+	{
+		public short Id { get; set; }
+
+		public string Name { get; set; } = string.Empty;
+	}
 }

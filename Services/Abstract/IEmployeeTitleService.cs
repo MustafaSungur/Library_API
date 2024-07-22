@@ -4,7 +4,8 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IEmployeeTitleService:IService<EmployeeTitle, EmployeeTitleDTO, libAPIContext,int>
+	public interface IEmployeeTitleService : IService<EmployeeTitle, EmployeeTitleCreateDTO, EmployeeTitleReadDTO, libAPIContext, short>
 	{
+		EmployeeTitle MapToEntity(EmployeeTitleCreateDTO shift);
 	}
 }

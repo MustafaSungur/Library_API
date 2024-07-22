@@ -6,13 +6,13 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class LanguageManager : GenericManager<Language, LanguageDTO, libAPIContext,string>, ILanguageService
+	public class LanguageManager : GenericManager<Language, LanguageCreateDTO, LanguageReadDTO, libAPIContext, string>, ILanguageService
 	{
-		public LanguageManager(IRepository<Language, libAPIContext,string> repository) : base(repository)
+		public LanguageManager(IRepository<Language, libAPIContext, string> repository) : base(repository)
 		{
 		}
 
-		public override Language MapToEntity(LanguageDTO dto)
+		public override Language MapToEntity(LanguageCreateDTO dto)
 		{
 			return new Language
 			{
@@ -21,15 +21,13 @@ namespace libAPI.Services.Concrete
 			};
 		}
 
-		public override LanguageDTO MapToDto(Language entity)
+		public override LanguageReadDTO MapToDto(Language entity)
 		{
-			return new LanguageDTO
+			return new LanguageReadDTO
 			{
 				Code = entity.Code,
 				Name = entity.Name
 			};
 		}
-
 	}
 }
-

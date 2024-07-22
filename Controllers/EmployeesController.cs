@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Employees
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetEmployee()
+		public async Task<ActionResult<IEnumerable<EmployeeReadDTO>>> GetEmployee()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Employees/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<EmployeeDTO>> GetEmployee(string id)
+		public async Task<ActionResult<EmployeeReadDTO>> GetEmployee(string id)
 		{
 			var employee = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Employees/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEmployee(string id, EmployeeDTO employeeDto)
+		public async Task<IActionResult> PutEmployee(string id, EmployeeCreateDTO employeeDto)
 		{
 			if (id != employeeDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Employees
 		[HttpPost]
-		public async Task<ActionResult<EmployeeDTO>> PostEmployee(EmployeeDTO employeeDto)
+		public async Task<ActionResult<EmployeeReadDTO>> PostEmployee(EmployeeCreateDTO employeeDto)
 		{
 			var createdEntity = await _service.AddAsync(employeeDto);
 			return CreatedAtAction("GetEmployee", new { id = createdEntity.Id }, createdEntity);

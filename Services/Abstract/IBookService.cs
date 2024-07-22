@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IBookService:IService<Book, BookDTO, libAPIContext,int>
+	public interface IBookService:IService<Book, BookCreateDTO,BookReadDTO, libAPIContext,int>
 	{
 	}
 }

@@ -2,12 +2,20 @@
 
 namespace libAPI.DTOs
 {
-	public class EducationalDegreeDTO
+	public class  EducationalCreateDTO
 	{
 		public short Id { get; set; }
 
-		[StringLength(50)]
 		public string Degree { get; set; } = string.Empty;
+
 	}
 
+	public class EducationalReadDTO
+	{
+		public short Id { get; set; }
+		public string Degree { get; set; } = string.Empty;
+
+	}
+
+	
 }

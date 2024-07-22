@@ -50,7 +50,7 @@ namespace libAPI.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("libAPI.Models.AddressCityDTO", b =>
+            modelBuilder.Entity("libAPI.Models.AddressCity", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,7 +114,7 @@ namespace libAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<short?>("GenderId")
+                    b.Property<short>("GenderId")
                         .HasColumnType("smallint");
 
                     b.Property<long>("IdNumber")
@@ -170,7 +170,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("Persons");
+                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("libAPI.Models.Author", b =>
@@ -231,9 +231,6 @@ namespace libAPI.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("varchar(13)");
 
-                    b.Property<bool>("Is")
-                        .HasColumnType("bit");
-
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
@@ -252,6 +249,13 @@ namespace libAPI.Migrations
                     b.Property<short>("PublishingYear")
                         .HasColumnType("smallint");
 
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StockId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -262,6 +266,8 @@ namespace libAPI.Migrations
                     b.HasIndex("LocationId");
 
                     b.HasIndex("PublisherId");
+
+                    b.HasIndex("StockId");
 
                     b.ToTable("Book");
                 });
@@ -320,6 +326,9 @@ namespace libAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("ReturnedDate")
                         .HasColumnType("datetime2");
 
@@ -327,8 +336,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("MemberId")
-                        .IsUnique();
+                    b.HasIndex("MemberId");
 
                     b.ToTable("BorrowHistories");
                 });
@@ -412,7 +420,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("TitleId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("libAPI.Models.EmployeeTitle", b =>
@@ -571,24 +579,16 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Stock", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("ISBM")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AvailableCopies")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalCopies")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
+                    b.HasKey("ISBM");
 
                     b.ToTable("Stocks");
                 });
@@ -633,7 +633,7 @@ namespace libAPI.Migrations
 
             modelBuilder.Entity("libAPI.Models.Address", b =>
                 {
-                    b.HasOne("libAPI.Models.AddressCityDTO", "City")
+                    b.HasOne("libAPI.Models.AddressCity", "City")
                         .WithMany()
                         .HasForeignKey("AddressCityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -660,7 +660,9 @@ namespace libAPI.Migrations
 
                     b.HasOne("libAPI.Models.Genre", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId");
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
@@ -700,9 +702,17 @@ namespace libAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("libAPI.Models.Stock", "Stock")
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Location");
 
                     b.Navigation("Publisher");
+
+                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("libAPI.Models.BorrowBooks", b =>
@@ -733,8 +743,8 @@ namespace libAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("libAPI.Models.Member", "Member")
-                        .WithOne("BorrowingHistory")
-                        .HasForeignKey("libAPI.Models.BorrowHistory", "MemberId")
+                        .WithMany("BorrowingHistory")
+                        .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -814,17 +824,6 @@ namespace libAPI.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("EducationalDegree");
-                });
-
-            modelBuilder.Entity("libAPI.Models.Stock", b =>
-                {
-                    b.HasOne("libAPI.Models.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("libAPI.Models.SubCategory", b =>

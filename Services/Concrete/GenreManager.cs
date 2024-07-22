@@ -6,29 +6,27 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class GenreManager : GenericManager<Genre, GenreDTO, libAPIContext,int>, IGenreService
+	public class GenreManager : GenericManager<Genre, GenreCreateDTO, GenreReadDTO, libAPIContext, short>, IGenreService
 	{
-		public GenreManager(IRepository<Genre, libAPIContext,int> repository) : base(repository)
+		public GenreManager(IRepository<Genre, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override Genre MapToEntity(GenreDTO dto)
+		public override Genre MapToEntity(GenreCreateDTO dto)
 		{
 			return new Genre
 			{
-				Id = dto.Id,
 				Name = dto.Name
 			};
 		}
 
-		public override GenreDTO MapToDto(Genre entity)
+		public override GenreReadDTO MapToDto(Genre entity)
 		{
-			return new GenreDTO
+			return new GenreReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name
 			};
 		}
-
 	}
 }

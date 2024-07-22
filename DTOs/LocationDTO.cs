@@ -2,13 +2,18 @@
 
 namespace libAPI.DTOs
 {
-	public class LocationDTO
+	public class LocationCreateDTO
 	{
 		public int Id { get; set; }
 
-		[StringLength(6, MinimumLength = 1)]
 		public string Shelf { get; set; } = string.Empty;
 
 	}
 
+	public class LocationReadDTO
+	{
+		public int Id { get; set; }
+		public string Shelf { get; set; } = string.Empty;
+
+	}
 }

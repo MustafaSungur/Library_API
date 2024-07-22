@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCountries
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<AddressCountryDTO>>> GetAddressCountry()
+		public async Task<ActionResult<IEnumerable<AddressCountryReadDTO>>> GetAddressCountry()
 		{
 			var results = await _service.GetAllAsync();
 			return Ok(results);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCountries/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AddressCountryDTO>> GetAddressCountry(short id)
+		public async Task<ActionResult<AddressCountryReadDTO>> GetAddressCountry(short id)
 		{
 			var addressCountry = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/AddressCountries/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutAddressCountry(short id, AddressCountryDTO addressCountryDto)
+		public async Task<IActionResult> PutAddressCountry(short id, AddressCountryCreateDTO addressCountryDto)
 		{
 			if (id != addressCountryDto.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/AddressCountries
 		[HttpPost]
-		public async Task<ActionResult<AddressCountryDTO>> PostAddressCountry(AddressCountryDTO addressCountryDto)
+		public async Task<ActionResult<AddressCountryReadDTO>> PostAddressCountry(AddressCountryCreateDTO addressCountryDto)
 		{
 			var createdEntity = await _service.AddAsync(addressCountryDto);
 

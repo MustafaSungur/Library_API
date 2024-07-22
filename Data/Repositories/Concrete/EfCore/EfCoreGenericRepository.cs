@@ -11,13 +11,13 @@ namespace ShopApp.data.Concrete.EfCore
 		protected readonly TContext _context;
 		private readonly DbSet<TEntity> _dbSet;
 
-		public EfCoreGenericRepository(TContext context)
+		public  EfCoreGenericRepository(TContext context)
 		{
 			_context = context;
 			_dbSet = _context.Set<TEntity>();
 		}
 
-		public async Task<TEntity> AddAsync(TEntity entity)
+		public virtual async Task<TEntity> AddAsync(TEntity entity)
 		{
 			await _dbSet.AddAsync(entity);
 			await _context.SaveChangesAsync();
@@ -36,21 +36,30 @@ namespace ShopApp.data.Concrete.EfCore
 			return true;
 		}
 
-		public async Task<IEnumerable<TEntity>> GetAllAsync()
+		public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
 		{
 			return await _dbSet.ToListAsync();
 		}
 
-		public async Task<TEntity?> GetByIdAsync(TId id)
+		public virtual async Task<TEntity?> GetByIdAsync(TId id)
 		{
 			return await _dbSet.FindAsync(id);
 		}
 
-		public async Task<TEntity> UpdateAsync(TEntity entity)
+		public async virtual Task<TEntity> UpdateAsync(TEntity entity)
 		{
 			_dbSet.Update(entity);
 			await _context.SaveChangesAsync();
 			return entity;
+		}
+
+		public void DetachEntity(TEntity entity)
+		{
+			var entry = _context.Entry(entity);
+			if (entry != null)
+			{
+				entry.State = EntityState.Detached;
+			}
 		}
 	}
 }

@@ -1,19 +1,29 @@
 ﻿namespace libAPI.DTOs
 {
-	public class MemberDTO
+	public class MemberCreateDTO
 	{
 		public string Id { get; set; } = string.Empty;
 
-		public int ApplicationUserId { get; set; } 
+		public ApplicationUserCreateDTO ApplicationUserCreateDTO { get; set; }
 
-		public EducationalDegreeDTO EducationalDegree { get; set; } = new EducationalDegreeDTO();
+		public short EducationalDegreeId { get; set; } 
 
-		public short PenaltyPoint { get; set; } = 0;
-
-		public bool IsBanned { get; set; } = false;
-
-		public DateTime? EndBannedDate { get; set; }
 
 	}
 
+	public class MemberReadDTO
+	{
+		public string Id { get; set; } = string.Empty;
+
+		public ApplicationUserReadDTO ApplicationUserReadDTO { get; set; }
+
+		public EducationalReadDTO EducationalDegree { get; set; }
+
+		public short PenaltyPoint { get; set; }
+
+		public bool IsBanned { get; set; }
+
+		
+		public DateTime? EndBannedDate { get; set; }
+	}
 }

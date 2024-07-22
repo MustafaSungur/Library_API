@@ -7,17 +7,20 @@ namespace libAPI.Models
 		public int Id { get; set; }
 
 
-		public int BookId { get; set; }
+		public  int BookId { get; set; }
 
 		[ForeignKey(nameof(BookId))]
-		public required Book Book { get; set; } = new();
+		public  Book Book { get; set; } 
 
 		public required string MemberId { get; set; }
 
 		[ForeignKey(nameof(MemberId))]
-		public required Member Member { get; set; }
+		public  Member Member { get; set; }
 
-		
+		//public required int EmployeeId { get; set; }
+
+		//[ForeignKey(nameof(EmployeeId))]
+		//public Employee Employee { get; set; }
 
 		public required DateTime RentalDate { get; set; } = DateTime.Now;
 

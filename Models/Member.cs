@@ -11,7 +11,10 @@ namespace libAPI.Models
 		[ForeignKey(nameof(Id))]
 		public ApplicationUser? ApplicationUser { get; set; }
 
-		public EducationalDegree EducationalDegree { get; set; } = new();
+		public short EducationalDegreeId { get; set; } 
+
+		[ForeignKey(nameof(EducationalDegreeId))]
+		public EducationalDegree EducationalDegree { get; set; } 
 
 		public short PenaltyPoint { get; set; } = 0;
 
@@ -19,6 +22,7 @@ namespace libAPI.Models
 
         public DateTime? EndBannedDate { get; set; }
 
-		public BorrowHistory? BorrowingHistory { get; set; } 
+
+		public List<BorrowHistory>? BorrowingHistory { get; set; } 
 	}
 }

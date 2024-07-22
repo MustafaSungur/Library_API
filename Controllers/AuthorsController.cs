@@ -18,7 +18,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Authors
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<AuthorDTO>>> GetAuthor()
+		public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAuthor()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -26,9 +26,9 @@ namespace libAPI.Controllers
 
 		// GET: api/Authors/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AuthorDTO>> GetAuthor(long id)
+		public async Task<ActionResult<AuthorReadDTO>> GetAuthor(long id)
 		{
-			var author = await _service.GetByIdAsync((int)id);
+			var author = await _service.GetByIdAsync(id);
 
 			if (author == null)
 			{
@@ -40,7 +40,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Authors/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutAuthor(long id, AuthorDTO authorDto)
+		public async Task<IActionResult> PutAuthor(long id, AuthorCreateDTO authorDto)
 		{
 			if (id != authorDto.Id)
 			{
@@ -68,7 +68,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Authors
 		[HttpPost]
-		public async Task<ActionResult<AuthorDTO>> PostAuthor(AuthorDTO authorDto)
+		public async Task<ActionResult<AuthorReadDTO>> PostAuthor(AuthorCreateDTO authorDto)
 		{
 			var createdEntity = await _service.AddAsync(authorDto);
 

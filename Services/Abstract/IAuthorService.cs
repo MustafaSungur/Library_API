@@ -4,7 +4,7 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IAuthorService:IService<Author, AuthorDTO, libAPIContext,int>
+	public interface IAuthorService:IService<Author, AuthorCreateDTO, AuthorReadDTO, libAPIContext,long>
 	{
 	}
 }

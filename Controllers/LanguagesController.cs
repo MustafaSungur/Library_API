@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<LanguageDTO>>> GetLanguages()
+		public async Task<ActionResult<IEnumerable<LanguageReadDTO>>> GetLanguages()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<LanguageDTO>> GetLanguage(string id)
+		public async Task<ActionResult<LanguageReadDTO>> GetLanguage(string id)
 		{
 			var language = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Languages/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutLanguage(string id, LanguageDTO language)
+		public async Task<IActionResult> PutLanguage(string id, LanguageCreateDTO language)
 		{
 			if (id != language.Code)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Languages
 		[HttpPost]
-		public async Task<ActionResult<LanguageDTO>> PostLanguage(LanguageDTO language)
+		public async Task<ActionResult<LanguageReadDTO>> PostLanguage(LanguageCreateDTO language)
 		{
 			try
 			{

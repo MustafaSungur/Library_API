@@ -4,10 +4,9 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IStockService:IService<Stock, StockDTO, libAPIContext,int>
+	public interface IStockService:IService<Stock, StockCreateDTO, StockReadDTO, libAPIContext,string>
 	{
-		Task<Stock> GetStockByBookIdAsync(int id);
-		StockDTO MapToDto(Stock stock);
+	
 	}
 	
 }

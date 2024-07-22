@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IAddressCityRepository:IRepository<SubCategory, libAPIContext,int>
+	public interface IAddressCityRepository:IRepository<AddressCity, libAPIContext, short>
 	{
 	}
 }

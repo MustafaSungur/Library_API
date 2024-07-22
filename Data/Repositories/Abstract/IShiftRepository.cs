@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IShiftRepository:IRepository<Shift, libAPIContext,int>
+	public interface IShiftRepository:IRepository<Shift, libAPIContext,short>
 	{
 	}
 }

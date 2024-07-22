@@ -4,7 +4,8 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IDepartmentsService:IService<Department, DepartmentDTO, libAPIContext,int>
+	public interface IDepartmentsService : IService<Department, DepartmentCreateDTO, DepartmentReadDTO, libAPIContext, short>
 	{
+		
 	}
 }

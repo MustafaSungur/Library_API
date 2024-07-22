@@ -2,12 +2,17 @@
 
 namespace libAPI.DTOs
 {
-	public class DepartmentDTO
+	public class DepartmentCreateDTO
 	{
 		public short Id { get; set; }
 
-		[StringLength(50)]
 		public string Name { get; set; } = string.Empty;
 	}
 
+	public class DepartmentReadDTO
+	{
+		public short Id { get; set; }
+
+		public string Name { get; set; } = string.Empty;
+	}
 }

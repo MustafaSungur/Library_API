@@ -7,10 +7,10 @@ namespace libAPI.Models
         public int BookId { get; set; }
 
         [JsonIgnore]
-        public Book Book { get; set; } = new();
+        public Book Book { get; set; } 
 
         public required string LanguageId { get; set; }
 
-        public required Language Language { get; set; } = new();
+        public  Language Language { get; set; } 
     }
 }

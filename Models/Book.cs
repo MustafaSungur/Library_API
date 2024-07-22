@@ -43,17 +43,20 @@ namespace libAPI.Models
 
 		public int LocationId { get; set; }
 
-		[JsonIgnore]
 		[ForeignKey(nameof(LocationId))]
 		public Location? Location { get; set; }
 
 		public List<AuthorBook>? AuthorBooks { get; internal set; }
 
-        public bool Is { get; set; }
-
         public string? PhotoUrl { get; set; }
-        
-        // Stock tablosunu oluşturmak icin gerekli
+
+        public DateTime RegisterDate { get; set; }
+
+        public string StockId { get; set; }
+
+		[ForeignKey(nameof(StockId))]
+		public Stock Stock { get; set; }
+
         [NotMapped]
         public short CopyCount { get; set; }
     }

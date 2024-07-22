@@ -18,7 +18,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Addresses
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<AddressDTO>>> GetAddress()
+		public async Task<ActionResult<IEnumerable<AddressReadDTO>>> GetAddress()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -26,7 +26,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Addresses/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AddressDTO>> GetAddress(int id)
+		public async Task<ActionResult<AddressReadDTO>> GetAddress(int id)
 		{
 			var address = await _service.GetByIdAsync(id);
 
@@ -40,7 +40,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Addresses/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutAddress(int id, AddressDTO addressDto)
+		public async Task<IActionResult> PutAddress(int id, AddressCreateDTO addressDto)
 		{
 			if (id != addressDto.Id)
 			{
@@ -68,7 +68,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Addresses
 		[HttpPost]
-		public async Task<ActionResult<AddressDTO>> PostAddress(AddressDTO addressDto)
+		public async Task<ActionResult<AddressReadDTO>> PostAddress(AddressCreateDTO addressDto)
 		{
 			var createdEntity = await _service.AddAsync(addressDto);
 

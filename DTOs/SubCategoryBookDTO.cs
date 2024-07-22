@@ -1,13 +1,16 @@
 ﻿namespace libAPI.DTOs
 {
-	public class SubCategoryBookDTO
+	public class SubCategoryBookCreateDTO
 	{
 		public int BookId { get; set; }
-
 		public short SubCategoryId { get; set; }
-
-		public BookDTO? Book { get; set; }
-		public SubCategoryDTO? SubCategory { get; set; }
 	}
 
+	public class SubCategoryBookReadDTO
+	{
+		public int BookId { get; set; }
+		public short SubCategoryId { get; set; }
+		public BookReadDTO? Book { get; set; }
+		public SubCategoryReadDTO? SubCategory { get; set; }
+	}
 }

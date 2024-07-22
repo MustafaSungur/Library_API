@@ -6,29 +6,36 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class DepartmentManager : GenericManager<Department, DepartmentDTO, libAPIContext,int>, IDepartmentsService
+	public class DepartmentManager : GenericManager<Department, DepartmentCreateDTO, DepartmentReadDTO, libAPIContext, short>, IDepartmentsService
 	{
-		public DepartmentManager(IRepository<Department, libAPIContext,int> repository) : base(repository)
+		public DepartmentManager(IRepository<Department, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override Department MapToEntity(DepartmentDTO dto)
+		public override Department MapToEntity(DepartmentCreateDTO dto)
 		{
 			return new Department
 			{
-				Id = dto.Id,
 				Name = dto.Name
 			};
 		}
 
-		public override DepartmentDTO MapToDto(Department entity)
+		public override DepartmentReadDTO MapToDto(Department entity)
 		{
-			return new DepartmentDTO
+			return new DepartmentReadDTO
 			{
 				Id = entity.Id,
 				Name = entity.Name
 			};
 		}
 
+		public override DepartmentCreateDTO MapToCreateDto(DepartmentReadDTO entity)
+		{
+			return new DepartmentCreateDTO
+			{
+				Id = entity.Id,
+				Name = entity.Name
+			};
+		}
 	}
 }

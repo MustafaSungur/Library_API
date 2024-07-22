@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IGenreRepository:IRepository<Genre, libAPIContext,int>
+	public interface IGenreRepository:IRepository<Genre, libAPIContext, short>
 	{
 	}
 }

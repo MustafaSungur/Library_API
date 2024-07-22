@@ -6,29 +6,27 @@ using libAPI.Services.Abstract;
 
 namespace libAPI.Services.Concrete
 {
-	public class EducationalDegreeManager : GenericManager<EducationalDegree, EducationalDegreeDTO, libAPIContext,int>, IEducationalDegreeService
+	public class EducationalDegreeManager : GenericManager<EducationalDegree, EducationalCreateDTO, EducationalReadDTO, libAPIContext, short>, IEducationalDegreeService
 	{
-		public EducationalDegreeManager(IRepository<EducationalDegree, libAPIContext,int> repository) : base(repository)
+		public EducationalDegreeManager(IRepository<EducationalDegree, libAPIContext, short> repository) : base(repository)
 		{
 		}
 
-		public override EducationalDegree MapToEntity(EducationalDegreeDTO dto)
+		public override EducationalDegree MapToEntity(EducationalCreateDTO dto)
 		{
 			return new EducationalDegree
 			{
-				Id = dto.Id,
 				Degree = dto.Degree
 			};
 		}
 
-		public override EducationalDegreeDTO MapToDto(EducationalDegree entity)
+		public override EducationalReadDTO MapToDto(EducationalDegree entity)
 		{
-			return new EducationalDegreeDTO
+			return new EducationalReadDTO
 			{
 				Id = entity.Id,
 				Degree = entity.Degree
 			};
 		}
-
 	}
 }

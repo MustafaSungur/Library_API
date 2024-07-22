@@ -2,9 +2,10 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IStockRepository: IRepository<Stock, libAPIContext, int>
+	public interface IStockRepository: IRepository<Stock, libAPIContext, string>
 	{
-		Task<Stock> GetStockByBookIdAsync(int id);
+	
+		
 
 	}
 

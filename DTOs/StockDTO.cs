@@ -1,14 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using libAPI.Models;
 
 namespace libAPI.DTOs
 {
-	public class StockDTO
+	public class StockCreateDTO
 	{
-		public int Id { get; set; }
-		public int BookId { get; set; }
+		public string ISBM { get; set; }
 		public int TotalCopies { get; set; }
 		public int AvailableCopies { get; set; }
 	}
 
-
+	public class StockReadDTO
+	{
+        public string ISBM { get; set; }
+        public int TotalCopies { get; set; }
+		public int AvailableCopies { get; set; }
+	}
 }

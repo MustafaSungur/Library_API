@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<LocationDTO>>> GetLocations()
+		public async Task<ActionResult<IEnumerable<LocationReadDTO>>> GetLocations()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<LocationDTO>> GetLocation(int id)
+		public async Task<ActionResult<LocationReadDTO>> GetLocation(int id)
 		{
 			var location = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Locations/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutLocation(int id, LocationDTO location)
+		public async Task<IActionResult> PutLocation(int id, LocationCreateDTO location)
 		{
 			if (id != location.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Locations
 		[HttpPost]
-		public async Task<ActionResult<LocationDTO>> PostLocation(LocationDTO location)
+		public async Task<ActionResult<LocationReadDTO>> PostLocation(LocationCreateDTO location)
 		{
 			var createdEntity = await _service.AddAsync(location);
 			return CreatedAtAction("GetLocation", new { id = createdEntity.Id }, createdEntity);

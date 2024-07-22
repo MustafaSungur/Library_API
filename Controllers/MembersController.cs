@@ -11,23 +11,37 @@ namespace libAPI.Controllers
 	public class MembersController : ControllerBase
 	{
 		private readonly IMemberService _service;
-
-		public MembersController(IMemberService service)
+		private readonly IBorrowHistoryService _borrowHistoryService;
+		public MembersController(IMemberService service, IBorrowHistoryService borrowHistoryService)
 		{
 			_service = service;
+			_borrowHistoryService = borrowHistoryService;
 		}
 
 		// GET: api/Members
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<MemberDTO>>> GetMembers()
+		public async Task<ActionResult<IEnumerable<MemberReadDTO>>> GetMembers()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
 		}
 
+		// GET: api/Members/History/{memberId}
+		[HttpGet("History/{memberId}")]
+		public async Task<ActionResult<IEnumerable<BorrowHistoryReadDTO>>> GetMemberBookHistory(string memberId)
+		{
+			var result = await _borrowHistoryService.GetAllByMemberIdAsync(memberId);
+			if (result == null || !result.Any()) // If no results, return NotFound
+			{
+				return NotFound($"No borrowing history found for member with ID: {memberId}");
+			}
+
+			return Ok(result);
+		}
+
 		// GET: api/Members/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<MemberDTO>> GetMember(string id)
+		public async Task<ActionResult<MemberReadDTO>> GetMember(string id)
 		{
 			var member = await _service.GetByIdAsync(id);
 
@@ -41,7 +55,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Members/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutMember(string id, MemberDTO member)
+		public async Task<IActionResult> PutMember(string id, MemberCreateDTO member)
 		{
 			if (id != member.Id)
 			{
@@ -69,7 +83,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Members
 		[HttpPost]
-		public async Task<ActionResult<MemberDTO>> PostMember(MemberDTO member)
+		public async Task<ActionResult<MemberReadDTO>> PostMember(MemberCreateDTO member)
 		{
 			try
 			{

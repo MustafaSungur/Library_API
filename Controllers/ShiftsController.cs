@@ -20,7 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<ShiftDTO>>> GetShifts()
+		public async Task<ActionResult<IEnumerable<ShiftReadDTO>>> GetShifts()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -28,7 +28,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<ShiftDTO>> GetShift(short id)
+		public async Task<ActionResult<ShiftReadDTO>> GetShift(short id)
 		{
 			var shift = await _service.GetByIdAsync(id);
 
@@ -42,7 +42,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Shifts/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutShift(short id, ShiftDTO shift)
+		public async Task<IActionResult> PutShift(short id, ShiftCreateDTO shift)
 		{
 			if (id != shift.Id)
 			{
@@ -70,7 +70,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Shifts
 		[HttpPost]
-		public async Task<ActionResult<ShiftDTO>> PostShift(ShiftDTO shift)
+		public async Task<ActionResult<ShiftReadDTO>> PostShift(ShiftCreateDTO shift)
 		{
 			var createdEntity = await _service.AddAsync(shift);
 			return CreatedAtAction("GetShift", new { id = createdEntity.Id }, createdEntity);

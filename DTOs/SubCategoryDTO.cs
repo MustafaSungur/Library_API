@@ -1,19 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using libAPI.Models;
 
 namespace libAPI.DTOs
 {
-	public class SubCategoryDTO
+	public class SubCategoryCreateDTO
 	{
 		public short Id { get; set; }
 
-		[StringLength(100)]
 		public string Name { get; set; } = string.Empty;
 
 		public short CategoryId { get; set; }
-
-		public CategoryDTO? Category { get; set; }
-		public List<SubCategoryBookDTO>? SubCategoryBooks { get; set; }
-
 	}
 
+	public class SubCategoryReadDTO
+	{
+		public short Id { get; set; }
+
+		public string Name { get; set; } = string.Empty;
+
+        public CategoryReadDTO? Category { get; set; }
+
+        public List<SubCategoryBookReadDTO>? SubCategoryBooks { get; set; }
+	}
 }

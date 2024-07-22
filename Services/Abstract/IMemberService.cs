@@ -4,7 +4,8 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IMemberService:IService<Member, MemberDTO, libAPIContext,string>
+	public interface IMemberService : IService<Member, MemberCreateDTO, MemberReadDTO, libAPIContext, string>
 	{
+	
 	}
 }

@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCityDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCityReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -29,13 +29,13 @@
     "Parameters": [
       {
         "Name": "addressCityDto",
-        "Type": "libAPI.DTOs.AddressCityDTO",
+        "Type": "libAPI.DTOs.AddressCityCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressCityDTO",
+        "Type": "libAPI.DTOs.AddressCityReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -55,13 +55,13 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int16",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressCityDTO",
+        "Type": "libAPI.DTOs.AddressCityReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -81,12 +81,12 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int16",
         "IsRequired": true
       },
       {
         "Name": "addressCityDto",
-        "Type": "libAPI.DTOs.AddressCityDTO",
+        "Type": "libAPI.DTOs.AddressCityCreateDTO",
         "IsRequired": true
       }
     ],
@@ -102,7 +102,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Int16",
         "IsRequired": true
       }
     ],
@@ -118,7 +118,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCountryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressCountryReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -138,13 +138,13 @@
     "Parameters": [
       {
         "Name": "addressCountryDto",
-        "Type": "libAPI.DTOs.AddressCountryDTO",
+        "Type": "libAPI.DTOs.AddressCountryCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressCountryDTO",
+        "Type": "libAPI.DTOs.AddressCountryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -170,7 +170,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressCountryDTO",
+        "Type": "libAPI.DTOs.AddressCountryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -195,7 +195,7 @@
       },
       {
         "Name": "addressCountryDto",
-        "Type": "libAPI.DTOs.AddressCountryDTO",
+        "Type": "libAPI.DTOs.AddressCountryCreateDTO",
         "IsRequired": true
       }
     ],
@@ -227,7 +227,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AddressReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -247,13 +247,13 @@
     "Parameters": [
       {
         "Name": "addressDto",
-        "Type": "libAPI.DTOs.AddressDTO",
+        "Type": "libAPI.DTOs.AddressCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressDTO",
+        "Type": "libAPI.DTOs.AddressReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -279,7 +279,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AddressDTO",
+        "Type": "libAPI.DTOs.AddressReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -304,7 +304,7 @@
       },
       {
         "Name": "addressDto",
-        "Type": "libAPI.DTOs.AddressDTO",
+        "Type": "libAPI.DTOs.AddressCreateDTO",
         "IsRequired": true
       }
     ],
@@ -336,7 +336,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AuthorDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.AuthorReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -356,13 +356,13 @@
     "Parameters": [
       {
         "Name": "authorDto",
-        "Type": "libAPI.DTOs.AuthorDTO",
+        "Type": "libAPI.DTOs.AuthorCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AuthorDTO",
+        "Type": "libAPI.DTOs.AuthorReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -388,7 +388,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.AuthorDTO",
+        "Type": "libAPI.DTOs.AuthorReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -413,7 +413,7 @@
       },
       {
         "Name": "authorDto",
-        "Type": "libAPI.DTOs.AuthorDTO",
+        "Type": "libAPI.DTOs.AuthorCreateDTO",
         "IsRequired": true
       }
     ],
@@ -445,7 +445,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BookDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BookReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -465,13 +465,13 @@
     "Parameters": [
       {
         "Name": "bookDto",
-        "Type": "libAPI.DTOs.BookDTO",
+        "Type": "libAPI.DTOs.BookCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.BookDTO",
+        "Type": "libAPI.DTOs.BookReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -497,7 +497,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.BookDTO",
+        "Type": "libAPI.DTOs.BookReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -522,7 +522,7 @@
       },
       {
         "Name": "bookDto",
-        "Type": "libAPI.DTOs.BookDTO",
+        "Type": "libAPI.DTOs.BookCreateDTO",
         "IsRequired": true
       }
     ],
@@ -554,7 +554,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BorrowBooksDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BorrowBooksReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -574,13 +574,13 @@
     "Parameters": [
       {
         "Name": "borrowBooksDto",
-        "Type": "libAPI.DTOs.BorrowBooksDTO",
+        "Type": "libAPI.DTOs.BorrowBooksCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.BorrowBooksDTO",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BorrowBooksReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -606,7 +606,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.BorrowBooksDTO",
+        "Type": "libAPI.DTOs.BorrowBooksReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -631,7 +631,7 @@
       },
       {
         "Name": "borrowBooksDto",
-        "Type": "libAPI.DTOs.BorrowBooksDTO",
+        "Type": "libAPI.DTOs.BorrowBooksCreateDTO",
         "IsRequired": true
       }
     ],
@@ -663,7 +663,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.CategoryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.CategoryReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -683,13 +683,13 @@
     "Parameters": [
       {
         "Name": "categoryDto",
-        "Type": "libAPI.DTOs.CategoryDTO",
+        "Type": "libAPI.DTOs.CategoryCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.CategoryDTO",
+        "Type": "libAPI.DTOs.CategoryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -715,7 +715,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.CategoryDTO",
+        "Type": "libAPI.DTOs.CategoryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -740,7 +740,7 @@
       },
       {
         "Name": "categoryDto",
-        "Type": "libAPI.DTOs.CategoryDTO",
+        "Type": "libAPI.DTOs.CategoryCreateDTO",
         "IsRequired": true
       }
     ],
@@ -772,7 +772,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.DepartmentDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.DepartmentReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -792,13 +792,13 @@
     "Parameters": [
       {
         "Name": "departmentDto",
-        "Type": "libAPI.DTOs.DepartmentDTO",
+        "Type": "libAPI.DTOs.DepartmentCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.DepartmentDTO",
+        "Type": "libAPI.DTOs.DepartmentReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -824,7 +824,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.DepartmentDTO",
+        "Type": "libAPI.DTOs.DepartmentReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -849,7 +849,7 @@
       },
       {
         "Name": "departmentDto",
-        "Type": "libAPI.DTOs.DepartmentDTO",
+        "Type": "libAPI.DTOs.DepartmentCreateDTO",
         "IsRequired": true
       }
     ],
@@ -881,7 +881,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EducationalDegreeDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EducationalReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -901,13 +901,13 @@
     "Parameters": [
       {
         "Name": "educationalDegreeDto",
-        "Type": "libAPI.DTOs.EducationalDegreeDTO",
+        "Type": "libAPI.DTOs.EducationalCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EducationalDegreeDTO",
+        "Type": "libAPI.DTOs.EducationalReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -933,7 +933,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EducationalDegreeDTO",
+        "Type": "libAPI.DTOs.EducationalReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -958,7 +958,7 @@
       },
       {
         "Name": "educationalDegreeDto",
-        "Type": "libAPI.DTOs.EducationalDegreeDTO",
+        "Type": "libAPI.DTOs.EducationalCreateDTO",
         "IsRequired": true
       }
     ],
@@ -990,7 +990,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1010,13 +1010,13 @@
     "Parameters": [
       {
         "Name": "employeeDto",
-        "Type": "libAPI.DTOs.EmployeeDTO",
+        "Type": "libAPI.DTOs.EmployeeCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EmployeeDTO",
+        "Type": "libAPI.DTOs.EmployeeReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1042,7 +1042,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EmployeeDTO",
+        "Type": "libAPI.DTOs.EmployeeReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1067,7 +1067,7 @@
       },
       {
         "Name": "employeeDto",
-        "Type": "libAPI.DTOs.EmployeeDTO",
+        "Type": "libAPI.DTOs.EmployeeCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1099,7 +1099,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeTitleDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.EmployeeTitleReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1119,13 +1119,13 @@
     "Parameters": [
       {
         "Name": "employeeTitleDto",
-        "Type": "libAPI.DTOs.EmployeeTitleDTO",
+        "Type": "libAPI.DTOs.EmployeeTitleCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EmployeeTitleDTO",
+        "Type": "libAPI.DTOs.EmployeeTitleReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1151,7 +1151,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.EmployeeTitleDTO",
+        "Type": "libAPI.DTOs.EmployeeTitleReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1176,7 +1176,7 @@
       },
       {
         "Name": "employeeTitleDto",
-        "Type": "libAPI.DTOs.EmployeeTitleDTO",
+        "Type": "libAPI.DTOs.EmployeeTitleCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1208,7 +1208,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.GenreDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.GenreReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1228,13 +1228,13 @@
     "Parameters": [
       {
         "Name": "genre",
-        "Type": "libAPI.DTOs.GenreDTO",
+        "Type": "libAPI.DTOs.GenreCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.GenreDTO",
+        "Type": "libAPI.DTOs.GenreReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1260,7 +1260,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.GenreDTO",
+        "Type": "libAPI.DTOs.GenreReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1285,7 +1285,7 @@
       },
       {
         "Name": "genre",
-        "Type": "libAPI.DTOs.GenreDTO",
+        "Type": "libAPI.DTOs.GenreCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1317,7 +1317,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LanguageDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LanguageReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1337,13 +1337,13 @@
     "Parameters": [
       {
         "Name": "language",
-        "Type": "libAPI.DTOs.LanguageDTO",
+        "Type": "libAPI.DTOs.LanguageCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.LanguageDTO",
+        "Type": "libAPI.DTOs.LanguageReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1369,7 +1369,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.LanguageDTO",
+        "Type": "libAPI.DTOs.LanguageReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1394,7 +1394,7 @@
       },
       {
         "Name": "language",
-        "Type": "libAPI.DTOs.LanguageDTO",
+        "Type": "libAPI.DTOs.LanguageCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1426,7 +1426,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LocationDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.LocationReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1446,13 +1446,13 @@
     "Parameters": [
       {
         "Name": "location",
-        "Type": "libAPI.DTOs.LocationDTO",
+        "Type": "libAPI.DTOs.LocationCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.LocationDTO",
+        "Type": "libAPI.DTOs.LocationReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1478,7 +1478,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.LocationDTO",
+        "Type": "libAPI.DTOs.LocationReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1503,7 +1503,7 @@
       },
       {
         "Name": "location",
-        "Type": "libAPI.DTOs.LocationDTO",
+        "Type": "libAPI.DTOs.LocationCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1535,7 +1535,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.MemberDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.MemberReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1555,13 +1555,13 @@
     "Parameters": [
       {
         "Name": "member",
-        "Type": "libAPI.DTOs.MemberDTO",
+        "Type": "libAPI.DTOs.MemberCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.MemberDTO",
+        "Type": "libAPI.DTOs.MemberReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1587,7 +1587,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.MemberDTO",
+        "Type": "libAPI.DTOs.MemberReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1612,7 +1612,7 @@
       },
       {
         "Name": "member",
-        "Type": "libAPI.DTOs.MemberDTO",
+        "Type": "libAPI.DTOs.MemberCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1635,6 +1635,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "libAPI.Controllers.MembersController",
+    "Method": "GetMemberBookHistory",
+    "RelativePath": "api/Members/History/{memberId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memberId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.BorrowHistoryReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "libAPI.Controllers.PublishersController",
     "Method": "GetPublishers",
     "RelativePath": "api/Publishers",
@@ -1644,7 +1670,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.PublisherDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.PublisherReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1664,13 +1690,13 @@
     "Parameters": [
       {
         "Name": "publisher",
-        "Type": "libAPI.DTOs.PublisherDTO",
+        "Type": "libAPI.DTOs.PublisherCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.PublisherDTO",
+        "Type": "libAPI.DTOs.PublisherReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1696,7 +1722,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.PublisherDTO",
+        "Type": "libAPI.DTOs.PublisherReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1721,7 +1747,7 @@
       },
       {
         "Name": "publisher",
-        "Type": "libAPI.DTOs.PublisherDTO",
+        "Type": "libAPI.DTOs.PublisherCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1753,7 +1779,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.ShiftDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.ShiftReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1773,13 +1799,13 @@
     "Parameters": [
       {
         "Name": "shift",
-        "Type": "libAPI.DTOs.ShiftDTO",
+        "Type": "libAPI.DTOs.ShiftCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.ShiftDTO",
+        "Type": "libAPI.DTOs.ShiftReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1805,7 +1831,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.ShiftDTO",
+        "Type": "libAPI.DTOs.ShiftReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1830,7 +1856,7 @@
       },
       {
         "Name": "shift",
-        "Type": "libAPI.DTOs.ShiftDTO",
+        "Type": "libAPI.DTOs.ShiftCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1862,7 +1888,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.SubCategoryDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[libAPI.DTOs.SubCategoryReadDTO, libAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1882,13 +1908,13 @@
     "Parameters": [
       {
         "Name": "subCategory",
-        "Type": "libAPI.DTOs.SubCategoryDTO",
+        "Type": "libAPI.DTOs.SubCategoryCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.SubCategoryDTO",
+        "Type": "libAPI.DTOs.SubCategoryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1914,7 +1940,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "libAPI.DTOs.SubCategoryDTO",
+        "Type": "libAPI.DTOs.SubCategoryReadDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1939,7 +1965,7 @@
       },
       {
         "Name": "subCategory",
-        "Type": "libAPI.DTOs.SubCategoryDTO",
+        "Type": "libAPI.DTOs.SubCategoryCreateDTO",
         "IsRequired": true
       }
     ],

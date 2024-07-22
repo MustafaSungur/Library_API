@@ -2,7 +2,7 @@
 
 namespace libAPI.Data.Repositories.Abstract
 {
-	public interface IAddressCountryRepository :IRepository<AddressCountry, libAPIContext,int>
+	public interface IAddressCountryRepository :IRepository<AddressCountry, libAPIContext, short>
 	{
 	}
 }

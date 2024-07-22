@@ -4,7 +4,8 @@ using libAPI.Models;
 
 namespace libAPI.Services.Abstract
 {
-	public interface IShiftService:IService<Shift, ShiftDTO, libAPIContext,int>
+	public interface IShiftService : IService<Shift, ShiftCreateDTO, ShiftReadDTO, libAPIContext, short>
 	{
+		
 	}
 }

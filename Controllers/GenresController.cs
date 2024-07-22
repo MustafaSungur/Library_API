@@ -19,7 +19,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<GenreDTO>>> GetGenres()
+		public async Task<ActionResult<IEnumerable<GenreReadDTO>>> GetGenres()
 		{
 			var result = await _service.GetAllAsync();
 			return Ok(result);
@@ -27,7 +27,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<GenreDTO>> GetGenre(short id)
+		public async Task<ActionResult<GenreReadDTO>> GetGenre(short id)
 		{
 			var genreDto = await _service.GetByIdAsync(id);
 
@@ -41,7 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Genres/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutGenre(short id, GenreDTO genre)
+		public async Task<IActionResult> PutGenre(short id, GenreCreateDTO genre)
 		{
 			if (id != genre.Id)
 			{
@@ -69,7 +69,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Genres
 		[HttpPost]
-		public async Task<ActionResult<GenreDTO>> PostGenre(GenreDTO genre)
+		public async Task<ActionResult<GenreReadDTO>> PostGenre(GenreCreateDTO genre)
 		{
 			var createdEntity = await _service.AddAsync(genre);
 			return CreatedAtAction("GetGenre", new { id = createdEntity.Id }, createdEntity);

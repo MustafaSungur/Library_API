@@ -1,13 +1,16 @@
 ﻿namespace libAPI.DTOs
 {
-	public class LanguageBookDTO
+	public class LanguageBookCreateDTO
 	{
 		public int BookId { get; set; }
-
 		public string LanguageId { get; set; } = string.Empty;
-
-		public BookDTO? Book { get; set; }
-		public LanguageDTO? Language { get; set; }
 	}
 
+	public class LanguageBookReadDTO
+	{
+		public int BookId { get; set; }
+		public string LanguageId { get; set; } = string.Empty;
+		public BookReadDTO? Book { get; set; }
+		public LanguageReadDTO? Language { get; set; }
+	}
 }

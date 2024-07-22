@@ -1,23 +1,47 @@
 ﻿using libAPI.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace libAPI.DTOs
 {
-	public class ApplicationUserDTO
+	public class ApplicationUserCreateDTO
 	{
-		public string Id { get; set; } = string.Empty;
 		public long IdNumber { get; set; }
 
-		[StringLength(50)]
 		public string FirstName { get; set; } = string.Empty;
 
-		[StringLength(50)]
 		public string LastName { get; set; } = string.Empty;
 
-		public Genre? Gender { get; set; }
+		public short GenderId { get; set; }
 
-		public AddressDTO Address { get; set; }
+		public AddressCreateDTO Address { get; set; } = new();
+
+		public DateTime BirthDate { get; set; }
+
+		public string? PhotoUrl { get; set; }
+
+		public string PhoneNumber { get; set; }
+
+		public string Email { get; set; }
+
+		public string Password { get; set; } = string.Empty;
+
+		[Compare(nameof(Password))]
+		public string ConfirmPassword { get; set; } = string.Empty;
+	}
+
+	public class ApplicationUserReadDTO
+	{
+		public string Id { get; set; } = string.Empty;
+
+		public long IdNumber { get; set; }
+
+		public string FirstName { get; set; } = string.Empty;
+
+		public string LastName { get; set; } = string.Empty;
+
+		public GenreReadDTO? Gender { get; set; }
+
+		public AddressReadDTO Address { get; set; } = new();
 
 		public DateTime BirthDate { get; set; }
 
@@ -26,13 +50,5 @@ namespace libAPI.DTOs
 		public bool Status { get; set; }
 
 		public string? PhotoUrl { get; set; }
-
-		[NotMapped]
-		public string? Password { get; set; }
-
-		[NotMapped]
-		[Compare(nameof(Password))]
-		public string? ConfirmPassword { get; set; }
 	}
-
 }

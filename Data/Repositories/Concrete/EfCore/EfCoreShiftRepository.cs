@@ -4,7 +4,7 @@ using ShopApp.data.Concrete.EfCore;
 
 namespace libAPI.Data.Repositories.Concrete.EfCore
 {
-	public class EfCoreShiftRepository : EfCoreGenericRepository<Shift, libAPIContext,int>,IShiftRepository
+	public class EfCoreShiftRepository : EfCoreGenericRepository<Shift, libAPIContext,short>,IShiftRepository
 	{
 		public EfCoreShiftRepository(libAPIContext context) : base(context)
 		{

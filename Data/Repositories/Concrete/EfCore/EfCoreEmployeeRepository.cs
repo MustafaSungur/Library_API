@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
+using System.Threading.Tasks;
 using libAPI.Data;
 using libAPI.Data.Repositories.Abstract;
 using libAPI.Models;
@@ -13,10 +14,48 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 		{
 		}
 
+		public override async Task<IEnumerable<Employee>> GetAllAsync()
+		{
+			return await _context.Employees
+				.AsNoTracking()
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Gender)
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Address)
+						.ThenInclude(a => a.City)
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Address)
+						.ThenInclude(a => a.Country)
+				.Include(e => e.Department)
+				.Include(e => e.Shift)
+				.Include(e => e.Title)
+				.ToListAsync();
+		}
+
+
+
+		public override async Task<Employee?> GetByIdAsync(string id)
+		{
+			return await _context.Employees
+				.AsTracking()
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Gender)
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Address)
+						.ThenInclude(a => a.City)
+				.Include(e => e.ApplicationUser)
+					.ThenInclude(u => u.Address)
+						.ThenInclude(a => a.Country)
+				.Include(e => e.Department)
+				.Include(e => e.Shift)
+				.Include(e => e.Title)
+				.FirstOrDefaultAsync(e => e.Id == id.ToString());
+		}
+
 		public override async Task<bool> DeleteAsync(string id)
 		{
-			var employee = await _context.Employee
-				.Include(e => e.ApplicationUser) // ApplicationUser'a erişim için Include kullanılıyor
+			var employee = await _context.Employees
+				.Include(e => e.ApplicationUser) 
 				.FirstOrDefaultAsync(e => e.Id == id);
 
 			if (employee == null || employee.ApplicationUser == null)
