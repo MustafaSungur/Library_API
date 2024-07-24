@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace libAPI.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	
 	public class AddressCitiesController : ControllerBase
 	{
 		private readonly IAddressCityService _service;
@@ -19,6 +21,7 @@ namespace libAPI.Controllers
 
 		// GET: api/AddressCities
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<AddressCityReadDTO>>> GetAddressCity()
 		{
 			var result = await _service.GetAllAsync();

@@ -6,6 +6,5 @@ namespace libAPI.Services.Abstract
 {
 	public interface IEmployeeService:IService<Employee, EmployeeCreateDTO, EmployeeReadDTO, libAPIContext,string>
 	{
-		 
 	}
 }

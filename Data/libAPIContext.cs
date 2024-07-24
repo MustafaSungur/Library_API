@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.EntityFrameworkCore;
 using libAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace libAPI.Data
 {
-    public class libAPIContext : DbContext
-    {
+    public class libAPIContext : IdentityDbContext<ApplicationUser>
+	{
         public libAPIContext (DbContextOptions<libAPIContext> options)
             : base(options)
         {
@@ -26,7 +25,6 @@ namespace libAPI.Data
 		public DbSet<Category> Category { get; set; } = default!;
 		public DbSet<SubCategory> SubCategory { get; set; } = default!;
 		public DbSet<Book> Book { get; set; } = default!;
-		public DbSet<Language> Languages { get; set; } = default!;
 		public DbSet<Location> Locations { get; set; } = default!;
 		public DbSet<Stock> Stocks { get; set; } = default!;
 		public DbSet<Employee> Employees { get; set; } = default!;
@@ -38,9 +36,11 @@ namespace libAPI.Data
 		public DbSet<BorrowHistory> BorrowHistories { get; set; } = default!;
 
 
-
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			// This ensures the default configurations for ASP.NET Identity are included
+			base.OnModelCreating(modelBuilder);
+
 			// AUTHORBOOK
 			modelBuilder.Entity<AuthorBook>()
 				.HasKey(ab => new { ab.AuthorId, ab.BookId });
@@ -57,7 +57,7 @@ namespace libAPI.Data
 
 			// LANGUAGEBOOK
 			modelBuilder.Entity<LanguageBook>()
-			  .HasKey(ab => new { ab.LanguageId, ab.BookId });
+				.HasKey(ab => new { ab.LanguageId, ab.BookId });
 
 			modelBuilder.Entity<LanguageBook>()
 				.HasOne(ab => ab.Language)
@@ -71,7 +71,7 @@ namespace libAPI.Data
 
 			// SUBCATEGORYBOOK
 			modelBuilder.Entity<SubCategoryBook>()
-			  .HasKey(ab => new { ab.SubCategoryId, ab.BookId });
+				.HasKey(ab => new { ab.SubCategoryId, ab.BookId });
 
 			modelBuilder.Entity<SubCategoryBook>()
 				.HasOne(ab => ab.SubCategory)
@@ -82,9 +82,9 @@ namespace libAPI.Data
 				.HasOne(ab => ab.Book)
 				.WithMany(b => b.SubCategoryBooks)
 				.HasForeignKey(ab => ab.BookId);
-
-			
 		}
+
+
 
 
 	}

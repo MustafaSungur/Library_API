@@ -327,6 +327,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "libAPI.Controllers.Auth.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "libAPI.Controllers.AuthorsController",
     "Method": "GetAuthor",
     "RelativePath": "api/Authors",

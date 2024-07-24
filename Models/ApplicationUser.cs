@@ -19,7 +19,7 @@ namespace libAPI.Models
 		[ForeignKey(nameof(GenderId))]
 		public Genre? Gender { get; set; }
 
-		public int AddressId { get; set; }
+		public int? AddressId { get; set; }
 
 		[ForeignKey(nameof(AddressId))]
 		public  Address Address { get; set; }
@@ -28,7 +28,7 @@ namespace libAPI.Models
 		
 		public DateTime RegisterDate { get; set; }
 
-		public bool Status { get; set; }
+		public bool Status { get; set; } 
 
 		public string? PhotoUrl { get; set; }
 

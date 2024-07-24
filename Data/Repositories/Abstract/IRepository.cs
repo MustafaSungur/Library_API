@@ -1,4 +1,5 @@
 ﻿using libAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace libAPI.Data.Repositories.Abstract

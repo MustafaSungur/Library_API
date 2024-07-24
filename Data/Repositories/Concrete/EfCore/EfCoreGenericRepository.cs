@@ -1,5 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using libAPI.Data.Repositories.Abstract;
+using libAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ShopApp.data.Concrete.EfCore

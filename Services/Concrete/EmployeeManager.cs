@@ -3,6 +3,8 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace libAPI.Services.Concrete
@@ -10,13 +12,15 @@ namespace libAPI.Services.Concrete
 	public class EmployeeManager : GenericManager<Employee, EmployeeCreateDTO, EmployeeReadDTO, libAPIContext, string>, IEmployeeService
 	{
 		private readonly IAddressService _addressService;
-
+		private readonly UserManager<ApplicationUser> _userManager;
 		public EmployeeManager(
 			IEmployeeRepository repository,
-			IAddressService addressService) : base(repository)
+			IAddressService addressService,UserManager<ApplicationUser> userManager) : base(repository)
 		{
 			_addressService = addressService;
+			_userManager = userManager;
 		}
+				
 
 		public override async Task<EmployeeReadDTO> AddAsync(EmployeeCreateDTO dto)
 		{
@@ -44,6 +48,10 @@ namespace libAPI.Services.Concrete
 				Salary = dto.Salary,
 				ShiftId = dto.ShiftId,
 			};
+			
+			_userManager.CreateAsync(entity.ApplicationUser!, entity.ApplicationUser!.Password).Wait();
+			_userManager.AddToRoleAsync(entity.ApplicationUser, "Worker").Wait();
+
 
 			var result = await _repository.AddAsync(entity);
 
@@ -51,6 +59,7 @@ namespace libAPI.Services.Concrete
 
 			return MapToDto(newEmployee);
 		}
+
 
 		public override EmployeeReadDTO MapToDto(Employee entity)
 		{

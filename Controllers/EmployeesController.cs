@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using libAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace libAPI.Controllers
@@ -11,10 +14,12 @@ namespace libAPI.Controllers
 	public class EmployeesController : ControllerBase
 	{
 		private readonly IEmployeeService _service;
+		
 
 		public EmployeesController(IEmployeeService service)
 		{
 			_service = service;
+			
 		}
 
 		// GET: api/Employees
@@ -88,6 +93,11 @@ namespace libAPI.Controllers
 			await _service.DeleteAsync(id);
 			return NoContent();
 		}
+
+
+
+		
+
 
 		private async Task<bool> EmployeeExists(string id)
 		{

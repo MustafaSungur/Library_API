@@ -1,26 +1,57 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using libAPI;
+using Microsoft.AspNetCore.Identity;
 using libAPI.Data;
 using libAPI.Models;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using libAPI.Data.Repositories.Abstract;
 using libAPI.Services.Abstract;
 using ShopApp.data.Concrete.EfCore;
 using libAPI.Data.Repositories.Concrete.EfCore;
 using libAPI.Data.Repositories.Concrete;
 using libAPI.Services.Concrete;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.OpenApi.Models;
+
 namespace libAPI
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+
 			builder.Services.AddDbContext<libAPIContext>(options =>
-			    options.UseSqlServer(builder.Configuration.GetConnectionString("libAPIContext") ?? throw new InvalidOperationException("Connection string 'libAPIContext' not found.")));
+				options.UseSqlServer(builder.Configuration.GetConnectionString("libAPIContext") ?? throw new InvalidOperationException("Connection string 'libAPIContext' not found.")));
+
+			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+				.AddEntityFrameworkStores<libAPIContext>()
+				.AddDefaultTokenProviders();
+
+			builder.Services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+			.AddJwtBearer(options =>
+			{
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuer = true,
+					ValidateAudience = true,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true,
+					ValidIssuer = builder.Configuration["Jwt:Issuer"],
+					ValidAudience = builder.Configuration["Jwt:Audience"],
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+				};
+			});
+
 
 			// Add repository and service dependencies
-			// Repositories			
+			// Repositories
 			builder.Services.AddScoped<IAddressRepository, EfCoreAddressRepository>();
 			builder.Services.AddScoped<IAddressCountryRepository, EfCoreAddressCountryRepository>();
 			builder.Services.AddScoped<IAddressCityRepository, EFCoreAddressCityRepository>();
@@ -69,15 +100,38 @@ namespace libAPI
 			builder.Services.AddScoped<IAuthorBookService, AuthorBookManager>();
 			builder.Services.AddScoped<ILanguageBookService, LanguageBookManager>();
 			builder.Services.AddScoped<ISubcategoryBookService, SubcategoryBookManager>();
+			builder.Services.AddScoped<ITokenService,TokenManager>();
 
 			// Register generic repository and service
 			builder.Services.AddScoped(typeof(IRepository<,,>), typeof(EfCoreGenericRepository<,,>));
 			builder.Services.AddScoped(typeof(IService<,,,,>), typeof(GenericManager<,,,,>));
 
 			builder.Services.AddControllers();
-			
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			builder.Services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Please insert JWT with Bearer into field",
+					Name = "Authorization",
+					Type = SecuritySchemeType.ApiKey,
+					Scheme = "Bearer"
+				});
+				c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+				{
+					new OpenApiSecurityScheme
+					{
+						Reference = new OpenApiReference
+						{
+							Type = ReferenceType.SecurityScheme,
+							Id = "Bearer"
+						}
+					},
+					new string[] { }
+				}});
+						});
 
 			var app = builder.Build();
 
@@ -88,21 +142,17 @@ namespace libAPI
 				app.UseSwaggerUI();
 			}
 
-               if (app.Environment.IsDevelopment())
-			   {
-					app.UseSwagger();
-					app.UseSwaggerUI();
-			    };
-
 			app.UseCors("AllowAll");
 			app.UseHttpsRedirection();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 
-            
+			// Initial variables
+			await DbInitializer.InitializeAsync(app.Services);
+
 			app.Run();
 		}
 	}

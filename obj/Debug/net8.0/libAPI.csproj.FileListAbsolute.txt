@@ -284,3 +284,4 @@ C:\Users\10\Desktop\.NetCore\libAPI\libAPI\bin\Debug\net8.0\Microsoft.Extensions
 C:\Users\10\Desktop\.NetCore\libAPI\libAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\10\Desktop\.NetCore\libAPI\libAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\10\Desktop\.NetCore\libAPI\libAPI\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\10\Desktop\.NetCore\libAPI\libAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
