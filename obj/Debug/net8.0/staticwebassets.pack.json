@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\wwwroot\\uploads\\hosting.png",
+      "PackagePath": "staticwebassets\\uploads\\hosting.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.libAPI.props",
+      "PackagePath": "build\\libAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.libAPI.props",
+      "PackagePath": "buildMultiTargeting\\libAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.libAPI.props",
+      "PackagePath": "buildTransitive\\libAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.libAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

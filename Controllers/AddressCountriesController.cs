@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,6 +42,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/AddressCountries/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutAddressCountry(short id, AddressCountryCreateDTO addressCountryDto)
 		{
 			if (id != addressCountryDto.Id)
@@ -69,6 +71,7 @@ namespace libAPI.Controllers
 
 		// POST: api/AddressCountries
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<AddressCountryReadDTO>> PostAddressCountry(AddressCountryCreateDTO addressCountryDto)
 		{
 			var createdEntity = await _service.AddAsync(addressCountryDto);
@@ -78,6 +81,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/AddressCountries/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteAddressCountry(short id)
 		{
 			var addressCountry = await _service.GetByIdAsync(id);

@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<GenreReadDTO>>> GetGenres()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Genres/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<GenreReadDTO>> GetGenre(short id)
 		{
 			var genreDto = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Genres/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutGenre(short id, GenreCreateDTO genre)
 		{
 			if (id != genre.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Genres
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<GenreReadDTO>> PostGenre(GenreCreateDTO genre)
 		{
 			var createdEntity = await _service.AddAsync(genre);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Genres/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteGenre(short id)
 		{
 			var genre = await _service.GetByIdAsync(id);

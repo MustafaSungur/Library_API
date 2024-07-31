@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Publishers
 		[HttpGet]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<IEnumerable<PublisherReadDTO>>> GetPublishers()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Publishers/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<PublisherReadDTO>> GetPublisher(int id)
 		{
 			var publisher = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Publishers/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> PutPublisher(int id, PublisherCreateDTO publisher)
 		{
 			if (id != publisher.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Publishers
 		[HttpPost]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<PublisherReadDTO>> PostPublisher(PublisherCreateDTO publisher)
 		{
 			var createdEntity = await _service.AddAsync(publisher);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Publishers/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> DeletePublisher(int id)
 		{
 			var publisher = await _service.GetByIdAsync(id);

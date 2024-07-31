@@ -6,5 +6,6 @@ namespace libAPI.Services.Abstract
 {
 	public interface ISubCategoryService:IService<SubCategory, SubCategoryCreateDTO, SubCategoryReadDTO, libAPIContext,short>
 	{
+
 	}
 }

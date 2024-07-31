@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace libAPI.Controllers
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EmployeeTitles
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<EmployeeTitleReadDTO>>> GetEmployeeTitle()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EmployeeTitles/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EmployeeTitleReadDTO>> GetEmployeeTitle(short id)
 		{
 			var employeeTitle = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/EmployeeTitles/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutEmployeeTitle(short id, EmployeeTitleCreateDTO employeeTitleDto)
 		{
 			if (id != employeeTitleDto.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/EmployeeTitles
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EmployeeTitleReadDTO>> PostEmployeeTitle(EmployeeTitleCreateDTO employeeTitleDto)
 		{
 			var createdEntity = await _service.AddAsync(employeeTitleDto);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/EmployeeTitles/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteEmployeeTitle(short id)
 		{
 			var employeeTitle = await _service.GetByIdAsync(id);

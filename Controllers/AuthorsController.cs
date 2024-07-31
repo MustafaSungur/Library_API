@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +41,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Authors/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> PutAuthor(long id, AuthorCreateDTO authorDto)
 		{
 			if (id != authorDto.Id)
@@ -68,6 +70,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Authors
 		[HttpPost]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<AuthorReadDTO>> PostAuthor(AuthorCreateDTO authorDto)
 		{
 			var createdEntity = await _service.AddAsync(authorDto);
@@ -77,6 +80,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Authors/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> DeleteAuthor(long id)
 		{
 			var author = await _service.GetByIdAsync((int)id);

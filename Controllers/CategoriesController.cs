@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,6 +42,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Categories/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> PutCategory(short id, CategoryCreateDTO categoryDto)
 		{
 			if (id != categoryDto.Id)
@@ -69,6 +71,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Categories
 		[HttpPost]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<CategoryReadDTO>> PostCategory(CategoryCreateDTO categoryDto)
 		{
 			var createdEntity = await _service.AddAsync(categoryDto);
@@ -77,6 +80,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Categories/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> DeleteCategory(short id)
 		{
 			var category = await _service.GetByIdAsync(id);

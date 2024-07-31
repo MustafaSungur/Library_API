@@ -328,6 +328,32 @@
   },
   {
     "ContainingType": "libAPI.Controllers.Auth.AuthController",
+    "Method": "ForgetPassword",
+    "RelativePath": "api/Auth/ForgetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "libAPI.Controllers.Auth.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
@@ -335,12 +361,38 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userName",
+        "Name": "email",
         "Type": "System.String",
         "IsRequired": false
       },
       {
         "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "libAPI.Controllers.Auth.AuthController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Auth/ResetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -485,9 +537,79 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookDto",
-        "Type": "libAPI.DTOs.BookCreateDTO",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ISBM",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageCount",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublishingYear",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrintCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublisherId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "LocationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CopyCount",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AuthorsIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubCategoryIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -530,7 +652,7 @@
   },
   {
     "ContainingType": "libAPI.Controllers.BooksController",
-    "Method": "PutBook",
+    "Method": "UpdateBook",
     "RelativePath": "api/Books/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -542,9 +664,79 @@
         "IsRequired": true
       },
       {
-        "Name": "bookDto",
-        "Type": "libAPI.DTOs.BookCreateDTO",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ISBM",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageCount",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublishingYear",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrintCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublisherId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "LocationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CopyCount",
+        "Type": "System.Int16",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AuthorsIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubCategoryIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -561,6 +753,53 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "libAPI.Controllers.BooksController",
+    "Method": "RateBook",
+    "RelativePath": "api/Books/Rate/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "rate",
+        "Type": "System.Int16",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "libAPI.Controllers.BooksController",
+    "Method": "UpdateStock",
+    "RelativePath": "Api/Books/Stock/{ISBM}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ISBM",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "totalCopies",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "bookIdsToRemove",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1657,6 +1896,22 @@
   },
   {
     "ContainingType": "libAPI.Controllers.MembersController",
+    "Method": "BanMember",
+    "RelativePath": "api/Members/Ban/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "libAPI.Controllers.MembersController",
     "Method": "GetMemberBookHistory",
     "RelativePath": "api/Members/History/{memberId}",
     "HttpMethod": "GET",
@@ -1680,6 +1935,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "libAPI.Controllers.MembersController",
+    "Method": "RemoveBanMember",
+    "RelativePath": "api/Members/RemoveBan/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "libAPI.Controllers.PublishersController",

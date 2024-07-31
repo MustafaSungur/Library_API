@@ -22,8 +22,10 @@ namespace libAPI.Data
         public DbSet<EmployeeTitle> EmployeeTitle { get; set; } = default!;
         public DbSet<Shift> Shift { get; set; } = default!;
 		public DbSet<Author> Author { get; set; } = default!;
+		public DbSet<AuthorBook> AuthorBooks { get; set; } = default!;
 		public DbSet<Category> Category { get; set; } = default!;
 		public DbSet<SubCategory> SubCategory { get; set; } = default!;
+		public DbSet<SubCategoryBook> SubCategoryBooks { get; set; } = default!;
 		public DbSet<Book> Book { get; set; } = default!;
 		public DbSet<Location> Locations { get; set; } = default!;
 		public DbSet<Stock> Stocks { get; set; } = default!;
@@ -32,6 +34,7 @@ namespace libAPI.Data
 		public DbSet<BorrowBooks> BorrowBooks { get; set; } = default!;
 		public DbSet<Member> Member { get; set; } = default!;
 		public DbSet<Language> Language { get; set; } = default!;
+		public DbSet<LanguageBook> LanguageBooks { get; set; } = default!;
 		public DbSet<Publisher> Publisher { get; set; } = default!;
 		public DbSet<BorrowHistory> BorrowHistories { get; set; } = default!;
 
@@ -82,6 +85,30 @@ namespace libAPI.Data
 				.HasOne(ab => ab.Book)
 				.WithMany(b => b.SubCategoryBooks)
 				.HasForeignKey(ab => ab.BookId);
+
+			modelBuilder.Entity<BorrowHistory>()
+			.HasOne(b => b.BorrowingEmployee)
+			.WithMany()
+			.HasForeignKey(b => b.BorrowingEmployeeId)
+			.OnDelete(DeleteBehavior.Restrict); // Prevents cascade delete
+
+			modelBuilder.Entity<BorrowHistory>()
+			.HasOne(b => b.LendingEmployee)
+			.WithMany()
+			.HasForeignKey(b => b.LendingEmployeeId)
+			.OnDelete(DeleteBehavior.Restrict); // Prevents cascade delete
+
+			modelBuilder.Entity<BorrowHistory>()
+			.HasOne(b => b.Member)
+			.WithMany()
+			.HasForeignKey(b => b.MemberId)
+			.OnDelete(DeleteBehavior.Restrict); // Similar setup can be applied to other relationships			
+
+			modelBuilder.Entity<BorrowBooks>()
+			.HasOne(b => b.Employee)
+			.WithMany()
+			.HasForeignKey(b => b.EmployeeId)
+			.OnDelete(DeleteBehavior.Restrict); // Prevents cascade delete
 		}
 
 

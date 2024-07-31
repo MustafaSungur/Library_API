@@ -4,8 +4,7 @@ using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+
 
 namespace libAPI.Services.Concrete
 {
@@ -33,8 +32,7 @@ namespace libAPI.Services.Concrete
 					LastName = dto.ApplicationUserCreateDTO.LastName,
 					GenderId = dto.ApplicationUserCreateDTO.GenderId,
 					AddressId = addressDto.Id,
-					BirthDate = dto.ApplicationUserCreateDTO.BirthDate,
-					PhotoUrl = dto.ApplicationUserCreateDTO.PhotoUrl,
+					BirthDate = dto.ApplicationUserCreateDTO.BirthDate,					
 					Password = dto.ApplicationUserCreateDTO.Password,
 					Email = dto.ApplicationUserCreateDTO.Email,
 					PhoneNumber = dto.ApplicationUserCreateDTO.PhoneNumber,
@@ -48,7 +46,10 @@ namespace libAPI.Services.Concrete
 				Salary = dto.Salary,
 				ShiftId = dto.ShiftId,
 			};
-			
+			entity.ApplicationUser!.UserName = entity!.ApplicationUser!.Email;
+			entity.ApplicationUser!.NormalizedUserName = entity.ApplicationUser!.Email.Trim().ToLowerInvariant();
+			entity.ApplicationUser!.Email = entity.ApplicationUser!.Email.Trim().ToLowerInvariant();
+			entity.ApplicationUser!.NormalizedEmail = entity.ApplicationUser!.Email.ToUpperInvariant();
 			_userManager.CreateAsync(entity.ApplicationUser!, entity.ApplicationUser!.Password).Wait();
 			_userManager.AddToRoleAsync(entity.ApplicationUser, "Worker").Wait();
 
@@ -58,6 +59,72 @@ namespace libAPI.Services.Concrete
 			var newEmployee = await _repository.GetByIdAsync(result.Id);
 
 			return MapToDto(newEmployee);
+		}
+
+		public async Task<EmployeeReadDTO> UpdateAsync(string employeeId, EmployeeCreateDTO dto)
+		{
+			// Retrieve the existing employee
+			var existingEmployee = await _repository.GetByIdAsync(employeeId);
+			if (existingEmployee == null)
+			{
+				throw new Exception("Employee not found");
+			}
+
+			// Update the address if necessary
+			var updatedAddressDto = await _addressService.UpdateAsync(dto.ApplicationUserCreateDTO.Address);
+
+			// Update the application user details
+			var user = existingEmployee.ApplicationUser;
+			if (user == null)
+			{
+				throw new Exception("Associated user not found");  // Ideally handle more gracefully
+			}
+
+			user.FirstName = dto.ApplicationUserCreateDTO.FirstName;
+			user.LastName = dto.ApplicationUserCreateDTO.LastName;
+			user.GenderId = dto.ApplicationUserCreateDTO.GenderId;
+			user.AddressId = updatedAddressDto.Id; // Assuming address update returns updated DTO
+			user.BirthDate = dto.ApplicationUserCreateDTO.BirthDate;
+			user.Email = dto.ApplicationUserCreateDTO.Email.Trim().ToLowerInvariant();
+			user.PhoneNumber = dto.ApplicationUserCreateDTO.PhoneNumber;
+			user.NormalizedUserName = user.Email;
+			user.NormalizedEmail = user.Email.ToUpperInvariant();
+
+			// Update the ApplicationUser without changing the password
+			await _userManager.UpdateAsync(user);
+
+			// Update employee-specific fields
+			existingEmployee.TitleId = dto.TitleId;
+			existingEmployee.DepartmentId = dto.DepartmentId;
+			existingEmployee.Salary = dto.Salary;
+			existingEmployee.ShiftId = dto.ShiftId;
+
+			// Commit the updates to the repository
+			await _repository.UpdateAsync(existingEmployee);
+
+			// Retrieve the updated employee to return updated data
+			var updatedEmployee = await _repository.GetByIdAsync(employeeId);
+			return MapToDto(updatedEmployee);
+		}
+
+
+		public override async Task<bool> DeleteAsync(string id)
+		{
+			var employee = await _userManager.FindByIdAsync(id);
+			if (employee == null)
+			{
+				throw new Exception("User not found");
+			}
+
+			var employeeRoles = await _userManager.GetRolesAsync(employee);
+
+			if (employeeRoles.Contains("Admin"))
+			{
+				throw new Exception("Admin cannot be deleted");
+			}
+
+			var result =await base.DeleteAsync(id);
+			return result;
 		}
 
 
@@ -89,8 +156,8 @@ namespace libAPI.Services.Concrete
 					},
 					BirthDate = applicationUser.BirthDate,
 					RegisterDate = applicationUser.RegisterDate,
-					Status = applicationUser.Status,
-					PhotoUrl = applicationUser.PhotoUrl
+					Status = applicationUser.Status
+					
 				},
 				Title = entity.Title == null ? null : new EmployeeTitleReadDTO { Id = entity.Title.Id, Name = entity.Title.Name },
 				Department = entity.Department == null ? null : new DepartmentReadDTO { Id = entity.Department.Id, Name = entity.Department.Name },
@@ -116,7 +183,6 @@ namespace libAPI.Services.Concrete
 						ClearAddress = dto.ApplicationUserCreateDTO.Address.ClearAddress,
 					},
 					BirthDate = dto.ApplicationUserCreateDTO.BirthDate,
-					PhotoUrl = dto.ApplicationUserCreateDTO.PhotoUrl,
 					Password = dto.ApplicationUserCreateDTO.Password
 				},
 				TitleId = dto.TitleId,

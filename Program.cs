@@ -14,6 +14,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Security.Claims;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace libAPI
 {
@@ -45,10 +47,13 @@ namespace libAPI
 					ValidateIssuerSigningKey = true,
 					ValidIssuer = builder.Configuration["Jwt:Issuer"],
 					ValidAudience = builder.Configuration["Jwt:Audience"],
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+					ClockSkew = TimeSpan.Zero,
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+					RoleClaimType = ClaimTypes.Role
 				};
 			});
 
+			builder.Services.AddAuthorization();
 
 			// Add repository and service dependencies
 			// Repositories
@@ -100,7 +105,7 @@ namespace libAPI
 			builder.Services.AddScoped<IAuthorBookService, AuthorBookManager>();
 			builder.Services.AddScoped<ILanguageBookService, LanguageBookManager>();
 			builder.Services.AddScoped<ISubcategoryBookService, SubcategoryBookManager>();
-			builder.Services.AddScoped<ITokenService,TokenManager>();
+			builder.Services.AddScoped<ITokenService, TokenManager>();
 
 			// Register generic repository and service
 			builder.Services.AddScoped(typeof(IRepository<,,>), typeof(EfCoreGenericRepository<,,>));
@@ -108,30 +113,40 @@ namespace libAPI
 
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen(c =>
+			builder.Services.AddSwaggerGen(options =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				options.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Title = "My API",
+					Version = "v1"
+				});
+
+				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 				{
 					In = ParameterLocation.Header,
 					Description = "Please insert JWT with Bearer into field",
 					Name = "Authorization",
 					Type = SecuritySchemeType.ApiKey,
+					BearerFormat = "JWT",
 					Scheme = "Bearer"
 				});
-				c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+
+				options.AddSecurityRequirement(new OpenApiSecurityRequirement
 				{
-					new OpenApiSecurityScheme
 					{
-						Reference = new OpenApiReference
+						new OpenApiSecurityScheme
 						{
-							Type = ReferenceType.SecurityScheme,
-							Id = "Bearer"
-						}
-					},
-					new string[] { }
-				}});
-						});
+							Reference = new OpenApiReference
+							{
+								Type = ReferenceType.SecurityScheme,
+								Id = "Bearer"
+							}
+						},
+						new string[] { }
+					}
+				});
+
+			});
 
 			var app = builder.Build();
 
@@ -142,8 +157,8 @@ namespace libAPI
 				app.UseSwaggerUI();
 			}
 
-			app.UseCors("AllowAll");
 			app.UseHttpsRedirection();
+			app.UseCors("AllowAll");
 
 			app.UseAuthentication();
 			app.UseAuthorization();

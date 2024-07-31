@@ -19,5 +19,8 @@ namespace libAPI.DTOs
         //public EmployeeReadDTO Employee { get; set; }
         public DateTime RentalDate { get; set; }
 		public DateTime Deadline { get; set; }
-    }
+        public string? EmployeeId { get; set; }
+		public string? EmployeeFirstName { get; set; }
+		public string? EmployeeLastName { get; set; }
+	}
 }

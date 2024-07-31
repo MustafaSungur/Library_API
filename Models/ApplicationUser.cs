@@ -30,8 +30,6 @@ namespace libAPI.Models
 
 		public bool Status { get; set; } 
 
-		public string? PhotoUrl { get; set; }
-
 		[NotMapped]
 		public string? Password { get; set; }
 

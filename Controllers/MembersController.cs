@@ -1,5 +1,9 @@
-﻿using libAPI.DTOs;
+﻿using System.Security.Claims;
+using libAPI.DTOs;
+using libAPI.Models;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,14 +16,17 @@ namespace libAPI.Controllers
 	{
 		private readonly IMemberService _service;
 		private readonly IBorrowHistoryService _borrowHistoryService;
-		public MembersController(IMemberService service, IBorrowHistoryService borrowHistoryService)
+		private readonly UserManager<ApplicationUser> _userManager;
+		public MembersController(IMemberService service, IBorrowHistoryService borrowHistoryService, UserManager<ApplicationUser> userManager)
 		{
+			_userManager = userManager;
 			_service = service;
 			_borrowHistoryService = borrowHistoryService;
 		}
 
 		// GET: api/Members
 		[HttpGet]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<IEnumerable<MemberReadDTO>>> GetMembers()
 		{
 			var result = await _service.GetAllAsync();
@@ -28,10 +35,29 @@ namespace libAPI.Controllers
 
 		// GET: api/Members/History/{memberId}
 		[HttpGet("History/{memberId}")]
+		[Authorize(Roles = "Admin,Worker,Member")]
 		public async Task<ActionResult<IEnumerable<BorrowHistoryReadDTO>>> GetMemberBookHistory(string memberId)
 		{
+
+			var email = User.FindFirstValue(ClaimTypes.Email);
+			var user = await _userManager.FindByEmailAsync(email);
+			
+
+			if (user!.Id == null)
+			{
+				return StatusCode(403, "Authentication failed: User ID is null.");
+			}
+
+			bool isMember = await _userManager.IsInRoleAsync(user, "Member");					
+
+			if (isMember && user.Id != memberId)
+			{
+				return StatusCode(403, "Access denied.");
+			}
+
+
 			var result = await _borrowHistoryService.GetAllByMemberIdAsync(memberId);
-			if (result == null || !result.Any()) // If no results, return NotFound
+			if (result == null || result.Count == 0) 
 			{
 				return NotFound($"No borrowing history found for member with ID: {memberId}");
 			}
@@ -41,6 +67,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Members/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<MemberReadDTO>> GetMember(string id)
 		{
 			var member = await _service.GetByIdAsync(id);
@@ -55,6 +82,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Members/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> PutMember(string id, MemberCreateDTO member)
 		{
 			if (id != member.Id)
@@ -105,6 +133,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Members/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> DeleteMember(string id)
 		{
 			var member = await _service.GetByIdAsync(id);
@@ -115,6 +144,25 @@ namespace libAPI.Controllers
 
 			await _service.DeleteAsync(id);
 			return NoContent();
+		}
+
+
+		// BAN: api/Members/Ban/5
+		[HttpPost("Ban/{id}")]
+		[Authorize(Roles = "Admin,Worker")]
+		public async Task<IActionResult> BanMember(string id)
+		{
+			var result = await _service.BanMember(id);
+			return Ok(result);
+		}
+
+		// REMOVE BAN: api/Members/RemoveBan/5
+		[HttpPost("RemoveBan/{id}")]
+		[Authorize(Roles = "Admin,Worker")]
+		public async Task<IActionResult> RemoveBanMember(string id)
+		{
+			var result = await _service.RemoveBanMember(id);
+			return Ok(result);
 		}
 
 		private async Task<bool> MemberExists(string id)

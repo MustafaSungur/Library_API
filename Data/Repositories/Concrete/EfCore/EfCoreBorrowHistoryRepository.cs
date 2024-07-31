@@ -32,6 +32,10 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 				.Include(bh => bh.Book)
 					.ThenInclude(b => b.SubCategoryBooks)
 						.ThenInclude(sb => sb.SubCategory)
+				.Include(bh => bh.BorrowingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
+				.Include(bh => bh.LendingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
 				.Where(b => b.MemberId == memberId)
 				.ToListAsync();
 		}
@@ -61,6 +65,10 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 					.ThenInclude(m => m.ApplicationUser)
 						.ThenInclude(au => au.Address)
 							.ThenInclude(a => a.City)
+				.Include(bh => bh.BorrowingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
+				.Include(bh => bh.LendingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
 				.FirstOrDefaultAsync(bh => bh.Id == id);
 		}
 
@@ -87,6 +95,11 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 					.ThenInclude(m => m.ApplicationUser)
 						.ThenInclude(au => au.Address)
 							.ThenInclude(a => a.City)
+				.Include(bh => bh.BorrowingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
+				.Include(bh => bh.LendingEmployee)
+					.ThenInclude(e => e.ApplicationUser)
+
 				.ToListAsync();
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations
 		[HttpGet]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<IEnumerable<LocationReadDTO>>> GetLocations()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Locations/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<LocationReadDTO>> GetLocation(int id)
 		{
 			var location = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Locations/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> PutLocation(int id, LocationCreateDTO location)
 		{
 			if (id != location.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Locations
 		[HttpPost]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<ActionResult<LocationReadDTO>> PostLocation(LocationCreateDTO location)
 		{
 			var createdEntity = await _service.AddAsync(location);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Locations/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin,Worker")]
 		public async Task<IActionResult> DeleteLocation(int id)
 		{
 			var location = await _service.GetByIdAsync(id);

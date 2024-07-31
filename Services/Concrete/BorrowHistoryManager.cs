@@ -3,8 +3,7 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
-using System.Net;
-using System.Threading.Tasks;
+
 
 namespace libAPI.Services.Concrete
 {
@@ -100,7 +99,13 @@ namespace libAPI.Services.Concrete
 						Name = sb.SubCategory.Name
 					}).ToList()
 				},
-			
+
+			    BorrowingEmployeeId = entity.BorrowingEmployee?.Id,
+			    BorrowingEmployeeFirstName = entity.BorrowingEmployee?.ApplicationUser?.FirstName,
+			    BorrowingEmployeeLastName = entity.BorrowingEmployee?.ApplicationUser?.LastName,
+				LendingEmployeeId = entity.LendingEmployee?.Id ?? "",
+				LendingEmployeeFirstName = entity.LendingEmployee?.ApplicationUser?.FirstName ?? "",
+				LendingEmployeeLastName = entity.LendingEmployee?.ApplicationUser?.LastName ?? "",
 			};
 		}
 

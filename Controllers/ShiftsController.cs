@@ -1,6 +1,7 @@
 ﻿using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<ShiftReadDTO>>> GetShifts()
 		{
 			var result = await _service.GetAllAsync();
@@ -28,6 +30,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Shifts/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ShiftReadDTO>> GetShift(short id)
 		{
 			var shift = await _service.GetByIdAsync(id);
@@ -42,6 +45,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Shifts/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutShift(short id, ShiftCreateDTO shift)
 		{
 			if (id != shift.Id)
@@ -70,6 +74,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Shifts
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<ShiftReadDTO>> PostShift(ShiftCreateDTO shift)
 		{
 			var createdEntity = await _service.AddAsync(shift);
@@ -78,6 +83,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Shifts/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteShift(short id)
 		{
 			var shift = await _service.GetByIdAsync(id);

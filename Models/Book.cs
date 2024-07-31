@@ -59,6 +59,12 @@ namespace libAPI.Models
 
         [NotMapped]
         public short CopyCount { get; set; }
+
+        public int? RatingCount { get; set; }
+
+        public int? TotalRating { get; set; }
+
+        public List<string>? RatedMemberIds{ get; set; }
     }
 
 }

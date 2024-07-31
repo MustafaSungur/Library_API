@@ -64,6 +64,17 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 				.FirstOrDefaultAsync(b => b.Id == id);
 		}
 
+		public async Task<IEnumerable<Book>> GetByIsbmAsync(string ISBM)
+		{
+			return await _context.Book
+				.AsTracking()
+				.Include(b => b.AuthorBooks)
+				.Include(b => b.LanguageBooks)
+				.Include(b => b.SubCategoryBooks)
+				.Where(b => b.ISBM == ISBM)
+				.ToListAsync();
+		}
+
 
 		public override async Task<Book> UpdateAsync(Book entity)
 		{

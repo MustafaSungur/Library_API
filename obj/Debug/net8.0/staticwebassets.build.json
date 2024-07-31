@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "AaRI+ep9vVjbas3vP6cAk18izSuHCQZFZlAqjr7uUog=",
+  "Hash": "LiOPDz6Xr+g6x348pRE2CW7V+JnFatumbMVWNcV9qs0=",
   "Source": "libAPI",
   "BasePath": "_content/libAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "libAPI\\wwwroot",
+      "Source": "libAPI",
+      "ContentRoot": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\wwwroot\\",
+      "BasePath": "_content/libAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\wwwroot\\uploads\\hosting.png",
+      "SourceId": "libAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\wwwroot\\",
+      "BasePath": "_content/libAPI",
+      "RelativePath": "uploads/hosting.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\hosting.png"
+    }
+  ]
 }

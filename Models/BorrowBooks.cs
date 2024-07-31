@@ -12,15 +12,15 @@ namespace libAPI.Models
 		[ForeignKey(nameof(BookId))]
 		public  Book Book { get; set; } 
 
-		public required string MemberId { get; set; }
+		public  string? MemberId { get; set; }
 
 		[ForeignKey(nameof(MemberId))]
 		public  Member Member { get; set; }
 
-		//public required int EmployeeId { get; set; }
+		public string EmployeeId { get; set; }
 
-		//[ForeignKey(nameof(EmployeeId))]
-		//public Employee Employee { get; set; }
+		[ForeignKey(nameof(EmployeeId))]
+		public Employee Employee { get; set; }
 
 		public required DateTime RentalDate { get; set; } = DateTime.Now;
 

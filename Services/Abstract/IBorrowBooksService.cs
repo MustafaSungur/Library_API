@@ -6,6 +6,7 @@ namespace libAPI.Services.Abstract
 {
 	public interface IBorrowBooksService : IService<BorrowBooks, BorrowBooksCreateDTO, BorrowBooksReadDTO, libAPIContext, int>
 	{
-		Task<IEnumerable<BorrowBooksReadDTO>> AddListAsync(BorrowBooksCreateDTO borrowBookDto);
+		Task<IEnumerable<BorrowBooksReadDTO>> AddListAsync(BorrowBooksCreateDTO borrowBookDto,string employeeId);
+		Task<bool> DeleteBorrowBookAsync(int id,string employeeEmail);
 	}
 }

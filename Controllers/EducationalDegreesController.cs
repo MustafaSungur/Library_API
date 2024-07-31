@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees
 		[HttpGet]
+		[Authorize(Roles = "Admin")]		
 		public async Task<ActionResult<IEnumerable<EducationalReadDTO>>> GetEducationalDegrees()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/EducationalDegrees/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EducationalReadDTO>> GetEducationalDegree(short id)
 		{
 			var educationalDegree = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/EducationalDegrees/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutEducationalDegree(short id, EducationalCreateDTO educationalDegreeDto)
 		{
 			if (id != educationalDegreeDto.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/EducationalDegrees
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EducationalReadDTO>> PostEducationalDegree(EducationalCreateDTO educationalDegreeDto)
 		{
 			var createdEntity = await _service.AddAsync(educationalDegreeDto);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/EducationalDegrees/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteEducationalDegree(short id)
 		{
 			var educationalDegree = await _service.GetByIdAsync(id);

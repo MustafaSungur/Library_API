@@ -39,6 +39,8 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 					.ThenInclude(m => m.ApplicationUser)
 						.ThenInclude(au => au.Address)
 							.ThenInclude(a => a.City)
+				.Include(bh => bh.Employee)
+					.ThenInclude(e => e.ApplicationUser)
 				.FirstOrDefaultAsync(bb => bb.Id == id);
 		}
 
@@ -65,6 +67,8 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 					.ThenInclude(m => m.ApplicationUser)
 						.ThenInclude(au => au.Address)
 							.ThenInclude(a => a.City)
+				.Include(bh => bh.Employee)
+					.ThenInclude(e=>e.ApplicationUser)
 				.ToListAsync();
 		}
 	}

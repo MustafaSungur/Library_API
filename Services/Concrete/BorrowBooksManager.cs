@@ -3,11 +3,8 @@ using libAPI.Data.Repositories.Abstract;
 using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Identity.Client;
-using System;
-using System.Net;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace libAPI.Services.Concrete
 {
@@ -18,6 +15,7 @@ namespace libAPI.Services.Concrete
 		private readonly IBookRepository _bookRepository;
 		private readonly IBorrowHistoryRepository _borrowHistoryRepository;
 		private readonly IConfiguration _configuration;
+		private readonly UserManager<ApplicationUser> _userManager;
 
 		public BorrowBooksManager(
 			IBorrowBooksRepository repository,
@@ -25,7 +23,10 @@ namespace libAPI.Services.Concrete
 			IBookRepository bookRepository,
 			IStockRepository stockRepository,
 			IBorrowHistoryRepository borrowHistoryRepository,
-			IConfiguration configuration)
+			IConfiguration configuration,
+			UserManager<ApplicationUser> userManager
+
+			)
 			: base(repository)
 		{
 			_memberService = memberService;
@@ -33,18 +34,19 @@ namespace libAPI.Services.Concrete
 			_stockRepository = stockRepository;
 			_borrowHistoryRepository = borrowHistoryRepository;
 			_configuration = configuration;
+			_userManager = userManager;
+		
 		}
 
-		public  async Task<IEnumerable<BorrowBooksReadDTO>> AddListAsync(BorrowBooksCreateDTO borrowBookDto)
-		{
+		public  async Task<IEnumerable<BorrowBooksReadDTO>> AddListAsync(BorrowBooksCreateDTO borrowBookDto, string employeeEmail)
+		{	
 			var member = await _memberService.GetByIdAsync(borrowBookDto.MemberId);
-
 			if (member == null)
 			{
 				throw new Exception("Member not found.");
 			}
 
-			if (member.IsBanned)
+			if (member.IsBanned && member.EndBannedDate!=null)
 			{
 				var penaltyControl = member.EndBannedDate > DateTime.Now;
 				if (penaltyControl)
@@ -69,7 +71,7 @@ namespace libAPI.Services.Concrete
 
 				if (stock == null)
 				{
-					throw new Exception($"Book with ID {bookId} not found");
+					throw new Exception($"Book with ID stock {bookId} not found");
 				}
 
 
@@ -90,6 +92,9 @@ namespace libAPI.Services.Concrete
 
 					await _stockRepository.UpdateAsync(stock);
 
+
+					var employee = await _userManager.FindByEmailAsync(employeeEmail);
+
 					var borrowHistory = new BorrowHistory
 					{
 						MemberId = member.Id,
@@ -97,6 +102,7 @@ namespace libAPI.Services.Concrete
 						BorrowedDate = DateTime.Now,
 						IsReturned = false,
 						IsPenaltyApplied = false,
+						BorrowingEmployeeId = employee.Id
 					};
 					await _borrowHistoryRepository.AddAsync(borrowHistory);
 
@@ -105,7 +111,8 @@ namespace libAPI.Services.Concrete
 						BookId = bookId,
 						MemberId = member.Id,
 						RentalDate = DateTime.Now,
-						Deadline = DateTime.Now.AddDays(14) 
+						Deadline = DateTime.Now.AddDays(14),
+						EmployeeId = employee.Id
 					};
 
 					var createdBorrowBook = await _repository.AddAsync(borrowBook);
@@ -120,7 +127,7 @@ namespace libAPI.Services.Concrete
 		}
 
 
-		public override async Task<bool> DeleteAsync(int id)
+		public  async Task<bool> DeleteBorrowBookAsync(int id,string employeeEmail)
 		{
 			var borrowedBookDto = await GetByIdAsync(id);
 
@@ -140,6 +147,7 @@ namespace libAPI.Services.Concrete
 			{
 				throw new Exception("Borrow history not found.");
 			}
+		
 
 			TimeSpan penaltyPeriod = DateTime.Now - borrowedBookDto.Deadline;
 			if (penaltyPeriod.TotalDays > 0)
@@ -159,9 +167,12 @@ namespace libAPI.Services.Concrete
 				var memberCreateDto = _memberService.MapToCreateDto(member);
 				await _memberService.UpdateAsync(memberCreateDto);
 			}
+			var LendingEmployee = await _userManager.FindByEmailAsync(employeeEmail);
 
 			borrowHistory.ReturnedDate = DateTime.Now;
 			borrowHistory.IsReturned = true;
+			borrowHistory.LendingEmployeeId = LendingEmployee.Id;
+
 			await _borrowHistoryRepository.UpdateAsync(borrowHistory);
 
 			var stock = await _stockRepository.GetByIdAsync(borrowedBookDto.Book.ISBM);
@@ -185,6 +196,7 @@ namespace libAPI.Services.Concrete
 				RentalDate = dto.RentalDate,
 				Deadline = dto.Deadline,
 				BooksId = dto.BooksId,
+				EmployeeId = null,
 			};
 		}
 
@@ -223,7 +235,7 @@ namespace libAPI.Services.Concrete
 						BirthDate = entity.Member.ApplicationUser.BirthDate,
 						RegisterDate = entity.Member.ApplicationUser.RegisterDate,
 						Status = entity.Member.ApplicationUser.Status,
-						PhotoUrl = entity.Member.ApplicationUser.PhotoUrl
+					
 					},
 					
 					PenaltyPoint = entity.Member.PenaltyPoint,
@@ -260,6 +272,10 @@ namespace libAPI.Services.Concrete
 						Name = sb.SubCategory.Name
 					}).ToList()
 				},
+				EmployeeId = entity.Employee.Id,
+				EmployeeFirstName = entity.Employee.ApplicationUser.FirstName,
+				EmployeeLastName = entity.Employee.ApplicationUser.LastName,
+
 			};
 		}
 	}

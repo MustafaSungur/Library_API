@@ -227,7 +227,7 @@ namespace libAPI.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("BirthDate")
@@ -282,9 +282,6 @@ namespace libAPI.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("PhotoUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
@@ -359,7 +356,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("AuthorBook");
+                    b.ToTable("AuthorBooks");
                 });
 
             modelBuilder.Entity("libAPI.Models.Book", b =>
@@ -395,6 +392,12 @@ namespace libAPI.Migrations
                     b.Property<short>("PublishingYear")
                         .HasColumnType("smallint");
 
+                    b.Property<string>("RatedMemberIds")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RatingCount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
 
@@ -406,6 +409,9 @@ namespace libAPI.Migrations
                         .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int?>("TotalRating")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -432,8 +438,11 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MemberId")
+                    b.Property<string>("EmployeeId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MemberId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("RentalDate")
@@ -442,6 +451,8 @@ namespace libAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("MemberId");
 
@@ -462,14 +473,23 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("BorrowedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("BorrowingEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsPenaltyApplied")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsReturned")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LendingEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("MemberId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MemberId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("RegisterDate")
@@ -482,7 +502,13 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
+                    b.HasIndex("BorrowingEmployeeId");
+
+                    b.HasIndex("LendingEmployeeId");
+
                     b.HasIndex("MemberId");
+
+                    b.HasIndex("MemberId1");
 
                     b.ToTable("BorrowHistories");
                 });
@@ -632,7 +658,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("LanguageBook");
+                    b.ToTable("LanguageBooks");
                 });
 
             modelBuilder.Entity("libAPI.Models.Location", b =>
@@ -774,7 +800,7 @@ namespace libAPI.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("SubCategoryBook");
+                    b.ToTable("SubCategoryBooks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -851,9 +877,7 @@ namespace libAPI.Migrations
                 {
                     b.HasOne("libAPI.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressId");
 
                     b.HasOne("libAPI.Models.Genre", "Gender")
                         .WithMany()
@@ -920,13 +944,19 @@ namespace libAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("libAPI.Models.Member", "Member")
+                    b.HasOne("libAPI.Models.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("libAPI.Models.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId");
+
                     b.Navigation("Book");
+
+                    b.Navigation("Employee");
 
                     b.Navigation("Member");
                 });
@@ -939,13 +969,31 @@ namespace libAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("libAPI.Models.Employee", "BorrowingEmployee")
+                        .WithMany()
+                        .HasForeignKey("BorrowingEmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("libAPI.Models.Employee", "LendingEmployee")
+                        .WithMany()
+                        .HasForeignKey("LendingEmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("libAPI.Models.Member", "Member")
-                        .WithMany("BorrowingHistory")
+                        .WithMany()
                         .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("libAPI.Models.Member", null)
+                        .WithMany("BorrowingHistory")
+                        .HasForeignKey("MemberId1");
+
                     b.Navigation("Book");
+
+                    b.Navigation("BorrowingEmployee");
+
+                    b.Navigation("LendingEmployee");
 
                     b.Navigation("Member");
                 });

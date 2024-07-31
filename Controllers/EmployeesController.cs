@@ -24,6 +24,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Employees
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<EmployeeReadDTO>>> GetEmployee()
 		{
 			var result = await _service.GetAllAsync();
@@ -32,6 +33,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Employees/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EmployeeReadDTO>> GetEmployee(string id)
 		{
 			var employee = await _service.GetByIdAsync(id);
@@ -46,6 +48,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Employees/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutEmployee(string id, EmployeeCreateDTO employeeDto)
 		{
 			if (id != employeeDto.Id)
@@ -74,6 +77,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Employees
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<EmployeeReadDTO>> PostEmployee(EmployeeCreateDTO employeeDto)
 		{
 			var createdEntity = await _service.AddAsync(employeeDto);
@@ -82,6 +86,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Employees/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteEmployee(string id)
 		{
 			var employee = await _service.GetByIdAsync(id);

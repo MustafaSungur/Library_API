@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<DepartmentReadDTO>>> GetDepartments()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Departments/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<DepartmentReadDTO>> GetDepartment(short id)
 		{
 			var department = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Departments/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutDepartment(short id, DepartmentCreateDTO departmentDto)
 		{
 			if (id != departmentDto.Id)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Departments
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<DepartmentReadDTO>> PostDepartment(DepartmentCreateDTO departmentDto)
 		{
 			var createdEntity = await _service.AddAsync(departmentDto);
@@ -77,6 +82,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Departments/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteDepartment(short id)
 		{
 			var department = await _service.GetByIdAsync(id);

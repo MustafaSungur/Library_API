@@ -1,5 +1,6 @@
 ﻿using libAPI.DTOs;
 using libAPI.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<IEnumerable<LanguageReadDTO>>> GetLanguages()
 		{
 			var result = await _service.GetAllAsync();
@@ -27,6 +29,7 @@ namespace libAPI.Controllers
 
 		// GET: api/Languages/5
 		[HttpGet("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<LanguageReadDTO>> GetLanguage(string id)
 		{
 			var language = await _service.GetByIdAsync(id);
@@ -41,6 +44,7 @@ namespace libAPI.Controllers
 
 		// PUT: api/Languages/5
 		[HttpPut("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> PutLanguage(string id, LanguageCreateDTO language)
 		{
 			if (id != language.Code)
@@ -69,6 +73,7 @@ namespace libAPI.Controllers
 
 		// POST: api/Languages
 		[HttpPost]
+		[Authorize(Roles = "Admin")]
 		public async Task<ActionResult<LanguageReadDTO>> PostLanguage(LanguageCreateDTO language)
 		{
 			try
@@ -91,6 +96,7 @@ namespace libAPI.Controllers
 
 		// DELETE: api/Languages/5
 		[HttpDelete("{id}")]
+		[Authorize(Roles= "Admin")]
 		public async Task<IActionResult> DeleteLanguage(string id)
 		{
 			var language = await _service.GetByIdAsync(id);
