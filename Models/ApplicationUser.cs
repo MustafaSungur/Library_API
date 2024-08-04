@@ -22,7 +22,7 @@ namespace libAPI.Models
 		public int? AddressId { get; set; }
 
 		[ForeignKey(nameof(AddressId))]
-		public  Address Address { get; set; }
+		public  Address? Address { get; set; }
 
 		public DateTime BirthDate { get; set; }
 		

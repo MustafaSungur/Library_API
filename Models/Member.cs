@@ -14,7 +14,7 @@ namespace libAPI.Models
 		public short EducationalDegreeId { get; set; } 
 
 		[ForeignKey(nameof(EducationalDegreeId))]
-		public EducationalDegree EducationalDegree { get; set; } 
+		public EducationalDegree? EducationalDegree { get; set; } 
 
 		public short PenaltyPoint { get; set; } = 0;
 

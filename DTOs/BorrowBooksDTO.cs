@@ -14,8 +14,8 @@ namespace libAPI.DTOs
 	public class BorrowBooksReadDTO
 	{
 		public int Id { get; set; }
-        public MemberReadDTO Member { get; set; }
-		public BookReadDTO Book { get; set; }
+        public MemberReadDTO? Member { get; set; }
+		public BookReadDTO? Book { get; set; }
         //public EmployeeReadDTO Employee { get; set; }
         public DateTime RentalDate { get; set; }
 		public DateTime Deadline { get; set; }

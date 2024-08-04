@@ -46,7 +46,7 @@ namespace libAPI.Services.Concrete
 
 			Stock stock = new Stock
 			{
-				ISBM = bookDto.ISBM,
+				ISBM = bookDto.ISBM!,
 				TotalCopies = bookDto.CopyCount,
 				AvailableCopies = bookDto.CopyCount,
 			};
@@ -68,15 +68,15 @@ namespace libAPI.Services.Concrete
 				var createdBook = await _repository.AddAsync(book);
 				tempBookId = createdBook.Id;
 
-				foreach (var authorId in bookDto.AuthorsIds)
+				foreach (var authorId in bookDto.AuthorsIds!)
 				{
 					await _authorBookRepository.AddAsync(new AuthorBook { AuthorId = authorId, BookId = createdBook.Id });
 				}
-				foreach (var languageId in bookDto.LanguageIds)
+				foreach (var languageId in bookDto.LanguageIds!)
 				{
 					await _languageBookRepository.AddAsync(new LanguageBook { LanguageId = languageId, BookId = createdBook.Id });
 				}
-				foreach (var subCategoryId in bookDto.SubCategoryIds)
+				foreach (var subCategoryId in bookDto.SubCategoryIds!)
 				{
 					await _subCategoryBookRepository.AddAsync(new SubCategoryBook { SubCategoryId = subCategoryId, BookId = createdBook.Id });
 				}
@@ -85,7 +85,7 @@ namespace libAPI.Services.Concrete
 
 
 			var getNewBook = await _repository.GetByIdAsync(tempBookId); 
-			return MapToDto(getNewBook);
+			return MapToDto(getNewBook!);
 		}
 
 		public async Task UpdateBookAsync(int bookId, BookCreateDTO bookDTO)
@@ -111,9 +111,9 @@ namespace libAPI.Services.Concrete
 		
 
 			// Update relational properties
-			await UpdateLanguageBooksAsync(book.Id, bookDTO.LanguageIds);
-			await UpdateSubCategoryBooksAsync(book.Id, bookDTO.SubCategoryIds);
-			await UpdateAuthorBooksAsync(book.Id, bookDTO.AuthorsIds);
+			await UpdateLanguageBooksAsync(book.Id, bookDTO.LanguageIds!);
+			await UpdateSubCategoryBooksAsync(book.Id, bookDTO.SubCategoryIds!);
+			await UpdateAuthorBooksAsync(book.Id, bookDTO.AuthorsIds!);
 
 			await _repository.UpdateAsync(book);
 		}
@@ -277,11 +277,11 @@ namespace libAPI.Services.Concrete
 				throw new Exception("Member has already rated this book");
 			}
 
-			var isHistoryBook = await _borrowHistoryRepository.GetByMemberAndBookAsync(user.Id, bookId);
+			var isHistoryBook = await _borrowHistoryRepository.GetByMemberAndBookAsync(user!.Id, bookId);
 
 			if (isHistoryBook == null) throw new Exception("You have to borrow the book for rating");
 
-			book.RatedMemberIds.Add(user?.Id); 
+			book.RatedMemberIds.Add(user?.Id!); 
 			book.RatingCount += 1;
 			book.TotalRating += rate;
 
@@ -321,20 +321,20 @@ namespace libAPI.Services.Concrete
 			{
 				Id = entity.Id,
 				Title = entity.Title,
-				ISBM = entity.ISBM,
+				ISBM = entity.ISBM!,
 				PageCount = entity.PageCount,
 				PublishingYear = entity.PublishingYear,
-				Description = entity.Description,
+				Description = entity.Description!,
 				PrintCount = entity.PrintCount,
 				PublisherId = entity.PublisherId,
 				LocationId = entity.LocationId,
-				PhotoUrl = entity.PhotoUrl,
+				PhotoUrl = entity.PhotoUrl!,
 				Stock = entity.Stock,
-				Raiting = entity.RatingCount != 0 ? (float) (entity.TotalRating / entity.RatingCount) : 0,
-				RaitingCount = (int) entity.RatingCount,
-				Authors = entity.AuthorBooks.Select(ab => new AuthorReadDTO { Id = ab.AuthorId, FullName = ab.Author.FullName }).ToList(),
-				Languages = entity.LanguageBooks.Select(lb => new LanguageReadDTO { Code = lb.LanguageId, Name = lb.Language.Name }).ToList(),
-				SubCategories = entity.SubCategoryBooks.Select(scb => new SubCategoryReadDTO { Id = scb.SubCategoryId, Name = scb.SubCategory.Name, Category = new CategoryReadDTO {Id=scb.SubCategory.Category.Id, Name = scb.SubCategory.Category.Name } }).ToList()
+				Raiting = entity.RatingCount != 0 ? (float) (entity.TotalRating / entity.RatingCount)! : 0,
+				RaitingCount = (int) entity.RatingCount!,
+				Authors = entity.AuthorBooks!.Select(ab => new AuthorReadDTO { Id = ab.AuthorId, FullName = ab.Author!.FullName }).ToList(),
+				Languages = entity.LanguageBooks!.Select(lb => new LanguageReadDTO { Code = lb.LanguageId, Name = lb.Language!.Name }).ToList(),
+				SubCategories = entity.SubCategoryBooks!.Select(scb => new SubCategoryReadDTO { Id = scb.SubCategoryId, Name = scb.SubCategory!.Name, Category = new CategoryReadDTO {Id=scb.SubCategory.Category!.Id, Name = scb.SubCategory.Category.Name } }).ToList()
 				
 			};
 

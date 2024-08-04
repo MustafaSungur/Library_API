@@ -17,15 +17,15 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 			return await _context.Member
 				 .AsTracking()
 				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Gender)
+					.ThenInclude(u => u!.Gender)
 				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Address)
+					.ThenInclude(u => u!.Address)
 						.ThenInclude(a => a.City)
 				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Address)
+					.ThenInclude(u => u!.Address)
 						.ThenInclude(a => a.Country)
-				.Include(e => e.BorrowingHistory).ThenInclude(bh => bh.BorrowingEmployee.ApplicationUser)
-				.Include(e => e.BorrowingHistory).ThenInclude(bh => bh.LendingEmployee.ApplicationUser)
+				.Include(e => e.BorrowingHistory)!.ThenInclude(bh => bh.BorrowingEmployee!.ApplicationUser!)!
+				.Include(e => e.BorrowingHistory)!.ThenInclude(bh => bh.LendingEmployee!.ApplicationUser)!
 				.Include(e=>e.EducationalDegree)
 				.ToListAsync();
 		}
@@ -34,17 +34,17 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 		{
 			return await _context.Member
 				.AsTracking()
+				.Include(e => e.ApplicationUser)!
+					.ThenInclude(u => u!.Gender)
 				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Gender)
-				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Address)
+					.ThenInclude(u => u!.Address)
 						.ThenInclude(a => a.City)
 				.Include(e => e.ApplicationUser)
-					.ThenInclude(u => u.Address)
+					.ThenInclude(u => u!.Address)
 						.ThenInclude(a => a.Country)
-				.Include(e => e.BorrowingHistory).ThenInclude(bh => bh.BorrowingEmployee.ApplicationUser)
-				.Include(e => e.BorrowingHistory).ThenInclude(bh => bh.LendingEmployee.ApplicationUser)
-				.Include(e => e.EducationalDegree)
+				.Include(e => e.BorrowingHistory)!.ThenInclude(bh => bh!.BorrowingEmployee!.ApplicationUser)!
+				.Include(e => e.BorrowingHistory)!.ThenInclude(bh => bh!.LendingEmployee!.ApplicationUser)!
+				.Include(e => e.EducationalDegree)!
 				.FirstOrDefaultAsync(e => e.Id == id.ToString());
 		}
 

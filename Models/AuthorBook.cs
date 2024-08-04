@@ -8,11 +8,11 @@ namespace libAPI.Models
 		public long AuthorId { get; set; }
 
 		[JsonIgnore]
-		public Author Author { get; set; } 
+		public Author? Author { get; set; } 
 
 		public int BookId { get; set; }
 
 		[JsonIgnore]
-		public Book Book { get; set; } 
+		public Book? Book { get; set; } 
 	}
 }

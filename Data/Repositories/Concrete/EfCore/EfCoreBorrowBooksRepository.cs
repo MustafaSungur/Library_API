@@ -13,31 +13,31 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 
 		public async Task<BorrowBooks> GetMemberIdAndBookIdAsync(string memberId, int bookId)
 		{
-			return await _context.BorrowBooks
-				.FirstOrDefaultAsync(bb => bb.MemberId == memberId && bb.BookId == bookId);
+			return await _context.BorrowBooks!
+				.FirstOrDefaultAsync(bb => bb.MemberId! == memberId && bb.BookId! == bookId!)!;
 		}
 
 		public override async Task<BorrowBooks?> GetByIdAsync(int id)
 		{
 			return await _context.BorrowBooks
-				.AsTracking()
-				.Include(bh => bh.Book)
-					.ThenInclude(b => b.AuthorBooks)
-						.ThenInclude(ab => ab.Author)
-				.Include(bh => bh.Book)
-					.ThenInclude(b => b.LanguageBooks)
+				.AsTracking()!
+				.Include(bh => bh.Book)!
+					.ThenInclude(b => b.AuthorBooks)!
+						.ThenInclude(ab => ab.Author)!
+				.Include(bh => bh.Book)!
+					.ThenInclude(b => b.LanguageBooks)!
 						.ThenInclude(lb => lb.Language)
 				.Include(bh => bh.Book)
-					.ThenInclude(b => b.SubCategoryBooks)
+					.ThenInclude(b => b.SubCategoryBooks)!
 						.ThenInclude(sb => sb.SubCategory)
 				.Include(bh => bh.Book).ThenInclude(b=>b.Stock)
 				.Include(bh => bh.Member)
 					.ThenInclude(m => m.ApplicationUser)
-						.ThenInclude(au => au.Address)
+						.ThenInclude(au => au!.Address)
 							.ThenInclude(a => a.Country)
 				.Include(bh => bh.Member)
 					.ThenInclude(m => m.ApplicationUser)
-						.ThenInclude(au => au.Address)
+						.ThenInclude(au => au!.Address)
 							.ThenInclude(a => a.City)
 				.Include(bh => bh.Employee)
 					.ThenInclude(e => e.ApplicationUser)
@@ -49,23 +49,23 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 			return await _context.BorrowBooks
 				.AsTracking()
 				.Include(bh => bh.Book)
-					.ThenInclude(b => b.AuthorBooks)
-						.ThenInclude(ab => ab.Author)
-				.Include(bh => bh.Book)
-					.ThenInclude(b => b.LanguageBooks)
-						.ThenInclude(lb => lb.Language)
-				.Include(bh => bh.Book)
-					.ThenInclude(b => b.SubCategoryBooks)
+					.ThenInclude(b => b.AuthorBooks)!
+						.ThenInclude(ab => ab.Author)!
+				.Include(bh => bh.Book)!
+					.ThenInclude(b => b.LanguageBooks)!
+						.ThenInclude(lb => lb.Language)!
+				.Include(bh => bh.Book)!
+					.ThenInclude(b => b.SubCategoryBooks)!
 						.ThenInclude(sb => sb.SubCategory)
 				.Include(bh => bh.Book)
 					.ThenInclude(b => b.Stock)
 				.Include(bh => bh.Member)
 					.ThenInclude(m => m.ApplicationUser)
-						.ThenInclude(au => au.Address)
+						.ThenInclude(au => au!.Address)
 							.ThenInclude(a => a.Country)
 				.Include(bh => bh.Member)
 					.ThenInclude(m => m.ApplicationUser)
-						.ThenInclude(au => au.Address)
+						.ThenInclude(au => au!.Address)
 							.ThenInclude(a => a.City)
 				.Include(bh => bh.Employee)
 					.ThenInclude(e=>e.ApplicationUser)

@@ -52,10 +52,10 @@ namespace libAPI.Models
 
         public DateTime RegisterDate { get; set; }
 
-        public string StockId { get; set; }
+        public string? StockId { get; set; }
 
 		[ForeignKey(nameof(StockId))]
-		public Stock Stock { get; set; }
+		public Stock? Stock { get; set; }
 
         [NotMapped]
         public short CopyCount { get; set; }

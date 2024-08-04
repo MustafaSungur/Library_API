@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\uploads\\hosting.png"
     },
     {
+      "Id": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\wwwroot\\uploads\\image.png",
+      "PackagePath": "staticwebassets\\uploads\\image.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.libAPI.props",
       "PackagePath": "build\\libAPI.props"
     },

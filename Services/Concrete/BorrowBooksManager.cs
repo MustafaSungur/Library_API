@@ -64,10 +64,10 @@ namespace libAPI.Services.Concrete
 
 			var borrowBooksList = new List<BorrowBooksReadDTO>();
 		
-			foreach (var bookId in borrowBookDto.BooksId)
+			foreach (var bookId in borrowBookDto.BooksId!)
 			{
 				var book = await _bookRepository.GetByIdAsync(bookId);
-				var stock = await _stockRepository.GetByIdAsync(book.ISBM);
+				var stock = await _stockRepository.GetByIdAsync(book!.ISBM!);
 
 				if (stock == null)
 				{
@@ -102,7 +102,7 @@ namespace libAPI.Services.Concrete
 						BorrowedDate = DateTime.Now,
 						IsReturned = false,
 						IsPenaltyApplied = false,
-						BorrowingEmployeeId = employee.Id
+						BorrowingEmployeeId = employee!.Id!
 					};
 					await _borrowHistoryRepository.AddAsync(borrowHistory);
 
@@ -117,7 +117,7 @@ namespace libAPI.Services.Concrete
 
 					var createdBorrowBook = await _repository.AddAsync(borrowBook);
 					var TempBarrowBook = await _repository.GetByIdAsync(createdBorrowBook.Id);
-					var ReadDto = MapToDto(TempBarrowBook);
+					var ReadDto = MapToDto(TempBarrowBook!);
 					borrowBooksList.Add(ReadDto);
 				}
 			}
@@ -136,13 +136,13 @@ namespace libAPI.Services.Concrete
 				throw new Exception("Borrowed Book not found.");
 			}
 
-			var member = await _memberService.GetByIdAsync(borrowedBookDto.Member.Id);
+			var member = await _memberService.GetByIdAsync(borrowedBookDto!.Member!.Id);
 			if (member == null)
 			{
 				throw new Exception("Member not found.");
 			}
 
-			var borrowHistory = await _borrowHistoryRepository.GetByMemberAndBookAsync(member.Id, borrowedBookDto.Book.Id);
+			var borrowHistory = await _borrowHistoryRepository.GetByMemberAndBookAsync(member.Id, borrowedBookDto!.Book!.Id);
 			if (borrowHistory == null)
 			{
 				throw new Exception("Borrow history not found.");
@@ -157,7 +157,7 @@ namespace libAPI.Services.Concrete
 
 				if (member.PenaltyPoint > 7)
 				{
-					int bannedDays = int.Parse(_configuration["BannedDays"]);
+					int bannedDays = int.Parse(_configuration["BannedDays"]!);
 					member.IsBanned = true;
 					member.EndBannedDate = DateTime.Now.AddDays(bannedDays);
 				}
@@ -171,11 +171,11 @@ namespace libAPI.Services.Concrete
 
 			borrowHistory.ReturnedDate = DateTime.Now;
 			borrowHistory.IsReturned = true;
-			borrowHistory.LendingEmployeeId = LendingEmployee.Id;
+			borrowHistory.LendingEmployeeId = LendingEmployee!.Id;
 
 			await _borrowHistoryRepository.UpdateAsync(borrowHistory);
 
-			var stock = await _stockRepository.GetByIdAsync(borrowedBookDto.Book.ISBM);
+			var stock = await _stockRepository.GetByIdAsync(borrowedBookDto!.Book!.ISBM!);
 			if (stock != null)
 			{
 				stock.AvailableCopies += 1;
@@ -196,7 +196,7 @@ namespace libAPI.Services.Concrete
 				RentalDate = dto.RentalDate,
 				Deadline = dto.Deadline,
 				BooksId = dto.BooksId,
-				EmployeeId = null,
+				EmployeeId = null!,
 			};
 		}
 
@@ -209,25 +209,25 @@ namespace libAPI.Services.Concrete
 				Deadline = entity.Deadline,
 				Member = new MemberReadDTO
 				{
-					Id = entity.Member.Id,
+					Id = entity.Member!.Id,
 					ApplicationUserReadDTO = new ApplicationUserReadDTO
 					{
-						Id = entity.Member.ApplicationUser.Id,
+						Id = entity.Member.ApplicationUser!.Id!,
 						FirstName = entity.Member.ApplicationUser.FirstName,
 						LastName = entity.Member.ApplicationUser.LastName,
 						
 						Address = new AddressReadDTO
 						{
-							Id = entity.Member.ApplicationUser.Address.Id,
+							Id = entity.Member.ApplicationUser.Address!.Id!,
 							Country = new AddressCountryReadDTO
 							{
-								Id = entity.Member.ApplicationUser.Address.Country.Id,
+								Id = entity.Member.ApplicationUser.Address!.Country!.Id,
 								Name = entity.Member.ApplicationUser.Address.Country.Name,
 
 							},
 							City = new AddressCityReadDTO
 							{
-								Id = (short)entity.Member.ApplicationUser.Address.City.Id,
+								Id = (short)entity.Member.ApplicationUser.Address!.City!.Id,
 								Name = entity.Member.ApplicationUser.Address.City.Name,
 							},
 							ClearAddress = entity.Member.ApplicationUser.Address.ClearAddress
@@ -244,36 +244,36 @@ namespace libAPI.Services.Concrete
 				},
 				Book = new BookReadDTO
 				{
-					Id = entity.Book.Id,
+					Id = entity.Book!.Id,
 					Title = entity.Book.Title,
-					ISBM = entity.Book.ISBM,
+					ISBM = entity.Book.ISBM!,
 					PageCount = entity.Book.PageCount,
 					PublishingYear = entity.Book.PublishingYear,
-					Description = entity.Book.Description,
+					Description = entity.Book.Description!,
 					PrintCount = entity.Book.PrintCount,
 					PublisherId = entity.Book.PublisherId,
 					LocationId = entity.Book.LocationId,
-					PhotoUrl = entity.Book.PhotoUrl,
+					PhotoUrl = entity.Book.PhotoUrl!,
 					RegisterDate = entity.Book.RegisterDate,
 					Stock = entity.Book.Stock,
-					Authors = entity.Book.AuthorBooks.Select(ab => new AuthorReadDTO
+					Authors = entity.Book.AuthorBooks!.Select(ab => new AuthorReadDTO
 					{
-						Id = ab.Author.Id,
+						Id = ab.Author!.Id,
 						FullName = ab.Author.FullName
 					}).ToList(),
-					Languages = entity.Book.LanguageBooks.Select(lb => new LanguageReadDTO
+					Languages = entity.Book.LanguageBooks!.Select(lb => new LanguageReadDTO
 					{
-						Code = lb.Language.Code,
+						Code = lb.Language!.Code,
 						Name = lb.Language.Name
 					}).ToList(),
-					SubCategories = entity.Book.SubCategoryBooks.Select(sb => new SubCategoryReadDTO
+					SubCategories = entity.Book.SubCategoryBooks!.Select(sb => new SubCategoryReadDTO
 					{
-						Id = sb.SubCategory.Id,
+						Id = sb.SubCategory!.Id,
 						Name = sb.SubCategory.Name
 					}).ToList()
 				},
-				EmployeeId = entity.Employee.Id,
-				EmployeeFirstName = entity.Employee.ApplicationUser.FirstName,
+				EmployeeId = entity.Employee!.Id,
+				EmployeeFirstName = entity.Employee.ApplicationUser!.FirstName,
 				EmployeeLastName = entity.Employee.ApplicationUser.LastName,
 
 			};

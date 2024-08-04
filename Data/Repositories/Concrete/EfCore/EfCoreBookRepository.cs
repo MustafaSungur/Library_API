@@ -1,11 +1,8 @@
-﻿using libAPI.Data;
-using libAPI.Data.Repositories.Abstract;
-using libAPI.DTOs;
+﻿using libAPI.Data.Repositories.Abstract;
 using libAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using ShopApp.data.Concrete.EfCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace libAPI.Data.Repositories.Concrete.EfCore
 {
@@ -44,24 +41,23 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 		{
 			return await _context.Book
 				.AsTracking()
-				.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author)
-				.Include(b => b.LanguageBooks).ThenInclude(lb => lb.Language)
-				.Include(b => b.Stock)
-				.Include(b => b.SubCategoryBooks).ThenInclude(sb => sb.SubCategory).ThenInclude(sbb => sbb.Category)
+				.Include(b => b.AuthorBooks)!.ThenInclude(ab => ab.Author)!
+				.Include(b => b.LanguageBooks)!.ThenInclude(lb => lb.Language)!
+				.Include(b => b.Stock)!
+				.Include(b => b.SubCategoryBooks)!.ThenInclude(sb => sb.SubCategory).ThenInclude(sbb => sbb.Category)
 				
 				.ToListAsync();
 		}
 
 		public override async Task<Book> GetByIdAsync(int id)
 		{
-			return await _context.Book
+			return await _context.Book!
 				.AsTracking()
-				.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author)
-				.Include(b => b.LanguageBooks).ThenInclude(lb => lb.Language)
-				.Include(b => b.Stock)
-				.Include(b => b.SubCategoryBooks).ThenInclude(sb => sb.SubCategory).ThenInclude(sbb => sbb.Category)
-	
-				.FirstOrDefaultAsync(b => b.Id == id);
+				.Include(b => b.AuthorBooks!)!.ThenInclude(ab => ab.Author)!
+				.Include(b => b.LanguageBooks!).ThenInclude(lb => lb.Language)!
+				.Include(b => b.Stock)!
+				.Include(b => b.SubCategoryBooks!)!.ThenInclude(sb => sb.SubCategory!)!.ThenInclude(sbb => sbb!.Category)!
+				.FirstOrDefaultAsync(b => b.Id == id)!;
 		}
 
 		public async Task<IEnumerable<Book>> GetByIsbmAsync(string ISBM)
@@ -86,7 +82,7 @@ namespace libAPI.Data.Repositories.Concrete.EfCore
 
 			if (existingBook == null)
 			{
-				return null;
+				return null!;
 			}
 
 			// Update scalar properties

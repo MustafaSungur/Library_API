@@ -12,8 +12,8 @@
 	public class AddressReadDTO
 	{
 		public int Id { get; set; }
-		public AddressCityReadDTO City { get; set; }
-		public AddressCountryReadDTO Country { get; set; }
+		public AddressCityReadDTO? City { get; set; }
+		public AddressCountryReadDTO? Country { get; set; }
 		public string ClearAddress { get; set; } = string.Empty;
 	}
 }

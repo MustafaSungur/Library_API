@@ -16,8 +16,8 @@ namespace libAPI.DTOs
 	public class BorrowHistoryReadDTO
 	{
 		public int Id { get; set; }
-		public string MemberId { get; set; }
-		public BookReadDTO Book { get; set; }
+		public string? MemberId { get; set; }
+		public BookReadDTO? Book { get; set; }
 		public DateTime BorrowedDate { get; set; }
 		public DateTime? ReturnedDate { get; set; }
 		public DateTime? RegisterDate { get; set; }

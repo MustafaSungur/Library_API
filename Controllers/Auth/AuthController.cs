@@ -44,6 +44,12 @@ namespace libAPI.Controllers.Auth
 				return NotFound("User not found.");
 			}
 
+				
+			if (applicationUser.UserName == "Admin")
+			{
+				throw new Exception("Access Danied");
+			}
+
 			var token = await _userManager.GeneratePasswordResetTokenAsync(applicationUser);
 			try
 			{
@@ -66,6 +72,12 @@ namespace libAPI.Controllers.Auth
 			if (applicationUser == null)
 			{
 				return NotFound("User not found");
+			}
+
+	
+			if (applicationUser.UserName == "Admin")
+			{
+				throw new Exception("Access Danied");
 			}
 
 			var result = await _userManager.ResetPasswordAsync(applicationUser, token, newPassword);

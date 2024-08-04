@@ -58,7 +58,7 @@ namespace libAPI.Services.Concrete
 
 			var newEmployee = await _repository.GetByIdAsync(result.Id);
 
-			return MapToDto(newEmployee);
+			return MapToDto(newEmployee!);
 		}
 
 		public async Task<EmployeeReadDTO> UpdateAsync(string employeeId, EmployeeCreateDTO dto)
@@ -104,7 +104,7 @@ namespace libAPI.Services.Concrete
 
 			// Retrieve the updated employee to return updated data
 			var updatedEmployee = await _repository.GetByIdAsync(employeeId);
-			return MapToDto(updatedEmployee);
+			return MapToDto(updatedEmployee!);
 		}
 
 
@@ -143,9 +143,9 @@ namespace libAPI.Services.Concrete
 				Id = entity.Id,
 				ApplicationUserReadDTO = applicationUser == null ? null : new ApplicationUserReadDTO
 				{
-					Id = applicationUser.Id,
-					FirstName = applicationUser.FirstName,
-					LastName = applicationUser.LastName,
+					Id = applicationUser!.Id!,
+					FirstName = applicationUser!.FirstName!,
+					LastName = applicationUser!.LastName!,
 					Gender = new GenreReadDTO { Id = applicationUser.GenderId, Name = applicationUser.Gender.Name },
 					Address = address == null ? null : new AddressReadDTO
 					{
@@ -154,15 +154,14 @@ namespace libAPI.Services.Concrete
 						Country = new AddressCountryReadDTO { Id = address.Country.Id,Name=address.Country.Name},
 						ClearAddress = address.ClearAddress
 					},
-					BirthDate = applicationUser.BirthDate,
-					RegisterDate = applicationUser.RegisterDate,
-					Status = applicationUser.Status
-					
+					BirthDate = applicationUser!.BirthDate!,
+					RegisterDate = applicationUser!.RegisterDate!,
+					Status = applicationUser!.Status!
 				},
 				Title = entity.Title == null ? null : new EmployeeTitleReadDTO { Id = entity.Title.Id, Name = entity.Title.Name },
 				Department = entity.Department == null ? null : new DepartmentReadDTO { Id = entity.Department.Id, Name = entity.Department.Name },
 				Salary = entity.Salary,
-				Shift = entity.Shift == null ? null : new ShiftReadDTO { Id = entity.Shift.Id, Name = entity.Shift.Name }
+				Shift = entity!.Shift! == null ? null : new ShiftReadDTO { Id = entity.Shift!.Id!, Name = entity.Shift!.Name! }
 			};
 		}
 

@@ -71,31 +71,31 @@ namespace libAPI.Services.Concrete
 				
 				Book = new BookReadDTO
 				{
-					Id = entity.Book.Id,
+					Id = entity!.Book!.Id!,
 					Title = entity.Book.Title,
-					ISBM = entity.Book.ISBM,
+					ISBM = entity.Book!.ISBM!,
 					PageCount = entity.Book.PageCount,
 					PublishingYear = entity.Book.PublishingYear,
-					Description = entity.Book.Description,
+					Description = entity.Book!.Description!,
 					PrintCount = entity.Book.PrintCount,
 					PublisherId = entity.Book.PublisherId,
 					LocationId = entity.Book.LocationId,
-					PhotoUrl = entity.Book.PhotoUrl,
+					PhotoUrl = entity.Book!.PhotoUrl!,
 					RegisterDate = entity.Book.RegisterDate,
 					Stock = entity.Book.Stock,
-					Authors = entity.Book.AuthorBooks.Select(ab => new AuthorReadDTO
+					Authors = entity.Book!.AuthorBooks!.Select(ab => new AuthorReadDTO
 					{
-						Id = ab.Author.Id,
+						Id = ab.Author!.Id,
 						FullName = ab.Author.FullName
 					}).ToList(),
-					Languages = entity.Book.LanguageBooks.Select(lb => new LanguageReadDTO
+					Languages = entity.Book!.LanguageBooks!.Select(lb => new LanguageReadDTO
 					{
-						Code = lb.Language.Code,
+						Code = lb.Language!.Code,
 						Name = lb.Language.Name
 					}).ToList(),
-					SubCategories = entity.Book.SubCategoryBooks.Select(sb => new SubCategoryReadDTO
+					SubCategories = entity.Book!.SubCategoryBooks!.Select(sb => new SubCategoryReadDTO
 					{
-						Id = sb.SubCategory.Id,
+						Id = sb.SubCategory!.Id,
 						Name = sb.SubCategory.Name
 					}).ToList()
 				},

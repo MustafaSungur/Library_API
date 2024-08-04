@@ -13,7 +13,7 @@ namespace libAPI.Models
         public short CategoryId{ get; set; }
 
 		[ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         public List<SubCategoryBook>? SubCategoryBooks { get; set; }
 

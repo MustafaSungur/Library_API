@@ -90,11 +90,14 @@ namespace libAPI.Controllers
 		public async Task<IActionResult> DeleteEmployee(string id)
 		{
 			var employee = await _service.GetByIdAsync(id);
+			
 			if (employee == null)
 			{
 				return NotFound();
 			}
 
+		
+			
 			await _service.DeleteAsync(id);
 			return NoContent();
 		}

@@ -8,11 +8,11 @@ namespace libAPI.Models
 		public int BookId { get; set; }
 
 		[JsonIgnore]
-		public Book Book { get; set; } 
+		public Book? Book { get; set; } 
 
 		public short SubCategoryId { get; set; }
 
 		[JsonIgnore]
-		public SubCategory SubCategory { get; set; }
+		public SubCategory? SubCategory { get; set; }
 	}
 }

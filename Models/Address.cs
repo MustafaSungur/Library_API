@@ -11,13 +11,13 @@ namespace libAPI.Models
 		public short AddressCountryId { get; set; }
 
 		[ForeignKey(nameof(AddressCountryId))]
-		public AddressCountry Country { get; set; } 
+		public AddressCountry? Country { get; set; } 
 
 		[Required]
 		public short AddressCityId { get; set; }
 
 		[ForeignKey(nameof(AddressCityId))]
-		public AddressCity City { get; set; }
+		public AddressCity? City { get; set; }
 
 		[StringLength(250)]
 		[Required]
