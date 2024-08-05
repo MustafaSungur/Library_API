@@ -73,7 +73,7 @@ namespace libAPI
 			{
 				var addressCity = await context.AddressCity.FirstOrDefaultAsync(e => e.Name == "İstanbul");
 				var addressCountry = await context.AddressCountry.FirstOrDefaultAsync(e => e.Name == "Türkiye");
-				var address = new Address { AddressCityId = (short)addressCity.Id, AddressCountryId = (short)addressCountry.Id, ClearAddress = "AdminAddress" };
+				var address = new Address { AddressCityId = addressCity!.Id, AddressCountryId = addressCountry!.Id, ClearAddress = "AdminAddress" };
 				context.Address.Add(address);
 				await context.SaveChangesAsync();
 			}
@@ -104,14 +104,15 @@ namespace libAPI
 				var genre = await context.Genre.FirstOrDefaultAsync(e => e.Name == "Erkek");
 				var applicationUser = new ApplicationUser
 				{
-					FirstName="Admin",
+					FirstName = "Admin",
 					LastName = "Admin",
 					UserName = "Admin",
 					Email = "admin@admin.com",
-					AddressId = address.Id,
-					GenderId = genre.Id,
+					AddressId = address!.Id,
+					GenderId = genre!.Id,
 					RegisterDate = DateTime.Now,
 					BirthDate = new DateTime(1999, 1, 12),
+					Status = true
 
 				};
 				await userManager.CreateAsync(applicationUser, "Admin123!");

@@ -401,8 +401,10 @@ namespace libAPI.Migrations
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<string>("StockId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
@@ -439,7 +441,6 @@ namespace libAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("MemberId")
@@ -925,9 +926,7 @@ namespace libAPI.Migrations
 
                     b.HasOne("libAPI.Models.Stock", "Stock")
                         .WithMany()
-                        .HasForeignKey("StockId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StockId");
 
                     b.Navigation("Location");
 
@@ -947,8 +946,7 @@ namespace libAPI.Migrations
                     b.HasOne("libAPI.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("libAPI.Models.Member", "Member")
                         .WithMany()

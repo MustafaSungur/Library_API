@@ -49,7 +49,7 @@ namespace libAPI.Controllers
 		// PUT: api/Books/5
 		[HttpPut("{id}")]
 		[Authorize(Roles = "Admin,Worker")]
-		public async Task<IActionResult> UpdateBook(int id, [FromForm] BookCreateDTO bookDto, IFormFile file)
+		public async Task<IActionResult> UpdateBook(int id, [FromForm] BookCreateDTO bookDto, IFormFile? file=null)
 		{
 			// Validate the ID in the request against the ID in the DTO
 			if (id != bookDto.Id)
@@ -98,7 +98,7 @@ namespace libAPI.Controllers
 		// POST: api/Books
 		[HttpPost]
 		[Authorize(Roles = "Admin,Worker")]
-		public async Task<ActionResult<BookReadDTO>> PostBook([FromForm] BookCreateDTO bookDto, IFormFile file)
+		public async Task<ActionResult<BookReadDTO>> PostBook([FromForm] BookCreateDTO bookDto, IFormFile? file=null)
 		{
 			if (file != null && file.Length > 0)
 			{
@@ -150,7 +150,7 @@ namespace libAPI.Controllers
 		{
 			var userEmail = User.FindFirstValue(ClaimTypes.Email);
 			
-			var result = await _service.RateBook(id,rate,userEmail);
+			var result = await _service.RateBook(id,rate,userEmail!);
 			return Ok(result);
 		}
 

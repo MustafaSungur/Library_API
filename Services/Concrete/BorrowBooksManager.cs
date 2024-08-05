@@ -67,6 +67,8 @@ namespace libAPI.Services.Concrete
 			foreach (var bookId in borrowBookDto.BooksId!)
 			{
 				var book = await _bookRepository.GetByIdAsync(bookId);
+				if (book == null || book.Status == false) throw new Exception("Book not found");
+
 				var stock = await _stockRepository.GetByIdAsync(book!.ISBM!);
 
 				if (stock == null)
@@ -215,7 +217,7 @@ namespace libAPI.Services.Concrete
 						Id = entity.Member.ApplicationUser!.Id!,
 						FirstName = entity.Member.ApplicationUser.FirstName,
 						LastName = entity.Member.ApplicationUser.LastName,
-						
+
 						Address = new AddressReadDTO
 						{
 							Id = entity.Member.ApplicationUser.Address!.Id!,
@@ -235,9 +237,9 @@ namespace libAPI.Services.Concrete
 						BirthDate = entity.Member.ApplicationUser.BirthDate,
 						RegisterDate = entity.Member.ApplicationUser.RegisterDate,
 						Status = entity.Member.ApplicationUser.Status,
-					
+
 					},
-					
+
 					PenaltyPoint = entity.Member.PenaltyPoint,
 					IsBanned = entity.Member.IsBanned,
 					EndBannedDate = entity.Member.EndBannedDate
@@ -256,6 +258,7 @@ namespace libAPI.Services.Concrete
 					PhotoUrl = entity.Book.PhotoUrl!,
 					RegisterDate = entity.Book.RegisterDate,
 					Stock = entity.Book.Stock,
+					Status = entity.Book.Status,
 					Authors = entity.Book.AuthorBooks!.Select(ab => new AuthorReadDTO
 					{
 						Id = ab.Author!.Id,

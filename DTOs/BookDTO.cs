@@ -37,7 +37,8 @@ namespace libAPI.DTOs
         public DateTime RegisterDate { get; set; }
         public float Raiting { get; set; }
 		public int RaitingCount { get; set; }
-		public List<AuthorReadDTO>? Authors { get; set; }
+        public bool Status { get; set; }
+        public List<AuthorReadDTO>? Authors { get; set; }
 		public List<LanguageReadDTO>? Languages { get; set; }
 		public List<SubCategoryReadDTO>? SubCategories { get; set; }
         public Stock? Stock { get; set; }

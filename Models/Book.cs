@@ -65,6 +65,8 @@ namespace libAPI.Models
         public int? TotalRating { get; set; }
 
         public List<string>? RatedMemberIds{ get; set; }
+
+        public bool Status { get; set; } = true;
     }
 
 }

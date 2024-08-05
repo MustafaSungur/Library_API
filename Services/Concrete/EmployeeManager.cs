@@ -11,6 +11,8 @@ namespace libAPI.Services.Concrete
 	public class EmployeeManager : GenericManager<Employee, EmployeeCreateDTO, EmployeeReadDTO, libAPIContext, string>, IEmployeeService
 	{
 		private readonly IAddressService _addressService;
+		private readonly IEmployeeRepository _employeeRepository;
+
 		private readonly UserManager<ApplicationUser> _userManager;
 		public EmployeeManager(
 			IEmployeeRepository repository,
@@ -18,6 +20,7 @@ namespace libAPI.Services.Concrete
 		{
 			_addressService = addressService;
 			_userManager = userManager;
+			_employeeRepository = repository;
 		}
 				
 
@@ -47,7 +50,7 @@ namespace libAPI.Services.Concrete
 				ShiftId = dto.ShiftId,
 			};
 			entity.ApplicationUser!.UserName = entity!.ApplicationUser!.Email;
-			entity.ApplicationUser!.NormalizedUserName = entity.ApplicationUser!.Email.Trim().ToLowerInvariant();
+			entity.ApplicationUser!.NormalizedUserName = entity.ApplicationUser!.Email!.Trim().ToLowerInvariant();
 			entity.ApplicationUser!.Email = entity.ApplicationUser!.Email.Trim().ToLowerInvariant();
 			entity.ApplicationUser!.NormalizedEmail = entity.ApplicationUser!.Email.ToUpperInvariant();
 			_userManager.CreateAsync(entity.ApplicationUser!, entity.ApplicationUser!.Password).Wait();
@@ -85,7 +88,7 @@ namespace libAPI.Services.Concrete
 			user.GenderId = dto.ApplicationUserCreateDTO.GenderId;
 			user.AddressId = updatedAddressDto.Id; // Assuming address update returns updated DTO
 			user.BirthDate = dto.ApplicationUserCreateDTO.BirthDate;
-			user.Email = dto.ApplicationUserCreateDTO.Email.Trim().ToLowerInvariant();
+			user.Email = dto.ApplicationUserCreateDTO!.Email!.Trim().ToLowerInvariant();
 			user.PhoneNumber = dto.ApplicationUserCreateDTO.PhoneNumber;
 			user.NormalizedUserName = user.Email;
 			user.NormalizedEmail = user.Email.ToUpperInvariant();
@@ -123,7 +126,7 @@ namespace libAPI.Services.Concrete
 				throw new Exception("Admin cannot be deleted");
 			}
 
-			var result =await base.DeleteAsync(id);
+			var result =await _repository.DeleteAsync(id);
 			return result;
 		}
 

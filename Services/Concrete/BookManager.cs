@@ -4,9 +4,7 @@ using libAPI.DTOs;
 using libAPI.Models;
 using libAPI.Services.Abstract;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace libAPI.Services.Concrete
 {
@@ -91,7 +89,7 @@ namespace libAPI.Services.Concrete
 		public async Task UpdateBookAsync(int bookId, BookCreateDTO bookDTO)
 		{
 			var book = await _repository.GetByIdAsync(bookId);
-			if (book == null)
+			if (book == null || book.Status==false)
 			{
 				throw new Exception("Book not found");
 			}
@@ -260,7 +258,7 @@ namespace libAPI.Services.Concrete
 
 			var book = await _repository.GetByIdAsync(bookId);
 
-			if (book == null)
+			if (book == null || book.Status==false)
 			{
 				throw new Exception("Book does not exist");
 			}
@@ -291,7 +289,16 @@ namespace libAPI.Services.Concrete
 		}
 
 
+		public override async Task<bool> DeleteAsync(int id)
+		{
+			var book = await _repository.GetByIdAsync(id) ?? throw new Exception("Book not found");
 
+			book.Status = false!;
+
+			var result = await _repository.UpdateAsync(book);
+
+			return !result.Status;
+		}
 
 
 
@@ -330,6 +337,7 @@ namespace libAPI.Services.Concrete
 				LocationId = entity.LocationId,
 				PhotoUrl = entity.PhotoUrl!,
 				Stock = entity.Stock,
+				Status= entity.Status,
 				Raiting = entity.RatingCount != 0 ? (float) (entity.TotalRating / entity.RatingCount)! : 0,
 				RaitingCount = (int) entity.RatingCount!,
 				Authors = entity.AuthorBooks!.Select(ab => new AuthorReadDTO { Id = ab.AuthorId, FullName = ab.Author!.FullName }).ToList(),

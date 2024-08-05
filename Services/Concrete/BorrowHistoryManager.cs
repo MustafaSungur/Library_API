@@ -82,6 +82,7 @@ namespace libAPI.Services.Concrete
 					LocationId = entity.Book.LocationId,
 					PhotoUrl = entity.Book!.PhotoUrl!,
 					RegisterDate = entity.Book.RegisterDate,
+					Status = entity.Book.Status, 
 					Stock = entity.Book.Stock,
 					Authors = entity.Book!.AuthorBooks!.Select(ab => new AuthorReadDTO
 					{
