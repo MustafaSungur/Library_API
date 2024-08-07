@@ -379,7 +379,8 @@ Endpoint: POST /api/auth/Login
             "subCategoryIds": [1]
       }
 
-![image](https://github.com/user-attachments/assets/2c30124e-c76e-4048-b3e6-0fce4f06b4f2)
+
+![355953098-2c30124e-c76e-4048-b3e6-0fce4f06b4f2](https://github.com/user-attachments/assets/2269e23d-0bad-4007-934b-fd2945aaa546)
 
 ![image](https://github.com/user-attachments/assets/b275e766-f237-48b6-9098-bcf0cab1974c)
 
@@ -391,9 +392,9 @@ Endpoint: POST /api/auth/Login
 
 
 
-    {
-      "degree": "Üniversite"
-    }
+        {
+          "degree": "Üniversite"
+        }
 
 **14. Create a Member Account:**
 - Endpoint: POST /api/Members
