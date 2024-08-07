@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1KPHVciCNgyf6G6y6zSPZnb+m6hs6enbU7xo8/Ow79jOwuHmNRIPtS2g/tb1CL3luTzLPAtj4ItJjh93EpdDw==",
+  "dgSpecHash": "+PLf3T4KPjZCyKAPccTxUsLgjUWiRyolHr1988a6zrpvEpRs1OQJTQCCT3j+b0KkoJ3Spm0HibPbf9vmXfRnwA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+  "projectFilePath": "c:\\Users\\10\\Desktop\\Library_API-main\\libAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\10\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

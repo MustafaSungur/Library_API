@@ -98,7 +98,7 @@ namespace libAPI.Controllers
 		// POST: api/Books
 		[HttpPost]
 		[Authorize(Roles = "Admin,Worker")]
-		public async Task<ActionResult<BookReadDTO>> PostBook(BookCreateDTO bookDto, IFormFile? file=null)
+		public async Task<ActionResult<BookReadDTO>> PostBook([FromForm] BookCreateDTO bookDto, IFormFile? file=null)
 		{
 			if (file != null && file.Length > 0)
 			{
