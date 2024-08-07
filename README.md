@@ -41,7 +41,7 @@ Swagger is an open-source tool for documenting APIs. It provides a user-friendly
     ├── Data/
 
 ### Key Folders and Files
-- **Controllers/: **Contains the API controllers that handle HTTP requests.
+- **Controllers/:** Contains the API controllers that handle HTTP requests.
 - **DTOs/:** Contains Data Transfer Objects used for data encapsulation.
 - **Data/:** Contains the database context and migration files and repository files.
 - **Services/:** Contains the service classes implementing the business logic.
@@ -251,10 +251,10 @@ https://localhost:44394/swagger
 Endpoint: POST /api/auth/Login
 
 
-    {
+{
         "email": "admin@admin.com",
         "password": "Admin123!"
-    }
+}
 
 * Copy the token from the response.
 
@@ -296,9 +296,9 @@ Endpoint: POST /api/auth/Login
 - Endpoint: POST /api/Locations
 - JSON Body:
 
-       {
+   {
             "Shelf": "A11"
-        }
+   }
 
 **6. Create a Language:**
 - Endpoint: POST /api/Languages
@@ -306,10 +306,10 @@ Endpoint: POST /api/auth/Login
 
 
 
-    	{
+  {
             "code": "TUR",
             "name": "Türkçe"
-    	}
+  }
 
 - Create a Category:
 - Endpoint: POST /api/Categories
@@ -317,9 +317,9 @@ Endpoint: POST /api/auth/Login
 
 
 
-    	{
+  {
             "name": "Novel"
-    	}
+   }
 
 **7. Create a SubCategory:**
 - Endpoint: POST /api/SubCategories
@@ -339,12 +339,12 @@ Endpoint: POST /api/auth/Login
 
 
 
-        {
+  {
         	"FullName": "George R. R. Martin",
         	"Biography":"George Raymond Richard Martin, Amerikalı yazar ve fantezi, korku ve bilimkurgu senaryo yazarı.",
         	"BirthDate":"1948-09-20",
         	"DeadYear": null
-        }
+  }
 
 **12. Create a Publisher:**
 - Endpoint: POST /api/Publishers
@@ -363,7 +363,7 @@ Endpoint: POST /api/auth/Login
 - JSON Body:
 
 
-        {
+  {
             "title": "Taht Oyunları",
             "isbn": "1234567890123",
             "PageCount": "1502",
@@ -377,7 +377,7 @@ Endpoint: POST /api/auth/Login
             "authorIds": [1],
             "languageId": [1],
             "subCategoryIds": [1]
-        }
+  }
 
 ![image](https://github.com/user-attachments/assets/2c30124e-c76e-4048-b3e6-0fce4f06b4f2)
 
