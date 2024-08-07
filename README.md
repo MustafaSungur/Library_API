@@ -251,10 +251,10 @@ https://localhost:44394/swagger
 Endpoint: POST /api/auth/Login
 
 
-{
+    {
         "email": "admin@admin.com",
         "password": "Admin123!"
-}
+    }
 
 * Copy the token from the response.
 
@@ -267,27 +267,27 @@ Endpoint: POST /api/auth/Login
 - Employee Status: Working, Quit
 - JSON Body:
 
-    {
-      "applicationUserCreateDTO": {
-        "firstName": "Employee",
-        "lastName": "Test",
-        "genderId": 1,
-        "address": {
-          "addressCountryId": 1,
-          "addressCityId": 1,
-          "clearAddress": "Test Address"
-        },
-        "birthDate": "1985-07-28T11:00:45.043Z",
-        "phoneNumber": "12457897",
-        "email": "employe@test.com",
-        "password": "Test123!",
-        "confirmPassword": "Test123!"
-      },
-      "titleId": 1,
-      "departmentId": 1,
-      "salary": 35000,
-      "shiftId": 1
-    }
+        {
+          "applicationUserCreateDTO": {
+            "firstName": "Employee",
+            "lastName": "Test",
+            "genderId": 1,
+            "address": {
+              "addressCountryId": 1,
+              "addressCityId": 1,
+              "clearAddress": "Test Address"
+            },
+            "birthDate": "1985-07-28T11:00:45.043Z",
+            "phoneNumber": "12457897",
+            "email": "employe@test.com",
+            "password": "Test123!",
+            "confirmPassword": "Test123!"
+          },
+          "titleId": 1,
+          "departmentId": 1,
+          "salary": 35000,
+          "shiftId": 1
+        }
 
 **6. Login as Employee:**
 - Repeat the login and authorization steps using the employee's credentials.
@@ -296,9 +296,9 @@ Endpoint: POST /api/auth/Login
 - Endpoint: POST /api/Locations
 - JSON Body:
 
-   {
+       {
             "Shelf": "A11"
-   }
+       }
 
 **6. Create a Language:**
 - Endpoint: POST /api/Languages
@@ -306,10 +306,10 @@ Endpoint: POST /api/auth/Login
 
 
 
-  {
+      {
             "code": "TUR",
             "name": "Türkçe"
-  }
+      }
 
 - Create a Category:
 - Endpoint: POST /api/Categories
@@ -317,9 +317,9 @@ Endpoint: POST /api/auth/Login
 
 
 
-  {
+      {
             "name": "Novel"
-   }
+      }
 
 **7. Create a SubCategory:**
 - Endpoint: POST /api/SubCategories
@@ -327,10 +327,10 @@ Endpoint: POST /api/auth/Login
 
 
 
-    {
+        {
             "name": "Epic Fantasy",
             "categoryId": 1
-    }
+        }
 
 
 **11. Create an Author:**
@@ -339,31 +339,31 @@ Endpoint: POST /api/auth/Login
 
 
 
-  {
+      {
         	"FullName": "George R. R. Martin",
         	"Biography":"George Raymond Richard Martin, Amerikalı yazar ve fantezi, korku ve bilimkurgu senaryo yazarı.",
         	"BirthDate":"1948-09-20",
         	"DeadYear": null
-  }
+      }
 
 **12. Create a Publisher:**
 - Endpoint: POST /api/Publishers
 - JSON Body:
 
 
-    {
-      "name": "Test Publisher",
-      "phone": "12345678912",
-      "email": "test@test.com",
-      "contactPerson": "Test Person"
-    }
+        {
+          "name": "Test Publisher",
+          "phone": "12345678912",
+          "email": "test@test.com",
+          "contactPerson": "Test Person"
+        }
 
 **12. Create a Book:**
 - Endpoint: POST /api/Books
 - JSON Body:
 
 
-  {
+      {
             "title": "Taht Oyunları",
             "isbn": "1234567890123",
             "PageCount": "1502",
@@ -377,11 +377,12 @@ Endpoint: POST /api/auth/Login
             "authorIds": [1],
             "languageId": [1],
             "subCategoryIds": [1]
-  }
+      }
 
 ![image](https://github.com/user-attachments/assets/2c30124e-c76e-4048-b3e6-0fce4f06b4f2)
 
-![image](https://github.com/user-attachments/assets/332d8021-f2ea-4b99-b389-9223c791d911)
+![image](https://github.com/user-attachments/assets/b275e766-f237-48b6-9098-bcf0cab1974c)
+
 
 
 **13. Create an Educational Degree:**
@@ -399,25 +400,25 @@ Endpoint: POST /api/auth/Login
 - JSON Body:
 
 
-    {
-      "applicationUserCreateDTO": {
-        "firstName": "member",
-        "lastName": "test",
-        "genderId": 1,
-        "address": {
-          "addressCountryId": 1,
-          "addressCityId": 1,
-          "clearAddress": "Test Address"
-        },
-        "birthDate": "2000-07-28T11:05:00.589Z",
-        "photoUrl": null,
-        "phoneNumber": "14578985",
-        "email": "member@test.com",
-        "password": "member123!",
-        "confirmPassword": "member123!"
-      },
-      "educationalDegreeId": 1
-    }
+        {
+          "applicationUserCreateDTO": {
+            "firstName": "member",
+            "lastName": "test",
+            "genderId": 1,
+            "address": {
+              "addressCountryId": 1,
+              "addressCityId": 1,
+              "clearAddress": "Test Address"
+            },
+            "birthDate": "2000-07-28T11:05:00.589Z",
+            "photoUrl": null,
+            "phoneNumber": "14578985",
+            "email": "member@test.com",
+            "password": "member123!",
+            "confirmPassword": "member123!"
+          },
+          "educationalDegreeId": 1
+        }
 
 **15. Borrow a Book:**
 - Endpoint: POST /api/BorrowBooks
@@ -425,14 +426,14 @@ Endpoint: POST /api/auth/Login
 
 
 
-    {
-      "memberId": "member ID",
-      "rentalDate": "2024-08-07T19:11:59.744Z",
-      "deadline": "2024-08-24T19:11:59.744Z",
-      "booksId": [
-        1
-      ]
-    }
+        {
+          "memberId": "member ID",
+          "rentalDate": "2024-08-07T19:11:59.744Z",
+          "deadline": "2024-08-24T19:11:59.744Z",
+          "booksId": [
+            1
+          ]
+        }
 
 **16. Return a Book:**
 - Endpoint: DELETE /api/BorrowBooks/{id}
@@ -442,9 +443,9 @@ Endpoint: POST /api/auth/Login
 - JSON Body:
 
 
-    {
-    	"rate": 5
-    }
+        {
+    	    "rate": 5
+        }
 
 ![image](https://github.com/user-attachments/assets/b481e9b1-6496-447d-b133-78c229a9cfc5)
 
