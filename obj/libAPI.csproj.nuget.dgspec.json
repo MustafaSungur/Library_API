@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj": {}
+    "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj": {
+    "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+        "projectUniqueName": "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
         "projectName": "libAPI",
-        "projectPath": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+        "projectPath": "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\obj\\",
+        "outputPath": "c:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",

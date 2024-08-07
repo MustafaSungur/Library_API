@@ -3,52 +3,132 @@
   "WorkspaceRootPath": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\bookmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\bookmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\borrowbooksmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\borrowbooksmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\borrowhistorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\borrowhistorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\borrowbooksmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\borrowbooksmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\educationaldegreemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\educationaldegreemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\categorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\categorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\departmentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\departmentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\emailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\emailmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\genericmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\genericmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\abstract\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\abstract\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\employeemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\employeemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\abstract\\iaddresscityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\abstract\\iaddresscityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\services\\concrete\\employeetitlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:services\\concrete\\employeetitlemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\bookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\data\\repositories\\concrete\\efcore\\efcoreemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:data\\repositories\\concrete\\efcore\\efcoreemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\borrowbookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\borrowbookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\authordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\authordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\locationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\locationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\applicationuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\applicationuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\libapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:libapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\memberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\memberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\subcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\subcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\subcategorybookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\subcategorybookdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\languagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\languagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\employeetitledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\employeetitledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\addressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\addressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\addresscountrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\addresscountrydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\dtos\\addresscitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:dtos\\addresscitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|c:\\users\\10\\desktop\\.netcore\\libapi\\libapi\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F284D3D-E100-4076-8AF8-2AAF66FAAD7E}|libAPI.csproj|solutionrelative:controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,147 +143,416 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DbInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DbInitializer.cs",
-              "RelativeDocumentMoniker": "DbInitializer.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DbInitializer.cs",
-              "RelativeToolTip": "DbInitializer.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAADcAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T16:26:55.541Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BooksController.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
-              "RelativeToolTip": "Controllers\\BooksController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAC4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T16:17:05.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoryManager.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\CategoryManager.cs",
-              "RelativeDocumentMoniker": "Services\\Concrete\\CategoryManager.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\CategoryManager.cs",
-              "RelativeToolTip": "Services\\Concrete\\CategoryManager.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T16:07:38.211Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BorrowHistoryManager.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowHistoryManager.cs",
-              "RelativeDocumentMoniker": "Services\\Concrete\\BorrowHistoryManager.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowHistoryManager.cs",
-              "RelativeToolTip": "Services\\Concrete\\BorrowHistoryManager.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAAAFQAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T16:07:15.59Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "BorrowBooksManager.cs",
               "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowBooksManager.cs",
               "RelativeDocumentMoniker": "Services\\Concrete\\BorrowBooksManager.cs",
               "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowBooksManager.cs",
               "RelativeToolTip": "Services\\Concrete\\BorrowBooksManager.cs",
-              "ViewState": "AQIAAIcAAAAAAAAAAAAAABQBAAAGAAAA",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAK0AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T16:04:44.646Z"
+              "WhenOpened": "2024-08-07T19:02:39.807Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "BorrowHistoryManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowHistoryManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\BorrowHistoryManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BorrowHistoryManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\BorrowHistoryManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T19:02:24.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EducationalDegreeManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EducationalDegreeManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\EducationalDegreeManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EducationalDegreeManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\EducationalDegreeManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T19:02:17.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DepartmentManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\DepartmentManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\DepartmentManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\DepartmentManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\DepartmentManager.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T19:02:08.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmailManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmailManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\EmailManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmailManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\EmailManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T19:02:02.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GenericManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\GenericManager.cs",
+              "RelativeDocumentMoniker": "Services\\Concrete\\GenericManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\GenericManager.cs",
+              "RelativeToolTip": "Services\\Concrete\\GenericManager.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T19:01:37.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "IBookService.cs",
               "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IBookService.cs",
               "RelativeDocumentMoniker": "Services\\Abstract\\IBookService.cs",
               "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IBookService.cs",
               "RelativeToolTip": "Services\\Abstract\\IBookService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABgAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T15:41:44.976Z"
+              "WhenOpened": "2024-08-07T19:01:26.799Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BookManager.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BookManager.cs",
-              "RelativeDocumentMoniker": "Services\\Concrete\\BookManager.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\BookManager.cs",
-              "RelativeToolTip": "Services\\Concrete\\BookManager.cs",
-              "ViewState": "AQIAANwAAAAAAAAAAAAAAD8AAAAZAAAA",
+              "DocumentIndex": 7,
+              "Title": "IAddressCityService.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IAddressCityService.cs",
+              "RelativeDocumentMoniker": "Services\\Abstract\\IAddressCityService.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Abstract\\IAddressCityService.cs",
+              "RelativeToolTip": "Services\\Abstract\\IAddressCityService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T12:31:16.233Z"
+              "WhenOpened": "2024-08-07T19:01:21.21Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BooksController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "Controllers\\BooksController.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAGQAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T18:36:33.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BorrowBooksController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BorrowBooksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BorrowBooksController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\BorrowBooksController.cs",
+              "RelativeToolTip": "Controllers\\BorrowBooksController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T18:36:32.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmployeesController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "Controllers\\EmployeesController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T18:05:49.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "DbInitializer.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DbInitializer.cs",
+              "RelativeToolTip": "DbInitializer.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAEMAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:57:15.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAAAKsAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:56:42.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "libAPI",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeDocumentMoniker": "libAPI.csproj",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\libAPI.csproj",
+              "RelativeToolTip": "libAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-07T17:56:40.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthorDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AuthorDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuthorDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AuthorDTO.cs",
+              "RelativeToolTip": "DTOs\\AuthorDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:23:52.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "BookDTO.cs",
               "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\BookDTO.cs",
               "RelativeDocumentMoniker": "DTOs\\BookDTO.cs",
               "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\BookDTO.cs",
               "RelativeToolTip": "DTOs\\BookDTO.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACYAAAAnAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T12:30:04.316Z"
+              "WhenOpened": "2024-08-07T17:23:43.844Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Book.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Book.cs",
-              "RelativeDocumentMoniker": "Models\\Book.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Models\\Book.cs",
-              "RelativeToolTip": "Models\\Book.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAwwDIAAAAtAAAA",
+              "DocumentIndex": 19,
+              "Title": "MemberDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\MemberDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\MemberDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\MemberDTO.cs",
+              "RelativeToolTip": "DTOs\\MemberDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T12:28:47.116Z"
+              "WhenOpened": "2024-08-07T17:23:28.966Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EmployeeTitleManager.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmployeeTitleManager.cs",
-              "RelativeDocumentMoniker": "Services\\Concrete\\EmployeeTitleManager.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmployeeTitleManager.cs",
-              "RelativeToolTip": "Services\\Concrete\\EmployeeTitleManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 20,
+              "Title": "SubCategoryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\SubCategoryDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\SubCategoryDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\SubCategoryDTO.cs",
+              "RelativeToolTip": "DTOs\\SubCategoryDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T11:41:48.645Z"
+              "WhenOpened": "2024-08-07T17:23:16.526Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "EfCoreEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Data\\Repositories\\Concrete\\EfCore\\EfCoreEmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Data\\Repositories\\Concrete\\EfCore\\EfCoreEmployeeRepository.cs",
-              "RelativeToolTip": "Data\\Repositories\\Concrete\\EfCore\\EfCoreEmployeeRepository.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 21,
+              "Title": "SubCategoryBookDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\SubCategoryBookDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\SubCategoryBookDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\SubCategoryBookDTO.cs",
+              "RelativeToolTip": "DTOs\\SubCategoryBookDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T11:41:22.316Z"
+              "WhenOpened": "2024-08-07T17:23:10.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LocationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\LocationDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LocationDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\LocationDTO.cs",
+              "RelativeToolTip": "DTOs\\LocationDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:57.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LanguageDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\LanguageDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LanguageDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\LanguageDTO.cs",
+              "RelativeToolTip": "DTOs\\LanguageDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:51.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "EmployeeTitleDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\EmployeeTitleDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\EmployeeTitleDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\EmployeeTitleDTO.cs",
+              "RelativeToolTip": "DTOs\\EmployeeTitleDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:42.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "EmployeeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\EmployeeDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\EmployeeDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\EmployeeDTO.cs",
+              "RelativeToolTip": "DTOs\\EmployeeDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:31.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApplicationUserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\ApplicationUserDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ApplicationUserDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\ApplicationUserDTO.cs",
+              "RelativeToolTip": "DTOs\\ApplicationUserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:05.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AddressDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AddressDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressDTO.cs",
+              "RelativeToolTip": "DTOs\\AddressDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:22:00.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AddressCountryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressCountryDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AddressCountryDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressCountryDTO.cs",
+              "RelativeToolTip": "DTOs\\AddressCountryDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:21:54.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AddressCityDTO.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressCityDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AddressCityDTO.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\DTOs\\AddressCityDTO.cs",
+              "RelativeToolTip": "DTOs\\AddressCityDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:21:45.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SubCategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubCategoriesController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeToolTip": "Controllers\\SubCategoriesController.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAwwGQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T17:15:30.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ShiftsController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\ShiftsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ShiftsController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\ShiftsController.cs",
+              "RelativeToolTip": "Controllers\\ShiftsController.cs",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAwwGgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T15:59:08.235Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "EmployeeManager.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmployeeManager.cs",
-              "RelativeDocumentMoniker": "Services\\Concrete\\EmployeeManager.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Services\\Concrete\\EmployeeManager.cs",
-              "RelativeToolTip": "Services\\Concrete\\EmployeeManager.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAAAH0AAAAzAAAA",
+              "Title": "PublishersController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\PublishersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PublishersController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\PublishersController.cs",
+              "RelativeToolTip": "Controllers\\PublishersController.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAwwFAAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T11:40:34.912Z"
+              "WhenOpened": "2024-08-07T13:38:38.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MembersController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\MembersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MembersController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\MembersController.cs",
+              "RelativeToolTip": "Controllers\\MembersController.cs",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAwwJwAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T13:34:43.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "LocationsController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LocationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LocationsController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\.NetCore\\libAPI\\libAPI\\Controllers\\LocationsController.cs",
+              "RelativeToolTip": "Controllers\\LocationsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T13:34:43.318Z"
             }
           ]
         }
