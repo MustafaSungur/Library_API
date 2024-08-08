@@ -124,9 +124,9 @@ namespace libAPI
 				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 				{
 					In = ParameterLocation.Header,
-					Description = "Please insert JWT with Bearer into field",
+					Description = "Please insert JWT into field",
 					Name = "Authorization",
-					Type = SecuritySchemeType.ApiKey,
+					Type = SecuritySchemeType.Http,
 					BearerFormat = "JWT",
 					Scheme = "Bearer"
 				});
